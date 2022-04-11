@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Hexo • Posts by &#34;后端&#34; category</title>
+        <link>http://example.com</link>
+        <description>信息创造竞争力</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 07 Apr 2022 18:28:00 +0800</pubDate>
+        <lastBuildDate>Thu, 07 Apr 2022 18:28:00 +0800</lastBuildDate>
+        <category>测试标签</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/04/07/test/</guid>
+            <title>test</title>
+            <link>http://example.com/2022/04/07/test/</link>
+            <category>测试标签</category>
+            <pubDate>Thu, 07 Apr 2022 18:28:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;发发发发发发发发&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

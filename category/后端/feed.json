@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Hexo • All posts by \"后端\" category",
+    "description": "信息创造竞争力",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2022/04/07/test/",
+            "url": "http://example.com/2022/04/07/test/",
+            "title": "test",
+            "date_published": "2022-04-07T10:28:00.000Z",
+            "content_html": "<p>发发发发发发发发</p>\n",
+            "tags": [
+                "测试标签"
+            ]
+        }
+    ]
+}
