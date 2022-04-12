@@ -9,7 +9,7 @@
     
     <title>
         
-            使用hexo,并部署到page |
+            分治法解决括号匹配 |
         
         (゜ロ゜;)┛
     </title>
@@ -183,7 +183,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">使用hexo,并部署到page</span>
+            <span class="title-hover-animation">分治法解决括号匹配</span>
         </div>
 
         
@@ -253,7 +253,7 @@
 <h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><h5 id="1、一对括号。我先放左括号，后放右括号，就匹配成功。（）"><a href="#1、一对括号。我先放左括号，后放右括号，就匹配成功。（）" class="headerlink" title="1、一对括号。我先放左括号，后放右括号，就匹配成功。（）"></a>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</h5><h5 id="2、两对括号。先放左括号，后放右括号。为了实现左右括号是随机的，只需要递归一下，就可以得出很多的结果。如下"><a href="#2、两对括号。先放左括号，后放右括号。为了实现左右括号是随机的，只需要递归一下，就可以得出很多的结果。如下" class="headerlink" title="2、两对括号。先放左括号，后放右括号。为了实现左右括号是随机的，只需要递归一下，就可以得出很多的结果。如下"></a>2、两对括号。先放左括号，后放右括号。为了实现左右括号是随机的，只需要递归一下，就可以得出很多的结果。如下</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果如下</p>
-<p><img src="/%5Cimages_post%5Cimage-20220412183743352.png" alt="image-20220412214922050"></p>
+<p><img src="/images/_post/image-20220412183743352.png" alt="image-20220412214922050"></p>
 <p>发现出现了不合法的匹配。再细想，发现规律 ，合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
 <p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
 <p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
@@ -283,7 +283,7 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：使用hexo,并部署到page</li>
+        <li>本文标题：分治法解决括号匹配</li>
         <li>本文作者：衡先焘</li>
         <li>创建时间：2022-04-12 21:47:02</li>
         <li>
