@@ -1,6 +1,1038 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>大学生~活便签</title>
+    <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
+    <content><![CDATA[<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">背景：大学的生活已经过半，生活中遇到了许多问题与麻烦。常常需要随时随地记账，看课表，记笔记，这些功能在很多app都有实现，但是有一个共同的问题——要想同时实现这些功能，我们需要下载很多的app，在许多app之间切换是件很麻烦的事，所以我们需要去做一个同时包含这些功能的app，同时app要足够简洁和美观。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>表名</th>
+        <th colspan="5">tb_todo</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">待办表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">todo_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="2">待办的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_content</td>
+        <td colspan="2">待办的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_finish</td>
+        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
+        <td>tinyint</td>
+        <td>0(未完成)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_date</td>
+        <td colspan="2">待办的时间</td>
+        <td>datetime</td>
+        <td>null</td>
+        <td>flase</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>表名</th>
+        <th colspan="5">tb_aBook</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">账本表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">aBook_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_id</td>
+        <td colspan="2">账本的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_money</td>
+        <td colspan="2">账单的金额(元)</td>
+        <td>int</td>
+        <td>0</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_type</td>
+        <td colspan="2">账本类型</td>
+        <td>enum</td>
+        <td>支出，收入...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_mark</td>
+        <td colspan="2">账本的备注</td>
+        <td>varchar(20)</td>
+        <td>null</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>aBook_date</td>
+        <td colspan="2">账单产生的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>表名</th>
+        <th colspan="5">tb_diary</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">日历表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">diary_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_id</td>
+        <td colspan="2">日记的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_content</td>
+        <td colspan="2">日记的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_date</td>
+        <td colspan="2">创建日记的时间</td>
+        <td>datetime</td>
+        <td>当天的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_theme</td>
+        <td colspan="2">日历的主题</td>
+        <td>varchar</td>
+        <td>例如：世界读书日</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_weather</td>
+        <td colspan="2">当天的天气</td>
+        <td>enum</td>
+        <td>晴朗，阴...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_mood</td>
+        <td colspan="2">当天的心情</td>
+        <td>enum</td>
+        <td>开心，伤心...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>表名</th>
+        <th colspan="5">tb_hole</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">树洞表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">hole_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_id</td>
+        <td colspan="2">树洞的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_content</td>
+        <td colspan="2">树洞的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_date</td>
+        <td colspan="2">树洞发布的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>表名</th>
+        <th colspan="5">tb_schedule</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">课程表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">schedule_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_id</td>
+        <td colspan="2">课程的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_type</td>
+        <td colspan="2">课程是否是单双周</td>
+        <td>tinyint</td>
+        <td>1(单周)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_content</td>
+        <td colspan="2">课表的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_day</td>
+        <td colspan="2">星期几,1-7</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_section</td>
+        <td colspan="2">每天第几节课,1-6</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+
+
+<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
+
+<img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
+
+<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
+
+
+
+<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5">/diary/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取日记的detail</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="3">待办的唯一标签</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>接口\方法</th>
+        <th colspan="5">/todo/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取某一天的待办</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期，day</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>接口\方法</th>
+        <th colspan="5">/aBook/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">按天查询账单</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">某一天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>接口\方法</th>
+        <th colspan="5">/hole/getList/1/10</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取树洞的信息，分页，一次十条，restful风格</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>无</td>
+        <td colspan="3">不需要参数，参数在url上</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>接口\方法</th>
+        <th colspan="5">/schedule/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取当日的课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th>接口\方法</th>
+        <th colspan="5">/diary/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建日记</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建日记的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>theme</td>
+        <td colspan="3">日记的主题</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>weather</td>
+        <td colspan="3">创建日记的天气</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mood</td>
+        <td colspan="3">创建日记时的心情</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建日记的内容</td>
+        <td>longtext</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th>接口\方法</th>
+        <th colspan="5">/todo/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建待办(可批量)</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建待办的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建待办的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th>接口\方法</th>
+        <th colspan="5">/aBook/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建账本</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建账本的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>money</td>
+        <td colspan="3">账本的金额</td>
+        <td>int</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">创建账本的类型（收入，支出）</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mark</td>
+        <td colspan="3">创建账本的备注</td>
+        <td>varchar(20)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>接口\方法</th>
+        <th colspan="5">/hole/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建树洞话</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">树洞的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">树洞的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr style="color: #23bb68">
+        <th>接口\方法</th>
+        <th colspan="5">/schedule/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">创建课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">单周还是双周</td>
+        <td>tinyint</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">课程名字</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>day</td>
+        <td colspan="3">一周中的第几天</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>section</td>
+        <td colspan="3">每天的第几节课</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+
+<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
+
+<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
+
+<h3 id="8、评审情况"><a href="#8、评审情况" class="headerlink" title="8、评审情况"></a>8、评审情况</h3>]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>开发文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用hexo,并部署到page</title>
     <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
     <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
@@ -131,507 +1163,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大学生~活便签</title>
-    <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
-    <content><![CDATA[<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">背景：大学的生活已经过半，生活中遇到了许多问题与麻烦。常常需要随时随地记账，看课表，记笔记，这些功能在很多app都有实现，但是有一个共同的问题——要想同时实现这些功能，我们需要下载很多的app，在许多app之间切换是件很麻烦的事，所以我们需要去做一个同时包含这些功能的app，同时app要足够简洁和美观。</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
-
- <table>
-       <style>
-            th,td{
-                width: 150px;
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th>表名</th>
-        <th colspan="5">tb_todo</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">待办表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">todo_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_id</td>
-        <td colspan="2">待办的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_content</td>
-        <td colspan="2">待办的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_finish</td>
-        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
-        <td>tinyint</td>
-        <td>0(未完成)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_date</td>
-        <td colspan="2">待办的时间</td>
-        <td>datetime</td>
-        <td>null</td>
-        <td>flase</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                width: 150px;
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th>表名</th>
-        <th colspan="5">tb_aBook</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">账本表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">aBook_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_id</td>
-        <td colspan="2">账本的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_money</td>
-        <td colspan="2">账单的金额(元)</td>
-        <td>int</td>
-        <td>0</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_type</td>
-        <td colspan="2">账本类型</td>
-        <td>enum</td>
-        <td>支出，收入...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_mark</td>
-        <td colspan="2">账本的备注</td>
-        <td>varchar(20)</td>
-        <td>null</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>aBook_date</td>
-        <td colspan="2">账单产生的时间</td>
-        <td>datetime</td>
-        <td>当前的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                width: 150px;
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th>表名</th>
-        <th colspan="5">tb_diary</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">日历表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">diary_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_id</td>
-        <td colspan="2">日记的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_content</td>
-        <td colspan="2">日记的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_date</td>
-        <td colspan="2">创建日记的时间</td>
-        <td>datetime</td>
-        <td>当天的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_theme</td>
-        <td colspan="2">日历的主题</td>
-        <td>varchar</td>
-        <td>例如：世界读书日</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_weather</td>
-        <td colspan="2">当天的天气</td>
-        <td>enum</td>
-        <td>晴朗，阴...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_mood</td>
-        <td colspan="2">当天的心情</td>
-        <td>enum</td>
-        <td>开心，伤心...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                width: 150px;
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th>表名</th>
-        <th colspan="5">tb_hole</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">树洞表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">hole_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_id</td>
-        <td colspan="2">树洞的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_content</td>
-        <td colspan="2">树洞的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_date</td>
-        <td colspan="2">树洞发布的时间</td>
-        <td>datetime</td>
-        <td>当前的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                width: 150px;
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th>表名</th>
-        <th colspan="5">tb_schedule</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">课程表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">schedule_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_id</td>
-        <td colspan="2">课程的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_type</td>
-        <td colspan="2">课程是否是单双周</td>
-        <td>tinyint</td>
-        <td>1(单周)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_content</td>
-        <td colspan="2">课表的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_day</td>
-        <td colspan="2">星期几,1-7</td>
-        <td>tinyint</td>
-        <td>1</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_section</td>
-        <td colspan="2">每天第几节课,1-6</td>
-        <td>tinyint</td>
-        <td>1</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
-
-
-<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
-
-<img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
-
-<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
-
-
-
-<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
-
- <table>
-       <style>
-            th,td{
-                width: 150px;
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th>接口\方法</th>
-        <th colspan="5">/diary/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">创建日历</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>name</td>
-        <td colspan="3">内码</td>
-        <td>bigint(20)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_id</td>
-        <td colspan="3">待办的唯一标签</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_content</td>
-        <td colspan="3">待办的主要内容</td>
-        <td>varchar(200)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_finish</td>
-        <td colspan="3">待办的状态（未完成，已完成，丢弃）</td>
-        <td>tinyint</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_date</td>
-        <td colspan="3">待办的时间</td>
-        <td>datetime</td>
-        <td>flase</td>
-      </tr>
-    </table>
-
-
-
-<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
-
-<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
-
-<h3 id="8、评审情况"><a href="#8、评审情况" class="headerlink" title="8、评审情况"></a>8、评审情况</h3>]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>开发文档</tag>
       </tags>
   </entry>
   <entry>
