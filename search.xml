@@ -3,8 +3,7 @@
   <entry>
     <title>大学生~活便签</title>
     <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
-    <content><![CDATA[<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">背景：大学的生活已经过半，生活中遇到了许多问题与麻烦。常常需要随时随地记账，看课表，记笔记，这些功能在很多app都有实现，但是有一个共同的问题——要想同时实现这些功能，我们需要下载很多的app，在许多app之间切换是件很麻烦的事，所以我们需要去做一个同时包含这些功能的app，同时app要足够简洁和美观。</span><br></pre></td></tr></table></figure>
-
+    <content><![CDATA[<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
 <h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
 
  <table>
@@ -420,10 +419,9 @@
 
 <h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
 
-
-
-
-
+<p><img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/11468\blog\keep\source_posts\【开发文档】大学生~活便签\首页-16501064756811.png" alt="首页"></p>
+<p><img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/11468\blog\keep\source_posts\【开发文档】大学生~活便签\添加页面-16501064812702.png" alt="添加页面"></p>
+<p><img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/11468\blog\keep\source_posts\【开发文档】大学生~活便签\我的页面.png" alt="我的页面"></p>
 <h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
 
  <table>
@@ -1023,13 +1021,13 @@
 
 <h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
 
-
-
-
-
+<p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
+<p><img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/11468\blog\keep\source_posts\【开发文档】大学生~活便签\image-20220416192701364.png" alt="image-20220416192701364"></p>
+<p><img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/11468\blog\keep\source_posts\【开发文档】大学生~活便签\image-20220416192830943.png" alt="image-20220416192830943"></p>
+<p>对于安全来说，我们考虑文件以存在本地为主，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
 <h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://hndeveloper.github.io/2017/github-android-ui.html</span><br><span class="line">implementation &#x27;com.github.Lauzy:LBehavior:VERSION_CODE&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://hndeveloper.github.io/2017/github-android-ui.html</span><br><span class="line"></span><br><span class="line">https://www.runoob.com/w3cnote/android-tutorial-intro.html//入门教程</span><br><span class="line">https://github.com/fashare2015/HoverView//底部抽屉</span><br><span class="line">https://github.com/henrytao-me/smooth-app-bar-layout//视觉布局</span><br><span class="line">https://github.com/arcadefire/nice-spinner//下拉选项</span><br><span class="line">https://github.com/google/flexbox-layout//页面布局</span><br><span class="line">https://github.com/kizitonwose/colorpreference//颜色</span><br><span class="line">https://github.com/ImangazalievM/CircleMenu//圆形菜单按钮</span><br><span class="line">https://github.com/ssseasonnn/PracticalRecyclerView//实用循环浏览</span><br><span class="line">https://github.com/yanbober/SlideLayout//侧滑删除</span><br><span class="line">https://github.com/Scalified/fab//浮动操作按钮设计</span><br><span class="line">https://github.com/SundeepK/CompactCalendarView//日历</span><br><span class="line">https://github.com/skydoves/ElasticViews//点击动画</span><br><span class="line">https://github.com/Chanven/CommonPullToRefresh//下拉刷新</span><br><span class="line">https://github.com/daimajia/NumberProgressBar//进度条</span><br><span class="line">implementation &#x27;com.github.imangazalievm:circlemenu:3.0.0&#x27;//圆形菜单按钮依赖项代码</span><br><span class="line">implementation &quot;com.github.skydoves:elasticviews:2.1.0&quot;//点击动画依赖项代码</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
 
 <h3 id="8、分工情况"><a href="#8、分工情况" class="headerlink" title="8、分工情况"></a>8、分工情况</h3><h5 id="大方向："><a href="#大方向：" class="headerlink" title="大方向："></a>大方向：</h5><ul>
 <li>​		衡先焘    ———— 首页</li>
@@ -1053,6 +1051,56 @@
 <h5 id="5-29-6-5"><a href="#5-29-6-5" class="headerlink" title="5.29 - 6.5"></a>5.29 - 6.5</h5><p>​                        衡先焘 对接数据库</p>
 <p>​					    李薇，李晨佳  测试app，检测bug</p>
 <h5 id="6-6-6-11"><a href="#6-6-6-11" class="headerlink" title="6.6 - 6.11"></a>6.6 - 6.11</h5><p>​					    项目上线，后期维护。</p>
+<h3 id="9、项目的版本控制"><a href="#9、项目的版本控制" class="headerlink" title="9、项目的版本控制"></a>9、项目的版本控制</h3><table>
+       <style>
+            th,td{
+                width: 150px;
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">版本</th>
+        <th style="color: #23bb68">时间</th>
+        <th style="color: #23bb68">主要内容</th>
+        <th style="color: #23bb68">主要负责人</th>
+        <th style="color: #23bb68">备注</th>
+      </tr>
+      <tr>
+        <td>0.1</td>
+        <td>2022.6.12</td>
+        <td>最初的功能全部上线</td>
+        <td>全部成员</td>
+        <td>3人分工</td>
+      </tr>
+      <tr>
+        <td>0.2</td>
+        <td>2022.</td>
+        <td>敬请期待...</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+
+
+
+
+
 ]]></content>
       <categories>
         <category>项目</category>
