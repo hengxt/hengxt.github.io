@@ -134,65 +134,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分治法解决括号匹配</title>
-    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
-
-<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
-<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
-<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
-<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果如下</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
-
-<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>截取一段结果就能发现</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
-
-<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
-<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
-<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
-<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
-<br>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
-<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
-
-<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
-<br>
-
-<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
-<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大学生~活便签</title>
     <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
     <content><![CDATA[<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
@@ -611,9 +552,9 @@
 
 <h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
 
-<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE%5C%E9%A6%96%E9%A1%B5-16501064756811.png" alt="首页"></p>
+<p><img src="/%E9%A6%96%E9%A1%B5-16501064756811.png" alt="首页"></p>
 <p><img src="/%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2-16501064812702.png" alt="添加页面"></p>
-<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE%5C%E6%88%91%E7%9A%84%E9%A1%B5%E9%9D%A2.png" alt="我的页面"></p>
+<p><img src="/%E6%88%91%E7%9A%84%E9%A1%B5%E9%9D%A2.png" alt="我的页面"></p>
 <h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
 
  <table>
@@ -1299,6 +1240,65 @@
       </categories>
       <tags>
         <tag>开发文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分治法解决括号匹配</title>
+    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
+
+<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
+<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
+<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
+<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
+
+<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>截取一段结果就能发现</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
+
+<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
+<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
+<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
+<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
+<br>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
+<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
+
+<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
+<br>
+
+<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
+<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
       </tags>
   </entry>
 </search>
