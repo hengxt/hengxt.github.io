@@ -1,142 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用hexo,并部署到page</title>
-    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
-    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
-<thead>
-<tr>
-<th>表名</th>
-<th>todo</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>描述</td>
-<td>待办</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>主键</td>
-<td>id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>索引</td>
-<td>todo_id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>字段名</td>
-<td>描述</td>
-<td>类型</td>
-<td>默认值</td>
-<td>是否必录</td>
-</tr>
-<tr>
-<td>id</td>
-<td>主键</td>
-<td>bigint(20)</td>
-<td>自增</td>
-<td>是</td>
-</tr>
-<tr>
-<td>todo_id</td>
-<td>todo的标志符号</td>
-<td>uuid</td>
-<td>uuid</td>
-<td>是</td>
-</tr>
-</tbody></table>
-<table>
-    <tr>
-        <th>属性</th>
-        <th>属性值</th>
-        <th>描述</th>  
-    </tr>
-    <tr>
-        <td rowspan="9">type</td>
-        <td>text</td>
-        <td>单行文本输入框</td>
-    </tr>
-    <tr>
-        <td>password</td>
-        <td>密码输入框</td>
-    </tr>
-    <tr>
-        <td>radio</td>
-        <td>单选按钮</td>
-    </tr>
-    <tr>
-        <td>CheckBox</td>
-        <td>复选按钮</td>
-    </tr>
-    <tr><td>button</td>
-        <td>普通按钮</td>
-    </tr>
-    <tr>
-        <td>submit</td>
-        <td>提交按钮</td>
-    </tr>
-    <tr>
-        <td>reset</td>
-        <td>重置按钮</td>
-    </tr>
-    <tr>
-        <td>image</td>
-        <td>图像形式的提交按钮</td>
-    </tr>
-    <tr>
-        <td>file</td>
-        <td>文件域</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>用户自定义</td>
-        <td>控件名称</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>用户自定义</td>
-        <td>默认文本值</td>
-    </tr>
-    <tr>
-        <td>size</td>
-        <td>正整数</td>
-        <td>控件在页面中的显示宽度</td>
-    </tr>
-    <tr>
-        <td>checked</td>
-        <td>checked</td>
-        <td>定义选择控件默认被选中项</td>
-    </tr>
-    <tr>
-        <td>maxlength</td>
-        <td>正整数</td>
-        <td>控件允许输入的最多字符</td>
-    </tr>
-</table>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大学生~活便签</title>
     <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
     <content><![CDATA[<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
+<img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204743200.png" alt="image-20220416204743200" style="zoom:25%;">
+
+<img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204830583.png" alt="image-20220416204830583" style="zoom:25%;">
+
+<img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204851139.png" alt="image-20220416204851139" style="zoom:25%;">
+
+<img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204908872.png" alt="image-20220416204908872" style="zoom:25%;">
+
+
+
 <h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
 
  <table>
@@ -1248,6 +1125,139 @@
       </categories>
       <tags>
         <tag>开发文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hexo,并部署到page</title>
+    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
+    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>todo</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>描述</td>
+<td>待办</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主键</td>
+<td>id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>todo_id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字段名</td>
+<td>描述</td>
+<td>类型</td>
+<td>默认值</td>
+<td>是否必录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>主键</td>
+<td>bigint(20)</td>
+<td>自增</td>
+<td>是</td>
+</tr>
+<tr>
+<td>todo_id</td>
+<td>todo的标志符号</td>
+<td>uuid</td>
+<td>uuid</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>属性值</th>
+        <th>描述</th>  
+    </tr>
+    <tr>
+        <td rowspan="9">type</td>
+        <td>text</td>
+        <td>单行文本输入框</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>密码输入框</td>
+    </tr>
+    <tr>
+        <td>radio</td>
+        <td>单选按钮</td>
+    </tr>
+    <tr>
+        <td>CheckBox</td>
+        <td>复选按钮</td>
+    </tr>
+    <tr><td>button</td>
+        <td>普通按钮</td>
+    </tr>
+    <tr>
+        <td>submit</td>
+        <td>提交按钮</td>
+    </tr>
+    <tr>
+        <td>reset</td>
+        <td>重置按钮</td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td>图像形式的提交按钮</td>
+    </tr>
+    <tr>
+        <td>file</td>
+        <td>文件域</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>用户自定义</td>
+        <td>控件名称</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>用户自定义</td>
+        <td>默认文本值</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>正整数</td>
+        <td>控件在页面中的显示宽度</td>
+    </tr>
+    <tr>
+        <td>checked</td>
+        <td>checked</td>
+        <td>定义选择控件默认被选中项</td>
+    </tr>
+    <tr>
+        <td>maxlength</td>
+        <td>正整数</td>
+        <td>控件允许输入的最多字符</td>
+    </tr>
+</table>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
