@@ -1029,24 +1029,31 @@
 
 <h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://hndeveloper.github.io/2017/github-android-ui.html#%E6%97%A5%E5%8E%86%E6%97%B6%E9%97%B4</span><br><span class="line">implementation &#x27;com.github.Lauzy:LBehavior:VERSION_CODE&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://hndeveloper.github.io/2017/github-android-ui.html</span><br><span class="line">implementation &#x27;com.github.Lauzy:LBehavior:VERSION_CODE&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="8、分工情况"><a href="#8、分工情况" class="headerlink" title="8、分工情况"></a>8、分工情况</h3><h5 id="大方向："><a href="#大方向：" class="headerlink" title="大方向："></a>大方向：</h5><ul>
 <li>​		衡先焘    ———— 首页</li>
 <li>​        李薇   —————  我的</li>
 <li>​        李晨佳 —————添加</li>
 </ul>
-<h5 id="4-19-4-26-衡先焘-‘首页‘页面整体设计"><a href="#4-19-4-26-衡先焘-‘首页‘页面整体设计" class="headerlink" title="4.19 - 4.26  衡先焘 ‘首页‘页面整体设计"></a>4.19 - 4.26  衡先焘 ‘首页‘页面整体设计</h5><p>​					   李薇  ‘我的’页面整体设计</p>
+<h5 id="4-19-4-26"><a href="#4-19-4-26" class="headerlink" title="4.19 - 4.26"></a>4.19 - 4.26</h5><p>​						衡先焘 ‘首页‘页面整体设计</p>
+<p>​					    李薇  ‘我的’页面整体设计</p>
 <p>​						李晨佳  ‘添加’页面整体设计</p>
-<h5 id="4-27-5-4-衡先焘-’首页待办‘页面设计"><a href="#4-27-5-4-衡先焘-’首页待办‘页面设计" class="headerlink" title="4.27 - 5.4 衡先焘 ’首页待办‘页面设计"></a>4.27 - 5.4 衡先焘 ’首页待办‘页面设计</h5><p>​				   李薇 ’我的待办‘页面设计</p>
-<p>​				   李晨佳  ’添加待办’页面设计</p>
-<h5 id="5-5-5-12-衡先焘-’首页日记，账本‘页面设计"><a href="#5-5-5-12-衡先焘-’首页日记，账本‘页面设计" class="headerlink" title="5.5 - 5.12 衡先焘 ’首页日记，账本‘页面设计"></a>5.5 - 5.12 衡先焘 ’首页日记，账本‘页面设计</h5><p>​				   李薇 ’我的日记本，账本‘页面设计</p>
-<p>​				   李晨佳  ’添加日记，记账’页面设计</p>
-<h5 id="5-13-5-20-衡先焘-’首页课表，树洞‘页面设计"><a href="#5-13-5-20-衡先焘-’首页课表，树洞‘页面设计" class="headerlink" title="5.13 - 5.20 衡先焘 ’首页课表，树洞‘页面设计"></a>5.13 - 5.20 衡先焘 ’首页课表，树洞‘页面设计</h5><p>​				   李薇 ’我的课表，树洞‘页面设计</p>
-<p>​				   李晨佳  ’添加课表，树洞’页面设计</p>
-<h5 id="5-21-5-28-衡先焘-设计数据库"><a href="#5-21-5-28-衡先焘-设计数据库" class="headerlink" title="5.21 - 5.28 衡先焘 设计数据库"></a>5.21 - 5.28 衡先焘 设计数据库</h5><p>​				   李薇，李晨佳   整合三个人的代码，底部导航栏的整理	</p>
-<h5 id="5-29-6-5-衡先焘-对接数据库"><a href="#5-29-6-5-衡先焘-对接数据库" class="headerlink" title="5.29 - 6.5 衡先焘 对接数据库"></a>5.29 - 6.5 衡先焘 对接数据库</h5><p>​					李薇，李晨佳  测试app，检测bug</p>
-<h5 id="6-6-6-11-项目上线，后期维护。"><a href="#6-6-6-11-项目上线，后期维护。" class="headerlink" title="6.6 - 6.11 项目上线，后期维护。"></a>6.6 - 6.11 项目上线，后期维护。</h5>]]></content>
+<h5 id="4-27-5-4"><a href="#4-27-5-4" class="headerlink" title="4.27 - 5.4"></a>4.27 - 5.4</h5><p>​					    衡先焘 ’首页待办‘页面设计</p>
+<p>​				        李薇 ’我的待办‘页面设计</p>
+<p>​				        李晨佳  ’添加待办’页面设计</p>
+<h5 id="5-5-5-12"><a href="#5-5-5-12" class="headerlink" title="5.5 - 5.12"></a>5.5 - 5.12</h5><p>​				        衡先焘 ’首页日记，账本‘页面设计</p>
+<p>​				        李薇 ’我的日记本，账本‘页面设计</p>
+<p>​				        李晨佳  ’添加日记，记账’页面设计</p>
+<h5 id="5-13-5-20"><a href="#5-13-5-20" class="headerlink" title="5.13 - 5.20"></a>5.13 - 5.20</h5><p>​						衡先焘 ’首页课表，树洞‘页面设计</p>
+<p>​				        李薇 ’我的课表，树洞‘页面设计</p>
+<p>​				        李晨佳  ’添加课表，树洞’页面设计</p>
+<h5 id="5-21-5-28"><a href="#5-21-5-28" class="headerlink" title="5.21 - 5.28"></a>5.21 - 5.28</h5><p>​                        衡先焘 设计数据库</p>
+<p>​				        李薇，李晨佳   整合三个人的代码，底部导航栏的整理	</p>
+<h5 id="5-29-6-5"><a href="#5-29-6-5" class="headerlink" title="5.29 - 6.5"></a>5.29 - 6.5</h5><p>​                        衡先焘 对接数据库</p>
+<p>​					    李薇，李晨佳  测试app，检测bug</p>
+<h5 id="6-6-6-11"><a href="#6-6-6-11" class="headerlink" title="6.6 - 6.11"></a>6.6 - 6.11</h5><p>​					    项目上线，后期维护。</p>
+]]></content>
       <categories>
         <category>项目</category>
       </categories>
