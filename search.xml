@@ -150,7 +150,6 @@
  <table>
        <style>
             th,td{
-                width: 150px;
                 text-align: left;
             }
      </style>
@@ -221,6 +220,7 @@
         <td></td>
       </tr>
     </table>
+
 
 <br>
 
