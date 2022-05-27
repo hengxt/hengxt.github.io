@@ -1,6 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用hexo,并部署到page</title>
+    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
+    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>todo</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>描述</td>
+<td>待办</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主键</td>
+<td>id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>todo_id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字段名</td>
+<td>描述</td>
+<td>类型</td>
+<td>默认值</td>
+<td>是否必录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>主键</td>
+<td>bigint(20)</td>
+<td>自增</td>
+<td>是</td>
+</tr>
+<tr>
+<td>todo_id</td>
+<td>todo的标志符号</td>
+<td>uuid</td>
+<td>uuid</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>属性值</th>
+        <th>描述</th>  
+    </tr>
+    <tr>
+        <td rowspan="9">type</td>
+        <td>text</td>
+        <td>单行文本输入框</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>密码输入框</td>
+    </tr>
+    <tr>
+        <td>radio</td>
+        <td>单选按钮</td>
+    </tr>
+    <tr>
+        <td>CheckBox</td>
+        <td>复选按钮</td>
+    </tr>
+    <tr><td>button</td>
+        <td>普通按钮</td>
+    </tr>
+    <tr>
+        <td>submit</td>
+        <td>提交按钮</td>
+    </tr>
+    <tr>
+        <td>reset</td>
+        <td>重置按钮</td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td>图像形式的提交按钮</td>
+    </tr>
+    <tr>
+        <td>file</td>
+        <td>文件域</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>用户自定义</td>
+        <td>控件名称</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>用户自定义</td>
+        <td>默认文本值</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>正整数</td>
+        <td>控件在页面中的显示宽度</td>
+    </tr>
+    <tr>
+        <td>checked</td>
+        <td>checked</td>
+        <td>定义选择控件默认被选中项</td>
+    </tr>
+    <tr>
+        <td>maxlength</td>
+        <td>正整数</td>
+        <td>控件允许输入的最多字符</td>
+    </tr>
+</table>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大学生~活便签</title>
     <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
@@ -1115,139 +1248,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用hexo,并部署到page</title>
-    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
-    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
-<thead>
-<tr>
-<th>表名</th>
-<th>todo</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>描述</td>
-<td>待办</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>主键</td>
-<td>id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>索引</td>
-<td>todo_id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>字段名</td>
-<td>描述</td>
-<td>类型</td>
-<td>默认值</td>
-<td>是否必录</td>
-</tr>
-<tr>
-<td>id</td>
-<td>主键</td>
-<td>bigint(20)</td>
-<td>自增</td>
-<td>是</td>
-</tr>
-<tr>
-<td>todo_id</td>
-<td>todo的标志符号</td>
-<td>uuid</td>
-<td>uuid</td>
-<td>是</td>
-</tr>
-</tbody></table>
-<table>
-    <tr>
-        <th>属性</th>
-        <th>属性值</th>
-        <th>描述</th>  
-    </tr>
-    <tr>
-        <td rowspan="9">type</td>
-        <td>text</td>
-        <td>单行文本输入框</td>
-    </tr>
-    <tr>
-        <td>password</td>
-        <td>密码输入框</td>
-    </tr>
-    <tr>
-        <td>radio</td>
-        <td>单选按钮</td>
-    </tr>
-    <tr>
-        <td>CheckBox</td>
-        <td>复选按钮</td>
-    </tr>
-    <tr><td>button</td>
-        <td>普通按钮</td>
-    </tr>
-    <tr>
-        <td>submit</td>
-        <td>提交按钮</td>
-    </tr>
-    <tr>
-        <td>reset</td>
-        <td>重置按钮</td>
-    </tr>
-    <tr>
-        <td>image</td>
-        <td>图像形式的提交按钮</td>
-    </tr>
-    <tr>
-        <td>file</td>
-        <td>文件域</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>用户自定义</td>
-        <td>控件名称</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>用户自定义</td>
-        <td>默认文本值</td>
-    </tr>
-    <tr>
-        <td>size</td>
-        <td>正整数</td>
-        <td>控件在页面中的显示宽度</td>
-    </tr>
-    <tr>
-        <td>checked</td>
-        <td>checked</td>
-        <td>定义选择控件默认被选中项</td>
-    </tr>
-    <tr>
-        <td>maxlength</td>
-        <td>正整数</td>
-        <td>控件允许输入的最多字符</td>
-    </tr>
-</table>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分治法解决括号匹配</title>
     <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
     <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
@@ -1443,47 +1443,89 @@
       </tags>
   </entry>
   <entry>
-    <title>ch01_ 跨交换机实现VLAN</title>
-    <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
+    <title>ch02_ 跨交换机实现VLAN间路由</title>
+    <url>/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<table>
 <thead>
 <tr>
 <th><strong>实验目的</strong></th>
-<th>掌握如何在交换机上划分基于端口的 VLAN、如何给 VLAN 内添加端口，理解跨交换机 之间 VLAN 的特点</th>
+<th>利用三层交换机跨交换机实现 VLAN 间路由</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><strong>实验设备</strong></td>
-<td>三层交换机 1 台 二层交换机 1 台 PC 6 台</td>
+<td>三层交换机 1 台 二层交换机 2 台 PC 机 4 台</td>
 </tr>
 <tr>
 <td><strong>实验基本要求</strong></td>
-<td>交换机的基本配置方法，VLAN 的工作原理和配置方法，Trunk 的工作原理和配置方法</td>
+<td>成功ping通,成功实现跨vlan间路由</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 </tr>
 </tbody></table>
-<p>实验原理及过程</p>
-<h3 id="一、原理："><a href="#一、原理：" class="headerlink" title="一、原理："></a>一、原理：</h3><p>​	VLAN（Virtual Local Area Network，虚拟局域网）是指在一个物理网段内，进行逻辑的 划分，划分成若干个虚拟局域网。</p>
-<h3 id="二、-过程"><a href="#二、-过程" class="headerlink" title="二、   过程"></a>二、   过程</h3><h5 id="1、按照文档搭建拓扑。"><a href="#1、按照文档搭建拓扑。" class="headerlink" title="1、按照文档搭建拓扑。"></a>1、按照文档搭建拓扑。</h5><img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg" alt="1">
+<p>一、原理：在二层交换机上划分 VLAN 可实现不同 VLAN 的主机接入，而 VLAN 间的主机通信为不 同网段间的通信，需要通过三层设备对数据进行路由转发才可以实现，通过在三层交换机上为 各 VLAN 配置 SVI 接口，利用三层交换机的路由功能可以实现 VLAN 间的路由。</p>
+<p>一、   过程</p>
+<p>1、    按照文档搭建拓扑。</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/123.png" alt="123">
 
-<h5 id="2、配置交换机"><a href="#2、配置交换机" class="headerlink" title="2、配置交换机"></a>2、配置交换机</h5><p>​	两台交换机配置类似，我在此举其中一个栗子。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 进入配置模式</span></span><br><span class="line">Switch&gt;enable  </span><br><span class="line">Switch<span class="meta">#config terminal  </span></span><br><span class="line"><span class="comment">// 配置vlan,‘vlan 10’如果不存在此vlan会创建</span></span><br><span class="line">Switch(config)<span class="meta">#vlan 10   </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#name VLAN10  </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#exit  </span></span><br><span class="line"><span class="comment">// 把1-6这6个端口划分给vlan10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/1-6  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit</span></span><br><span class="line"><span class="comment">// 配置19-24为trunk口</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/19-24  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access   </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode trunk  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit </span></span><br><span class="line"><span class="comment">// 检查配置情况</span></span><br><span class="line">Switch<span class="meta">#show vlan  	  </span></span><br><span class="line">VLAN     Name       Status    Ports  </span><br><span class="line">--------------------------------------------------------------  </span><br><span class="line">  <span class="number">1</span>    <span class="keyword">default</span>     active    Fa0/<span class="number">21</span>, Fa0/<span class="number">22</span>, Fa0/<span class="number">23</span>  </span><br><span class="line">                              Gig0/<span class="number">1</span> , Gig0/<span class="number">2</span>  </span><br><span class="line">  <span class="number">10</span>    VLAN10      active    Fa0/<span class="number">1</span>, Fa0/<span class="number">2</span>, Fa0/<span class="number">3</span>  </span><br><span class="line">                              Fa0/<span class="number">4</span> ,Fa0/<span class="number">5</span>, Fa0/<span class="number">6</span>  </span><br><span class="line">  <span class="number">20</span>    VLAN20      active    Fa0/<span class="number">7</span>, Fa0/<span class="number">8</span>, Fa0/<span class="number">9</span>, Fa0/<span class="number">10</span>  </span><br><span class="line">                              Fa0/<span class="number">11</span>, Fa0/<span class="number">12</span>, Fa0/<span class="number">19</span>, Fa0/<span class="number">20</span>  </span><br><span class="line">  <span class="number">30</span>    VLAN30      active    Fa0/<span class="number">13</span>, Fa0/<span class="number">14</span>, Fa0/<span class="number">15</span>  </span><br><span class="line">                              Fa0/<span class="number">16</span>, Fa0/<span class="number">17</span>, Fa0/<span class="number">18</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2、    配置交换机</p>
+<p>两台<strong>二层交换机</strong>配置类似，我在此举其中一个栗子。</p>
+<p>\1.  &#x2F;&#x2F; 进入配置模式</p>
+<p>\2.  Switch&gt;enable </p>
+<p>\3.  Switch#config terminal </p>
+<p>\4.  &#x2F;&#x2F; 配置vlan,‘vlan 10’如果不存在此vlan会创建</p>
+<p>\5.  Switch(config)#vlan 10  </p>
+<p>\6.  Switch(config-vlan)#name VLAN10 </p>
+<p>\7.  Switch(config-vlan)#exit </p>
+<p>\8.  &#x2F;&#x2F; 把1-10这6个端口划分给vlan10</p>
+<p>\9.  Switch(config)#interface range fastEthernet 0&#x2F;1-10 </p>
+<p>\10. Switch(config-if-range)#switchport mode access </p>
+<p>\11. Switch(config-if-range)#switchport access vlan 10 </p>
+<p>\12. Switch(config-if-range)#exit </p>
+<p>\13. &#x2F;&#x2F; 同理把11-20划分给vlan20 </p>
+<p>​     配置23-24为trunk口</p>
+<p>\1. Switch(config)#interface range fastEthernet 0&#x2F;23-24 </p>
+<p>\2. Switch(config-if-range)#switchport mode access  </p>
+<p>\3. Switch(config-if-range)#switchport mode trunk </p>
+<p>\4. Switch(config-if-range)#exit </p>
+<p>检查配置情况</p>
+<p>\1. Switch#show vlan </p>
+<p>\2.  </p>
+<p>\3. VLAN   Name    Status  Ports </p>
+<p>\4. ————————————————————– </p>
+<p>\5.   1  default   active  Fa0&#x2F;21, Fa0&#x2F;22, Fa0&#x2F;23 </p>
+<p>\6.                Gig0&#x2F;1 , Gig0&#x2F;2 </p>
+<p>\7.  10  VLAN10   active  Fa0&#x2F;1, Fa0&#x2F;2, Fa0&#x2F;3 </p>
+<p>\8.                Fa0&#x2F;4 ,Fa0&#x2F;5, Fa0&#x2F;6 </p>
+<p>\9.                  Fa0&#x2F;7, Fa0&#x2F;8, Fa0&#x2F;9, Fa0&#x2F;10</p>
+<p>\10.  20  VLAN20   active  Fa0&#x2F;11, Fa0&#x2F;12, Fa0&#x2F;13, Fa0&#x2F;14 </p>
+<p>\11.                Fa0&#x2F;15, Fa0&#x2F;16, Fa0&#x2F;17, Fa0&#x2F;18</p>
+<p>\12.                  Fa0&#x2F;19, Fa0&#x2F;20</p>
+<p>​    <strong>配置三层交换机</strong></p>
+<p>   建立vlan10和vlan20,并分别给他们ip 192.168.10.1 和192.168.20.1</p>
+<p>   开启ip路由功能。指令是ip routing。</p>
+<p>3、    配置PC</p>
+<p>修改IP（以其中一台pc为例）</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/456.png" alt="456">
 
-<h5 id="3、配置PC"><a href="#3、配置PC" class="headerlink" title="3、配置PC"></a>3、配置PC</h5><p>修改IP</p>
-<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.png" alt="1">
+ 
 
-<h5 id="5、-ping测试"><a href="#5、-ping测试" class="headerlink" title="5、 ping测试"></a>5、 ping测试</h5><p>​		同VLAN10下ping,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.10.3&#x3D;&#x3D;</p>
-<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg.png" alt="1.jpg">
+<p>4、    ping测试</p>
+<p>一下所有的ping均是从一台IP为192.168.10.2发起的</p>
+<p>都在左边交换机下的两台pc 拼,192.168.10.2ping192.168.20.2</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789.png" alt="789">
 
-<p>不同VLAN下ping不通,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.20.3&#x3D;&#x3D;</p>
-<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg-16501605614501.png" alt="1.jpg">
+<p>左边的pc拼右边pc中同vlan,192.168.10.2ping192.168.10.3</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614016541.png" alt="789">
 
+<p>左边的pc拼右边pc中不同vlan, 192.168.10.2ping192.168.20.3</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614301232.png" alt="789">
 
-
-<h3 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h3><p>Vlan技术是一种易于实现，划分清楚，高效的局域网划分技术。通过vlan的划分，熟悉并学会到了交换机的基本配置，也知道了如何配置trunk以及trunk是什么。</p>
+<p>5、    问题与反思</p>
+<p>在实验过程中出现了配置没问题但是不能ping的问题，解决措施是重新连接设备，重启解决。</p>
+<h4 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h4><p>  IP路由是网络层设备所特有的功能，这里三层交换机实现了这个功能，所以说是能够实现在不同的局域网下进行通信。  </p>
 ]]></content>
       <categories>
         <category>计算机网络</category>
@@ -1492,39 +1534,6 @@
         <tag>交换机</tag>
         <tag>VLAN</tag>
         <tag>实验报告</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回溯法解决最小重量机器设计问题</title>
-    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<br>
-
-<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
-<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
-<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
-<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
-<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
-<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
-<br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
-<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
-<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
-
-<br>
-
-<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>回溯法</tag>
       </tags>
   </entry>
   <entry>
@@ -2116,6 +2125,111 @@
       </categories>
       <tags>
         <tag>join</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回溯法解决最小重量机器设计问题</title>
+    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<br>
+
+<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
+<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
+<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
+<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
+<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
+<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
+<br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
+<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
+<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
+
+<br>
+
+<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>回溯法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ch01_ 跨交换机实现VLAN</title>
+    <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th><strong>实验目的</strong></th>
+<th>掌握如何在交换机上划分基于端口的 VLAN、如何给 VLAN 内添加端口，理解跨交换机 之间 VLAN 的特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实验设备</strong></td>
+<td>三层交换机 1 台 二层交换机 1 台 PC 6 台</td>
+</tr>
+<tr>
+<td><strong>实验基本要求</strong></td>
+<td>交换机的基本配置方法，VLAN 的工作原理和配置方法，Trunk 的工作原理和配置方法</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>实验原理及过程</p>
+<h3 id="一、原理："><a href="#一、原理：" class="headerlink" title="一、原理："></a>一、原理：</h3><p>​	VLAN（Virtual Local Area Network，虚拟局域网）是指在一个物理网段内，进行逻辑的 划分，划分成若干个虚拟局域网。</p>
+<h3 id="二、-过程"><a href="#二、-过程" class="headerlink" title="二、   过程"></a>二、   过程</h3><h5 id="1、按照文档搭建拓扑。"><a href="#1、按照文档搭建拓扑。" class="headerlink" title="1、按照文档搭建拓扑。"></a>1、按照文档搭建拓扑。</h5><img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg" alt="1">
+
+<h5 id="2、配置交换机"><a href="#2、配置交换机" class="headerlink" title="2、配置交换机"></a>2、配置交换机</h5><p>​	两台交换机配置类似，我在此举其中一个栗子。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 进入配置模式</span></span><br><span class="line">Switch&gt;enable  </span><br><span class="line">Switch<span class="meta">#config terminal  </span></span><br><span class="line"><span class="comment">// 配置vlan,‘vlan 10’如果不存在此vlan会创建</span></span><br><span class="line">Switch(config)<span class="meta">#vlan 10   </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#name VLAN10  </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#exit  </span></span><br><span class="line"><span class="comment">// 把1-6这6个端口划分给vlan10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/1-6  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit</span></span><br><span class="line"><span class="comment">// 配置19-24为trunk口</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/19-24  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access   </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode trunk  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit </span></span><br><span class="line"><span class="comment">// 检查配置情况</span></span><br><span class="line">Switch<span class="meta">#show vlan  	  </span></span><br><span class="line">VLAN     Name       Status    Ports  </span><br><span class="line">--------------------------------------------------------------  </span><br><span class="line">  <span class="number">1</span>    <span class="keyword">default</span>     active    Fa0/<span class="number">21</span>, Fa0/<span class="number">22</span>, Fa0/<span class="number">23</span>  </span><br><span class="line">                              Gig0/<span class="number">1</span> , Gig0/<span class="number">2</span>  </span><br><span class="line">  <span class="number">10</span>    VLAN10      active    Fa0/<span class="number">1</span>, Fa0/<span class="number">2</span>, Fa0/<span class="number">3</span>  </span><br><span class="line">                              Fa0/<span class="number">4</span> ,Fa0/<span class="number">5</span>, Fa0/<span class="number">6</span>  </span><br><span class="line">  <span class="number">20</span>    VLAN20      active    Fa0/<span class="number">7</span>, Fa0/<span class="number">8</span>, Fa0/<span class="number">9</span>, Fa0/<span class="number">10</span>  </span><br><span class="line">                              Fa0/<span class="number">11</span>, Fa0/<span class="number">12</span>, Fa0/<span class="number">19</span>, Fa0/<span class="number">20</span>  </span><br><span class="line">  <span class="number">30</span>    VLAN30      active    Fa0/<span class="number">13</span>, Fa0/<span class="number">14</span>, Fa0/<span class="number">15</span>  </span><br><span class="line">                              Fa0/<span class="number">16</span>, Fa0/<span class="number">17</span>, Fa0/<span class="number">18</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="3、配置PC"><a href="#3、配置PC" class="headerlink" title="3、配置PC"></a>3、配置PC</h5><p>修改IP</p>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.png" alt="1">
+
+<h5 id="5、-ping测试"><a href="#5、-ping测试" class="headerlink" title="5、 ping测试"></a>5、 ping测试</h5><p>​		同VLAN10下ping,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.10.3&#x3D;&#x3D;</p>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg.png" alt="1.jpg">
+
+<p>不同VLAN下ping不通,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.20.3&#x3D;&#x3D;</p>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg-16501605614501.png" alt="1.jpg">
+
+
+
+<h3 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h3><p>Vlan技术是一种易于实现，划分清楚，高效的局域网划分技术。通过vlan的划分，熟悉并学会到了交换机的基本配置，也知道了如何配置trunk以及trunk是什么。</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>交换机</tag>
+        <tag>VLAN</tag>
+        <tag>实验报告</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件项目管理认识与实践总结</title>
+    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="软件项目管理认识与实践总结"><a href="#软件项目管理认识与实践总结" class="headerlink" title="软件项目管理认识与实践总结"></a>软件项目管理认识与实践总结</h2><p>衡先焘2020010661</p>
+<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习，我深深的体会到了项目管理在软件工程等领域的重要性。通过老师的讲解，我了解到了项目管理的理念目前在实践中起到了越来越重要的作用，对于技术而言，管理意味着决策和支持。只有对生产过程进行科学的、全面的管理，才能保证达到提高生产率，改善产品质量的工程目标。</p>
+<p>​		好好研究学习软件项目管理对于我们以后要从事IT行业的学生而言有着决定性的作用。首先，我刚开始听到《CMM软件项目管理》的名字的时候就产生了软件工程和软件项目之间有什么区别的疑惑，通过后来对课程的深入学习，才了解到了：(1)软件工程是研究和应用如何以系统性的、规范化的、可定量的过程化方法去开发和维护软件，以及如何把经过时间考验而证明正确的管理技术和当前能够得到的最好的技术方法结合起来。(2)项目管理是一个管理学分支的学科，指在项目活动中运用专门的知识、技能、工具和方法，使项目能够在有限资源限定条件下，实现或超过设定的需求和期望。</p>
+<p>　　项目管理是对一些与成功地达成一系列目标相关的活动(譬如任务)的整体。这包括策划、进度计划和维护组成项目的活动的进展。也就是说，软件工程为我们提供的具有指导意义的软件开发方法，项目管理是更从更高的角度思考问题，它总结出了项目管理中会碰到的问题及常规的解决方案，他不仅仅针对软件开发，而可以适用任何项目工程。那么软件项目管理则是项目管理在软件行业的应用了。在课程接下来的学习中，我有了一个深切的体会，在以往的小软件开发中，都是自己根据想象确定软件所需功能，然后编写代码，做成了一些具有“死”功能的软件，由于没有在实际应用中大量使用所写的软件，所以忽略了很重要的一点，客户对软件的需求变更要求，那么就要求项目开发相关人员对用户的需求变更有一个好的回复。所以在软件开发的过程中我们项目开发人员要了解可能导致需求变更的原因，如何管理变更需求，以及如何正确的处理需求变更。</p>
+<p>　　然后学习到了一个重要的成本控制方法—挣值法，挣值分析相比于传统分析方法是一种更好的项目&#x2F;工程管理方法，因为它综合了成本、进度与范围，可以用来预测未来绩效与工程完工日期。作为一种早期预警项目管理手段。可以使工程管理人员识别与控制问题，以免问题扩大化。能够使工程管理更高效、更及时的反应预算情况。下面举例说明：你被指定负责一个软件项目，其中有4部分，项目总预算为53000，A任务为26000，B任务为120xx，C任务为10000，D任务为5000，截止到5月31日，A任务已经全部完成，B任务过半，C任务刚开始，D任务还没有开始，采用50&#x2F;50规则计算截止到5月31日的CV，SV，CPI，SPI?</p>
+<p>　　通过公式计算得：cv&#x3D;1400sv&#x3D;-5400cpi&#x3D;1.042spi&#x3D;0.864从上面的数据可以看出本项目花费低于成本，项目进度落后，参考这些数据可以适当地对项目进行调整。</p>
+<p>　　最后，对于软件配置管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。</p>
+<p>　　对于本课程的学习，让我了解到了许多关于软件项目管理的知识，可以对之前工作室开发的打卡小软件作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
+]]></content>
+      <categories>
+        <category>CMM</category>
+      </categories>
+      <tags>
+        <tag>项目管理</tag>
+        <tag>课程总结</tag>
       </tags>
   </entry>
 </search>

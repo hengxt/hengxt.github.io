@@ -9,7 +9,7 @@
     
     <title>
         
-            回溯法解决最小重量机器设计问题 |
+            ch02_ 跨交换机实现VLAN间路由 |
         
         (゜ロ゜;)┛
     </title>
@@ -183,7 +183,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">回溯法解决最小重量机器设计问题</span>
+            <span class="title-hover-animation">ch02_ 跨交换机实现VLAN间路由</span>
         </div>
 
         
@@ -202,8 +202,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-05-15 14:09:06</span>
-        <span class="mobile">2022-05-15 14:09</span>
+        <span class="pc">2022-05-27 22:14:59</span>
+        <span class="mobile">2022-05-27 22:14</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -211,7 +211,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
                     </li>
                 
             </ul>
@@ -223,7 +223,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>&nbsp;
+                        <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/VLAN/">VLAN</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a>&nbsp;
                     </li>
                 
             </ul>
@@ -246,28 +254,87 @@
         
 
         <div class="article-content markdown-body">
-            <br>
+            <table>
+<thead>
+<tr>
+<th><strong>实验目的</strong></th>
+<th>利用三层交换机跨交换机实现 VLAN 间路由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实验设备</strong></td>
+<td>三层交换机 1 台 二层交换机 2 台 PC 机 4 台</td>
+</tr>
+<tr>
+<td><strong>实验基本要求</strong></td>
+<td>成功ping通,成功实现跨vlan间路由</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>一、原理：在二层交换机上划分 VLAN 可实现不同 VLAN 的主机接入，而 VLAN 间的主机通信为不 同网段间的通信，需要通过三层设备对数据进行路由转发才可以实现，通过在三层交换机上为 各 VLAN 配置 SVI 接口，利用三层交换机的路由功能可以实现 VLAN 间的路由。</p>
+<p>一、   过程</p>
+<p>1、    按照文档搭建拓扑。</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/123.png" alt="123">
 
-<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
-<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
-<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
-<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
-<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
-<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
-<br>
+<p>2、    配置交换机</p>
+<p>两台<strong>二层交换机</strong>配置类似，我在此举其中一个栗子。</p>
+<p>\1.  &#x2F;&#x2F; 进入配置模式</p>
+<p>\2.  Switch&gt;enable </p>
+<p>\3.  Switch#config terminal </p>
+<p>\4.  &#x2F;&#x2F; 配置vlan,‘vlan 10’如果不存在此vlan会创建</p>
+<p>\5.  Switch(config)#vlan 10  </p>
+<p>\6.  Switch(config-vlan)#name VLAN10 </p>
+<p>\7.  Switch(config-vlan)#exit </p>
+<p>\8.  &#x2F;&#x2F; 把1-10这6个端口划分给vlan10</p>
+<p>\9.  Switch(config)#interface range fastEthernet 0&#x2F;1-10 </p>
+<p>\10. Switch(config-if-range)#switchport mode access </p>
+<p>\11. Switch(config-if-range)#switchport access vlan 10 </p>
+<p>\12. Switch(config-if-range)#exit </p>
+<p>\13. &#x2F;&#x2F; 同理把11-20划分给vlan20 </p>
+<p>​     配置23-24为trunk口</p>
+<p>\1. Switch(config)#interface range fastEthernet 0&#x2F;23-24 </p>
+<p>\2. Switch(config-if-range)#switchport mode access  </p>
+<p>\3. Switch(config-if-range)#switchport mode trunk </p>
+<p>\4. Switch(config-if-range)#exit </p>
+<p>检查配置情况</p>
+<p>\1. Switch#show vlan </p>
+<p>\2.  </p>
+<p>\3. VLAN   Name    Status  Ports </p>
+<p>\4. ————————————————————– </p>
+<p>\5.   1  default   active  Fa0&#x2F;21, Fa0&#x2F;22, Fa0&#x2F;23 </p>
+<p>\6.                Gig0&#x2F;1 , Gig0&#x2F;2 </p>
+<p>\7.  10  VLAN10   active  Fa0&#x2F;1, Fa0&#x2F;2, Fa0&#x2F;3 </p>
+<p>\8.                Fa0&#x2F;4 ,Fa0&#x2F;5, Fa0&#x2F;6 </p>
+<p>\9.                  Fa0&#x2F;7, Fa0&#x2F;8, Fa0&#x2F;9, Fa0&#x2F;10</p>
+<p>\10.  20  VLAN20   active  Fa0&#x2F;11, Fa0&#x2F;12, Fa0&#x2F;13, Fa0&#x2F;14 </p>
+<p>\11.                Fa0&#x2F;15, Fa0&#x2F;16, Fa0&#x2F;17, Fa0&#x2F;18</p>
+<p>\12.                  Fa0&#x2F;19, Fa0&#x2F;20</p>
+<p>​    <strong>配置三层交换机</strong></p>
+<p>   建立vlan10和vlan20,并分别给他们ip 192.168.10.1 和192.168.20.1</p>
+<p>   开启ip路由功能。指令是ip routing。</p>
+<p>3、    配置PC</p>
+<p>修改IP（以其中一台pc为例）</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/456.png" alt="456">
 
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
-<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
-<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
+ 
 
-<br>
+<p>4、    ping测试</p>
+<p>一下所有的ping均是从一台IP为192.168.10.2发起的</p>
+<p>都在左边交换机下的两台pc 拼,192.168.10.2ping192.168.20.2</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789.png" alt="789">
 
-<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>左边的pc拼右边pc中同vlan,192.168.10.2ping192.168.10.3</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614016541.png" alt="789">
 
-<br>
+<p>左边的pc拼右边pc中不同vlan, 192.168.10.2ping192.168.20.3</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614301232.png" alt="789">
 
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
+<p>5、    问题与反思</p>
+<p>在实验过程中出现了配置没问题但是不能ping的问题，解决措施是重新连接设备，重启解决。</p>
+<h4 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h4><p>  IP路由是网络层设备所特有的功能，这里三层交换机实现了这个功能，所以说是能够实现在不同的局域网下进行通信。  </p>
 
         </div>
 
@@ -275,11 +342,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：回溯法解决最小重量机器设计问题</li>
+        <li>本文标题：ch02_ 跨交换机实现VLAN间路由</li>
         <li>本文作者：衡先焘</li>
-        <li>创建时间：2022-05-15 14:09:06</li>
+        <li>创建时间：2022-05-27 22:14:59</li>
         <li>
-            本文链接：https://hengxt.github.io/2022/05/15/回溯法解决最小重量机器设计问题/
+            本文链接：https://hengxt.github.io/2022/05/27/跨交换机实现 VLAN间路由/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -294,7 +361,15 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/">#回溯法</a>&nbsp;
+                        <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">#交换机</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/VLAN/">#VLAN</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">#实验报告</a>&nbsp;
                     </li>
                 
             </ul>
@@ -303,29 +378,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">软件项目管理认识与实践总结</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/"
+                           href="/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">动态规划法解决最大长方体</span>
+                                <span class="post-nav-title-item">软件项目管理认识与实践总结</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -533,7 +593,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%97%AE%E9%A2%98"><span class="nav-text">实验问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="nav-text">问题描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%EF%BC%9A"><span class="nav-text">算法设计：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%EF%BC%9A"><span class="nav-text">数据输入：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="nav-text">结果输出：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B%EF%BC%9A-%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-text">数据输入示例：                        输出示例：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A"><span class="nav-text">实验报告</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%B8%8F%E2%83%A3%E6%96%B9%E6%A1%88"><span class="nav-text">1️⃣方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%B8%8F%E2%83%A3%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-text">2️⃣完整代码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E6%88%96%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="nav-text">实验结果或结论：</span></a></li></ol>
     </div>
 </div>
         </aside>
