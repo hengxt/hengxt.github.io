@@ -94,13 +94,161 @@
 
 
 
-<h3 id="报告进度"><a href="#报告进度" class="headerlink" title="报告进度"></a>报告进度</h3>]]></content>
+<h3 id="报告进度"><a href="#报告进度" class="headerlink" title="报告进度"></a>报告进度</h3><p>生成报表</p>
+<img src="/2022/05/29/CMM%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B1%87%E6%8A%A5/image-20220529205321239.png" alt="image-20220529205321239">
+
+
+
+<h2 id="对比Teambition"><a href="#对比Teambition" class="headerlink" title="对比Teambition"></a>对比Teambition</h2><p>通过对比，发现，teambition在任务进度跟踪这一块做的不尽人意。它的任务完成状态只有true or false，也就是说不能更清晰的看到项目的进展程度，往往软件开发的进度都是一个比较长的阶段，用true or false来判断不是特别的好，除非把任务细分到极致。</p>
+<img src="/2022/05/29/CMM%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B1%87%E6%8A%A5/image-20220529211307449.png" alt="image-20220529211307449">
+
+<p>差异比较就就更没有了，调整偏差也很难去改。生成报表没有过多的选择，能生成的只是如下的任务汇总。</p>
+<img src="/2022/05/29/CMM%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B1%87%E6%8A%A5/image-20220529211036195.png" alt="image-20220529211036195">
+
+
+
+<p>所以在我看来，teambition的项目管理更适合任务划分到每一天，每一个人的哪种，生成的报表也是每个人一天完成的状况。</p>
+<p>总的来说，ms project这一块还是太过于优秀。！！</p>
+]]></content>
       <categories>
         <category>CMM</category>
       </categories>
       <tags>
         <tag>项目管理</tag>
         <tag>课程总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hexo,并部署到page</title>
+    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
+    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>todo</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>描述</td>
+<td>待办</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主键</td>
+<td>id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>todo_id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字段名</td>
+<td>描述</td>
+<td>类型</td>
+<td>默认值</td>
+<td>是否必录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>主键</td>
+<td>bigint(20)</td>
+<td>自增</td>
+<td>是</td>
+</tr>
+<tr>
+<td>todo_id</td>
+<td>todo的标志符号</td>
+<td>uuid</td>
+<td>uuid</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>属性值</th>
+        <th>描述</th>  
+    </tr>
+    <tr>
+        <td rowspan="9">type</td>
+        <td>text</td>
+        <td>单行文本输入框</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>密码输入框</td>
+    </tr>
+    <tr>
+        <td>radio</td>
+        <td>单选按钮</td>
+    </tr>
+    <tr>
+        <td>CheckBox</td>
+        <td>复选按钮</td>
+    </tr>
+    <tr><td>button</td>
+        <td>普通按钮</td>
+    </tr>
+    <tr>
+        <td>submit</td>
+        <td>提交按钮</td>
+    </tr>
+    <tr>
+        <td>reset</td>
+        <td>重置按钮</td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td>图像形式的提交按钮</td>
+    </tr>
+    <tr>
+        <td>file</td>
+        <td>文件域</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>用户自定义</td>
+        <td>控件名称</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>用户自定义</td>
+        <td>默认文本值</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>正整数</td>
+        <td>控件在页面中的显示宽度</td>
+    </tr>
+    <tr>
+        <td>checked</td>
+        <td>checked</td>
+        <td>定义选择控件默认被选中项</td>
+    </tr>
+    <tr>
+        <td>maxlength</td>
+        <td>正整数</td>
+        <td>控件允许输入的最多字符</td>
+    </tr>
+</table>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1218,198 +1366,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用hexo,并部署到page</title>
-    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
-    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
-<thead>
-<tr>
-<th>表名</th>
-<th>todo</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>描述</td>
-<td>待办</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>主键</td>
-<td>id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>索引</td>
-<td>todo_id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>字段名</td>
-<td>描述</td>
-<td>类型</td>
-<td>默认值</td>
-<td>是否必录</td>
-</tr>
-<tr>
-<td>id</td>
-<td>主键</td>
-<td>bigint(20)</td>
-<td>自增</td>
-<td>是</td>
-</tr>
-<tr>
-<td>todo_id</td>
-<td>todo的标志符号</td>
-<td>uuid</td>
-<td>uuid</td>
-<td>是</td>
-</tr>
-</tbody></table>
-<table>
-    <tr>
-        <th>属性</th>
-        <th>属性值</th>
-        <th>描述</th>  
-    </tr>
-    <tr>
-        <td rowspan="9">type</td>
-        <td>text</td>
-        <td>单行文本输入框</td>
-    </tr>
-    <tr>
-        <td>password</td>
-        <td>密码输入框</td>
-    </tr>
-    <tr>
-        <td>radio</td>
-        <td>单选按钮</td>
-    </tr>
-    <tr>
-        <td>CheckBox</td>
-        <td>复选按钮</td>
-    </tr>
-    <tr><td>button</td>
-        <td>普通按钮</td>
-    </tr>
-    <tr>
-        <td>submit</td>
-        <td>提交按钮</td>
-    </tr>
-    <tr>
-        <td>reset</td>
-        <td>重置按钮</td>
-    </tr>
-    <tr>
-        <td>image</td>
-        <td>图像形式的提交按钮</td>
-    </tr>
-    <tr>
-        <td>file</td>
-        <td>文件域</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>用户自定义</td>
-        <td>控件名称</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>用户自定义</td>
-        <td>默认文本值</td>
-    </tr>
-    <tr>
-        <td>size</td>
-        <td>正整数</td>
-        <td>控件在页面中的显示宽度</td>
-    </tr>
-    <tr>
-        <td>checked</td>
-        <td>checked</td>
-        <td>定义选择控件默认被选中项</td>
-    </tr>
-    <tr>
-        <td>maxlength</td>
-        <td>正整数</td>
-        <td>控件允许输入的最多字符</td>
-    </tr>
-</table>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分治法解决括号匹配</title>
-    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
-
-<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
-<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
-<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
-<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果如下</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
-
-<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>截取一段结果就能发现</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
-
-<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
-<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
-<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
-<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
-<br>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
-<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
-
-<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
-<br>
-
-<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
-<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>动态规划法解决最大子矩阵</title>
     <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大子矩阵和"><a href="#最大子矩阵和" class="headerlink" title="最大子矩阵和"></a>最大子矩阵和</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 × 1)子矩阵。</span><br><span class="line">输入：</span><br><span class="line">一个N×N的矩阵。输入的第一行给出N(0&lt;N≤100)。再后面的若干行中，依次(首先从左到右给出第一行的N个整数，</span><br><span class="line">再从左到右给出第二行的N个整数……)给出矩阵中的N2个整数，整数之间由空白字符分隔(空格或者空行)。</span><br><span class="line">已知矩阵中整数的范围都在[−127,127]。</span><br><span class="line">输出：</span><br><span class="line">最大子矩阵的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1504,36 +1460,62 @@
       </tags>
   </entry>
   <entry>
-    <title>回溯法解决最小重量机器设计问题</title>
-    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<br>
+    <title>分治法解决括号匹配</title>
+    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
 
-<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
-<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
-<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
-<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
-<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
-<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
+
+<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
+<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
+<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
+<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
+
+<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>截取一段结果就能发现</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
+
+<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
+<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
+<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
+<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
 <br>
 
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
-<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
-<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
+<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
+
+<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
+<br>
+
+<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
 
 <br>
 
-<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <br>
 
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
-]]></content>
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
+<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>回溯法</tag>
+        <tag>分治法</tag>
       </tags>
   </entry>
   <entry>
@@ -1670,6 +1652,39 @@
         <tag>交换机</tag>
         <tag>VLAN</tag>
         <tag>实验报告</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回溯法解决最小重量机器设计问题</title>
+    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<br>
+
+<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
+<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
+<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
+<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
+<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
+<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
+<br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
+<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
+<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
+
+<br>
+
+<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>回溯法</tag>
       </tags>
   </entry>
   <entry>
