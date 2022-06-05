@@ -64,6 +64,7 @@
 <p>​		输入实际成本</p>
 <p>​			✔ 按时间刻度输入实际成本</p>
 <p>​		估计并输入剩余成本</p>
+<p>赶工，快速跟进</p>
 <img src="/2022/05/29/CMM%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B1%87%E6%8A%A5/image-20220529201346239.png" alt="image-20220529201346239">
 
 <img src="/2022/05/29/CMM%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B1%87%E6%8A%A5/image-20220529201428566.png" alt="image-20220529201428566">
@@ -116,139 +117,6 @@
       <tags>
         <tag>项目管理</tag>
         <tag>课程总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用hexo,并部署到page</title>
-    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
-    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
-<thead>
-<tr>
-<th>表名</th>
-<th>todo</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>描述</td>
-<td>待办</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>主键</td>
-<td>id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>索引</td>
-<td>todo_id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>字段名</td>
-<td>描述</td>
-<td>类型</td>
-<td>默认值</td>
-<td>是否必录</td>
-</tr>
-<tr>
-<td>id</td>
-<td>主键</td>
-<td>bigint(20)</td>
-<td>自增</td>
-<td>是</td>
-</tr>
-<tr>
-<td>todo_id</td>
-<td>todo的标志符号</td>
-<td>uuid</td>
-<td>uuid</td>
-<td>是</td>
-</tr>
-</tbody></table>
-<table>
-    <tr>
-        <th>属性</th>
-        <th>属性值</th>
-        <th>描述</th>  
-    </tr>
-    <tr>
-        <td rowspan="9">type</td>
-        <td>text</td>
-        <td>单行文本输入框</td>
-    </tr>
-    <tr>
-        <td>password</td>
-        <td>密码输入框</td>
-    </tr>
-    <tr>
-        <td>radio</td>
-        <td>单选按钮</td>
-    </tr>
-    <tr>
-        <td>CheckBox</td>
-        <td>复选按钮</td>
-    </tr>
-    <tr><td>button</td>
-        <td>普通按钮</td>
-    </tr>
-    <tr>
-        <td>submit</td>
-        <td>提交按钮</td>
-    </tr>
-    <tr>
-        <td>reset</td>
-        <td>重置按钮</td>
-    </tr>
-    <tr>
-        <td>image</td>
-        <td>图像形式的提交按钮</td>
-    </tr>
-    <tr>
-        <td>file</td>
-        <td>文件域</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>用户自定义</td>
-        <td>控件名称</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>用户自定义</td>
-        <td>默认文本值</td>
-    </tr>
-    <tr>
-        <td>size</td>
-        <td>正整数</td>
-        <td>控件在页面中的显示宽度</td>
-    </tr>
-    <tr>
-        <td>checked</td>
-        <td>checked</td>
-        <td>定义选择控件默认被选中项</td>
-    </tr>
-    <tr>
-        <td>maxlength</td>
-        <td>正整数</td>
-        <td>控件允许输入的最多字符</td>
-    </tr>
-</table>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1366,6 +1234,198 @@
       </tags>
   </entry>
   <entry>
+    <title>分治法解决括号匹配</title>
+    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
+
+<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
+<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
+<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
+<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
+
+<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>截取一段结果就能发现</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
+
+<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
+<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
+<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
+<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
+<br>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
+<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
+
+<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
+<br>
+
+<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
+<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hexo,并部署到page</title>
+    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
+    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>todo</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>描述</td>
+<td>待办</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主键</td>
+<td>id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>todo_id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字段名</td>
+<td>描述</td>
+<td>类型</td>
+<td>默认值</td>
+<td>是否必录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>主键</td>
+<td>bigint(20)</td>
+<td>自增</td>
+<td>是</td>
+</tr>
+<tr>
+<td>todo_id</td>
+<td>todo的标志符号</td>
+<td>uuid</td>
+<td>uuid</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>属性值</th>
+        <th>描述</th>  
+    </tr>
+    <tr>
+        <td rowspan="9">type</td>
+        <td>text</td>
+        <td>单行文本输入框</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>密码输入框</td>
+    </tr>
+    <tr>
+        <td>radio</td>
+        <td>单选按钮</td>
+    </tr>
+    <tr>
+        <td>CheckBox</td>
+        <td>复选按钮</td>
+    </tr>
+    <tr><td>button</td>
+        <td>普通按钮</td>
+    </tr>
+    <tr>
+        <td>submit</td>
+        <td>提交按钮</td>
+    </tr>
+    <tr>
+        <td>reset</td>
+        <td>重置按钮</td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td>图像形式的提交按钮</td>
+    </tr>
+    <tr>
+        <td>file</td>
+        <td>文件域</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>用户自定义</td>
+        <td>控件名称</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>用户自定义</td>
+        <td>默认文本值</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>正整数</td>
+        <td>控件在页面中的显示宽度</td>
+    </tr>
+    <tr>
+        <td>checked</td>
+        <td>checked</td>
+        <td>定义选择控件默认被选中项</td>
+    </tr>
+    <tr>
+        <td>maxlength</td>
+        <td>正整数</td>
+        <td>控件允许输入的最多字符</td>
+    </tr>
+</table>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>动态规划法解决最大子矩阵</title>
     <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大子矩阵和"><a href="#最大子矩阵和" class="headerlink" title="最大子矩阵和"></a>最大子矩阵和</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 × 1)子矩阵。</span><br><span class="line">输入：</span><br><span class="line">一个N×N的矩阵。输入的第一行给出N(0&lt;N≤100)。再后面的若干行中，依次(首先从左到右给出第一行的N个整数，</span><br><span class="line">再从左到右给出第二行的N个整数……)给出矩阵中的N2个整数，整数之间由空白字符分隔(空格或者空行)。</span><br><span class="line">已知矩阵中整数的范围都在[−127,127]。</span><br><span class="line">输出：</span><br><span class="line">最大子矩阵的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1460,62 +1520,1108 @@
       </tags>
   </entry>
   <entry>
-    <title>分治法解决括号匹配</title>
-    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
+    <title>大学生~活便签</title>
+    <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
+    <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
+<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
+<center class="half">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204743200.png" alt="image-20220416204743200" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204830583.png" alt="image-20220416204830583" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204851139.png" alt="image-20220416204851139" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204908872.png" alt="image-20220416204908872" width="140">
+</center>
 
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
 
-<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
-<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
-<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
-<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>结果如下</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
 
-<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>截取一段结果就能发现</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
+<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
 
-<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
-<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
-<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
-<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
+<p>数据库我们采用sqllite，用jetpack下的ROOM框架，以下是5张关系型表，每个表对应一个大的功能块，待办，账单，日记，树洞，课表。</p>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_todo</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">待办表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">todo_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="2">待办的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_content</td>
+        <td colspan="2">待办的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_finish</td>
+        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
+        <td>tinyint</td>
+        <td>0(未完成)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_date</td>
+        <td colspan="2">待办的时间</td>
+        <td>datetime</td>
+        <td>null</td>
+        <td>flase</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 <br>
 
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_aBook</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">账本表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">aBook_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_id</td>
+        <td colspan="2">账本的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_money</td>
+        <td colspan="2">账单的金额(元)</td>
+        <td>int</td>
+        <td>0</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_type</td>
+        <td colspan="2">账本类型</td>
+        <td>enum</td>
+        <td>支出，收入...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_mark</td>
+        <td colspan="2">账本的备注</td>
+        <td>varchar(20)</td>
+        <td>null</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>aBook_date</td>
+        <td colspan="2">账单产生的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 
-<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
-<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
 
-<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
 <br>
 
-<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_diary</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">日历表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">diary_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_id</td>
+        <td colspan="2">日记的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_content</td>
+        <td colspan="2">日记的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_date</td>
+        <td colspan="2">创建日记的时间</td>
+        <td>datetime</td>
+        <td>当天的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_theme</td>
+        <td colspan="2">日历的主题</td>
+        <td>varchar</td>
+        <td>例如：世界读书日</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_weather</td>
+        <td colspan="2">当天的天气</td>
+        <td>enum</td>
+        <td>晴朗，阴...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_mood</td>
+        <td colspan="2">当天的心情</td>
+        <td>enum</td>
+        <td>开心，伤心...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<br>
 
-<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_hole</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">树洞表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">hole_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_id</td>
+        <td colspan="2">树洞的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_content</td>
+        <td colspan="2">树洞的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_date</td>
+        <td colspan="2">树洞发布的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 
 <br>
 
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_schedule</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">课程表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">schedule_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_id</td>
+        <td colspan="2">课程的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_type</td>
+        <td colspan="2">课程是否是单双周</td>
+        <td>tinyint</td>
+        <td>1(单周)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_content</td>
+        <td colspan="2">课表的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_day</td>
+        <td colspan="2">星期几,1-7</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_section</td>
+        <td colspan="2">每天第几节课,1-6</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 
 <br>
 
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
-<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
+
+
+<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
+
+<p>用户的操作也主要是集中在：待办，账单，日记，树洞，课表这五个板块</p>
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
+
+<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
+
+<p>待办，账单，日记，树洞，课表这五个功能点将会存在于三个界面，查看浏览界面，添加页面，管理（个人）页面。</p>
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/首页-16501064756811.png" alt="首页-16501064756811">
+
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/添加页面-16501064812702.png" alt="添加页面-16501064812702">
+
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/我的页面.png" alt="我的页面">
+
+
+
+<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
+
+<p>后端可以考虑采用java系列，springboot是易于实现且十分成熟的后端服务框架，服务器采用 本地tomcat + 阿里云的组合。</p>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/diary/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取日记的detail</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="3">待办的唯一标签</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/todo/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取某一天的待办</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期，day</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/aBook/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">按天查询账单</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">某一天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/hole/getList/1/10</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取树洞的信息，分页，一次十条，restful风格</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>无</td>
+        <td colspan="3">不需要参数，参数在url上</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/schedule/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取当日的课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/diary/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建日记</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建日记的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>theme</td>
+        <td colspan="3">日记的主题</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>weather</td>
+        <td colspan="3">创建日记的天气</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mood</td>
+        <td colspan="3">创建日记时的心情</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建日记的内容</td>
+        <td>longtext</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/todo/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建待办(可批量)</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建待办的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建待办的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/aBook/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建账本</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建账本的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>money</td>
+        <td colspan="3">账本的金额</td>
+        <td>int</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">创建账本的类型（收入，支出）</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mark</td>
+        <td colspan="3">创建账本的备注</td>
+        <td>varchar(20)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/hole/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建树洞话</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">树洞的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">树洞的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/schedule/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">创建课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">单周还是双周</td>
+        <td>tinyint</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">课程名字</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>day</td>
+        <td colspan="3">一周中的第几天</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>section</td>
+        <td colspan="3">每天的第几节课</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+
+<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
+
+<p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
+<p>对于安全来说，我们考虑文件会存在于本地，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
+<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">引用资料（以github为基础）</span><br><span class="line">    implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;, &quot;*.aar&quot;])</span><br><span class="line">    implementation project(&quot;:architecture&quot;)</span><br><span class="line">    implementation &quot;org.jetbrains:annotations:23.0.0&quot;</span><br><span class="line">    implementation &#x27;androidx.legacy:legacy-support-v4:1.0.0&#x27;</span><br><span class="line">    implementation &#x27;androidx.lifecycle:lifecycle-livedata-ktx:2.3.1&#x27;</span><br><span class="line">    testImplementation &quot;junit:junit:4.13.2&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.ext:junit:1.1.3&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.espresso:espresso-core:3.4.0&quot;</span><br><span class="line">    implementation &quot;androidx.constraintlayout:constraintlayout:2.1.3&quot;</span><br><span class="line">    implementation &quot;androidx.room:room-runtime:$roomVersion&quot;</span><br><span class="line">    annotationProcessor &quot;androidx.room:room-compiler:$roomVersion&quot;</span><br><span class="line">    implementation &quot;com.google.android.material:material:1.5.0&quot;</span><br><span class="line">    implementation &quot;androidx.recyclerview:recyclerview:1.2.1&quot;</span><br><span class="line">    </span><br><span class="line">    implementation &quot;com.kunminx.arch:binding-recyclerview:3.9.0-beta1&quot;</span><br><span class="line">    implementation &quot;com.kunminx.player:player:3.3.0&quot;</span><br><span class="line">    implementation &quot;com.google.code.gson:gson:2.9.0&quot;</span><br><span class="line">    implementation &quot;org.slf4j:slf4j-android:1.7.36&quot;</span><br><span class="line">    implementation &quot;com.github.bumptech.glide:glide:4.13.2&quot;</span><br><span class="line">    implementation &quot;com.sothree.slidinguppanel:library:3.4.0&quot;</span><br><span class="line"></span><br><span class="line">    implementation &quot;com.squareup.retrofit2:retrofit:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.retrofit2:converter-gson:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:logging-interceptor:$okHttpVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:okhttp:$okHttpVersion&quot;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;com.github.getActivity:XXPermissions:13.6&#x27;</span><br><span class="line"></span><br><span class="line">    implementation(&quot;cn.hutool:hutool-all:5.7.22&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<h3 id="8、进度情况"><a href="#8、进度情况" class="headerlink" title="8、进度情况"></a>8、进度情况</h3><p>4.26定下了第一版的大致UI</p>
+<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220603212248253.png" alt="image-20220603212248253"></p>
+<p><strong>截止5.12号</strong></p>
+<p>李薇完成了：初步的UI （XML）</p>
+<p>李晨佳完成了 ： 数据库的大致建立 </p>
+<p>衡先焘：整合代码，编写逻辑控制语句</p>
+<p>+++++++++++++++++++++++++++++++++++++++</p>
+<p><strong>引入Jetpack框架，进行了代码的重构</strong> </p>
+<p><a class="link" href="https://www.bilibili.com/video/BV1Ry4y1t7Tj">https://www.bilibili.com/video/BV1Ry4y1t7Tj<i class="fas fa-external-link-alt"></i></a></p>
+<p>（<a class="link" href="https://github.com/KunMinX/Jetpack-MVVM-Best-Practice">KunMinX&#x2F;Jetpack-MVVM-Best-Practice: 是 难得一见 的 Jetpack MVVM 最佳实践！在 以简驭繁 的代码中，对 视图控制器 乃至 标准化开发模式 形成正确、深入的理解！ (github.com)<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>+++++++++++++++++++++++++++++++++++++++++++++++</p>
+<p><strong>截止5.28号</strong></p>
+<p>李薇完成了：继续更新UI </p>
+<p>李晨佳完成了 ： 数据库的深入学习</p>
+<p>衡先焘完成了 ：UI的，数据库的整合，逻辑的重构</p>
+<h3 id="9、架构结构"><a href="#9、架构结构" class="headerlink" title="9、架构结构"></a>9、架构结构</h3><p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/colifestote%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="colifestote架构图"></p>
+<h3 id="10、项目的版本控制"><a href="#10、项目的版本控制" class="headerlink" title="10、项目的版本控制"></a>10、项目的版本控制</h3><table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">版本</th>
+        <th style="color: #23bb68">时间</th>
+        <th style="color: #23bb68">主要内容</th>
+        <th style="color: #23bb68">主要负责人</th>
+        <th style="color: #23bb68">备注</th>
+      </tr>
+      <tr>
+        <td>0.1</td>
+        <td>2022.6.4</td>
+        <td>最初的功能大致上线</td>
+        <td>全部成员</td>
+        <td>3人分工</td>
+      </tr>
+      <tr>
+        <td>0.2</td>
+        <td>2022.</td>
+        <td>敬请期待...</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-        <category>算法</category>
+        <category>项目</category>
       </categories>
       <tags>
-        <tag>分治法</tag>
+        <tag>开发文档</tag>
       </tags>
   </entry>
   <entry>
@@ -1558,185 +2664,6 @@
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ch02_ 跨交换机实现VLAN间路由</title>
-    <url>/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th><strong>实验目的</strong></th>
-<th>利用三层交换机跨交换机实现 VLAN 间路由</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>实验设备</strong></td>
-<td>三层交换机 1 台 二层交换机 2 台 PC 机 4 台</td>
-</tr>
-<tr>
-<td><strong>实验基本要求</strong></td>
-<td>成功ping通,成功实现跨vlan间路由</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>一、原理：在二层交换机上划分 VLAN 可实现不同 VLAN 的主机接入，而 VLAN 间的主机通信为不 同网段间的通信，需要通过三层设备对数据进行路由转发才可以实现，通过在三层交换机上为 各 VLAN 配置 SVI 接口，利用三层交换机的路由功能可以实现 VLAN 间的路由。</p>
-<p>一、   过程</p>
-<p>1、    按照文档搭建拓扑。</p>
-<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/123.png" alt="123">
-
-<p>2、    配置交换机</p>
-<p>两台<strong>二层交换机</strong>配置类似，我在此举其中一个栗子。</p>
-<p>\1.  &#x2F;&#x2F; 进入配置模式</p>
-<p>\2.  Switch&gt;enable </p>
-<p>\3.  Switch#config terminal </p>
-<p>\4.  &#x2F;&#x2F; 配置vlan,‘vlan 10’如果不存在此vlan会创建</p>
-<p>\5.  Switch(config)#vlan 10  </p>
-<p>\6.  Switch(config-vlan)#name VLAN10 </p>
-<p>\7.  Switch(config-vlan)#exit </p>
-<p>\8.  &#x2F;&#x2F; 把1-10这6个端口划分给vlan10</p>
-<p>\9.  Switch(config)#interface range fastEthernet 0&#x2F;1-10 </p>
-<p>\10. Switch(config-if-range)#switchport mode access </p>
-<p>\11. Switch(config-if-range)#switchport access vlan 10 </p>
-<p>\12. Switch(config-if-range)#exit </p>
-<p>\13. &#x2F;&#x2F; 同理把11-20划分给vlan20 </p>
-<p>​     配置23-24为trunk口</p>
-<p>\1. Switch(config)#interface range fastEthernet 0&#x2F;23-24 </p>
-<p>\2. Switch(config-if-range)#switchport mode access  </p>
-<p>\3. Switch(config-if-range)#switchport mode trunk </p>
-<p>\4. Switch(config-if-range)#exit </p>
-<p>检查配置情况</p>
-<p>\1. Switch#show vlan </p>
-<p>\2.  </p>
-<p>\3. VLAN   Name    Status  Ports </p>
-<p>\4. ————————————————————– </p>
-<p>\5.   1  default   active  Fa0&#x2F;21, Fa0&#x2F;22, Fa0&#x2F;23 </p>
-<p>\6.                Gig0&#x2F;1 , Gig0&#x2F;2 </p>
-<p>\7.  10  VLAN10   active  Fa0&#x2F;1, Fa0&#x2F;2, Fa0&#x2F;3 </p>
-<p>\8.                Fa0&#x2F;4 ,Fa0&#x2F;5, Fa0&#x2F;6 </p>
-<p>\9.                  Fa0&#x2F;7, Fa0&#x2F;8, Fa0&#x2F;9, Fa0&#x2F;10</p>
-<p>\10.  20  VLAN20   active  Fa0&#x2F;11, Fa0&#x2F;12, Fa0&#x2F;13, Fa0&#x2F;14 </p>
-<p>\11.                Fa0&#x2F;15, Fa0&#x2F;16, Fa0&#x2F;17, Fa0&#x2F;18</p>
-<p>\12.                  Fa0&#x2F;19, Fa0&#x2F;20</p>
-<p>​    <strong>配置三层交换机</strong></p>
-<p>   建立vlan10和vlan20,并分别给他们ip 192.168.10.1 和192.168.20.1</p>
-<p>   开启ip路由功能。指令是ip routing。</p>
-<p>3、    配置PC</p>
-<p>修改IP（以其中一台pc为例）</p>
-<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/456.png" alt="456">
-
- 
-
-<p>4、    ping测试</p>
-<p>一下所有的ping均是从一台IP为192.168.10.2发起的</p>
-<p>都在左边交换机下的两台pc 拼,192.168.10.2ping192.168.20.2</p>
-<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789.png" alt="789">
-
-<p>左边的pc拼右边pc中同vlan,192.168.10.2ping192.168.10.3</p>
-<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614016541.png" alt="789">
-
-<p>左边的pc拼右边pc中不同vlan, 192.168.10.2ping192.168.20.3</p>
-<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614301232.png" alt="789">
-
-<p>5、    问题与反思</p>
-<p>在实验过程中出现了配置没问题但是不能ping的问题，解决措施是重新连接设备，重启解决。</p>
-<h4 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h4><p>  IP路由是网络层设备所特有的功能，这里三层交换机实现了这个功能，所以说是能够实现在不同的局域网下进行通信。  </p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>交换机</tag>
-        <tag>VLAN</tag>
-        <tag>实验报告</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回溯法解决最小重量机器设计问题</title>
-    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<br>
-
-<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
-<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
-<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
-<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
-<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
-<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
-<br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
-<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
-<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
-
-<br>
-
-<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>回溯法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ch01_ 跨交换机实现VLAN</title>
-    <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th><strong>实验目的</strong></th>
-<th>掌握如何在交换机上划分基于端口的 VLAN、如何给 VLAN 内添加端口，理解跨交换机 之间 VLAN 的特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>实验设备</strong></td>
-<td>三层交换机 1 台 二层交换机 1 台 PC 6 台</td>
-</tr>
-<tr>
-<td><strong>实验基本要求</strong></td>
-<td>交换机的基本配置方法，VLAN 的工作原理和配置方法，Trunk 的工作原理和配置方法</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>实验原理及过程</p>
-<h3 id="一、原理："><a href="#一、原理：" class="headerlink" title="一、原理："></a>一、原理：</h3><p>​	VLAN（Virtual Local Area Network，虚拟局域网）是指在一个物理网段内，进行逻辑的 划分，划分成若干个虚拟局域网。</p>
-<h3 id="二、-过程"><a href="#二、-过程" class="headerlink" title="二、   过程"></a>二、   过程</h3><h5 id="1、按照文档搭建拓扑。"><a href="#1、按照文档搭建拓扑。" class="headerlink" title="1、按照文档搭建拓扑。"></a>1、按照文档搭建拓扑。</h5><img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg" alt="1">
-
-<h5 id="2、配置交换机"><a href="#2、配置交换机" class="headerlink" title="2、配置交换机"></a>2、配置交换机</h5><p>​	两台交换机配置类似，我在此举其中一个栗子。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 进入配置模式</span></span><br><span class="line">Switch&gt;enable  </span><br><span class="line">Switch<span class="meta">#config terminal  </span></span><br><span class="line"><span class="comment">// 配置vlan,‘vlan 10’如果不存在此vlan会创建</span></span><br><span class="line">Switch(config)<span class="meta">#vlan 10   </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#name VLAN10  </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#exit  </span></span><br><span class="line"><span class="comment">// 把1-6这6个端口划分给vlan10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/1-6  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit</span></span><br><span class="line"><span class="comment">// 配置19-24为trunk口</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/19-24  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access   </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode trunk  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit </span></span><br><span class="line"><span class="comment">// 检查配置情况</span></span><br><span class="line">Switch<span class="meta">#show vlan  	  </span></span><br><span class="line">VLAN     Name       Status    Ports  </span><br><span class="line">--------------------------------------------------------------  </span><br><span class="line">  <span class="number">1</span>    <span class="keyword">default</span>     active    Fa0/<span class="number">21</span>, Fa0/<span class="number">22</span>, Fa0/<span class="number">23</span>  </span><br><span class="line">                              Gig0/<span class="number">1</span> , Gig0/<span class="number">2</span>  </span><br><span class="line">  <span class="number">10</span>    VLAN10      active    Fa0/<span class="number">1</span>, Fa0/<span class="number">2</span>, Fa0/<span class="number">3</span>  </span><br><span class="line">                              Fa0/<span class="number">4</span> ,Fa0/<span class="number">5</span>, Fa0/<span class="number">6</span>  </span><br><span class="line">  <span class="number">20</span>    VLAN20      active    Fa0/<span class="number">7</span>, Fa0/<span class="number">8</span>, Fa0/<span class="number">9</span>, Fa0/<span class="number">10</span>  </span><br><span class="line">                              Fa0/<span class="number">11</span>, Fa0/<span class="number">12</span>, Fa0/<span class="number">19</span>, Fa0/<span class="number">20</span>  </span><br><span class="line">  <span class="number">30</span>    VLAN30      active    Fa0/<span class="number">13</span>, Fa0/<span class="number">14</span>, Fa0/<span class="number">15</span>  </span><br><span class="line">                              Fa0/<span class="number">16</span>, Fa0/<span class="number">17</span>, Fa0/<span class="number">18</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="3、配置PC"><a href="#3、配置PC" class="headerlink" title="3、配置PC"></a>3、配置PC</h5><p>修改IP</p>
-<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.png" alt="1">
-
-<h5 id="5、-ping测试"><a href="#5、-ping测试" class="headerlink" title="5、 ping测试"></a>5、 ping测试</h5><p>​		同VLAN10下ping,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.10.3&#x3D;&#x3D;</p>
-<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg.png" alt="1.jpg">
-
-<p>不同VLAN下ping不通,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.20.3&#x3D;&#x3D;</p>
-<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg-16501605614501.png" alt="1.jpg">
-
-
-
-<h3 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h3><p>Vlan技术是一种易于实现，划分清楚，高效的局域网划分技术。通过vlan的划分，熟悉并学会到了交换机的基本配置，也知道了如何配置trunk以及trunk是什么。</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>交换机</tag>
-        <tag>VLAN</tag>
-        <tag>实验报告</tag>
       </tags>
   </entry>
   <entry>
@@ -2328,6 +3255,185 @@
       </categories>
       <tags>
         <tag>join</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回溯法解决最小重量机器设计问题</title>
+    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<br>
+
+<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
+<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
+<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
+<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
+<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
+<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
+<br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
+<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
+<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
+
+<br>
+
+<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>回溯法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ch02_ 跨交换机实现VLAN间路由</title>
+    <url>/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th><strong>实验目的</strong></th>
+<th>利用三层交换机跨交换机实现 VLAN 间路由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实验设备</strong></td>
+<td>三层交换机 1 台 二层交换机 2 台 PC 机 4 台</td>
+</tr>
+<tr>
+<td><strong>实验基本要求</strong></td>
+<td>成功ping通,成功实现跨vlan间路由</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>一、原理：在二层交换机上划分 VLAN 可实现不同 VLAN 的主机接入，而 VLAN 间的主机通信为不 同网段间的通信，需要通过三层设备对数据进行路由转发才可以实现，通过在三层交换机上为 各 VLAN 配置 SVI 接口，利用三层交换机的路由功能可以实现 VLAN 间的路由。</p>
+<p>一、   过程</p>
+<p>1、    按照文档搭建拓扑。</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/123.png" alt="123">
+
+<p>2、    配置交换机</p>
+<p>两台<strong>二层交换机</strong>配置类似，我在此举其中一个栗子。</p>
+<p>\1.  &#x2F;&#x2F; 进入配置模式</p>
+<p>\2.  Switch&gt;enable </p>
+<p>\3.  Switch#config terminal </p>
+<p>\4.  &#x2F;&#x2F; 配置vlan,‘vlan 10’如果不存在此vlan会创建</p>
+<p>\5.  Switch(config)#vlan 10  </p>
+<p>\6.  Switch(config-vlan)#name VLAN10 </p>
+<p>\7.  Switch(config-vlan)#exit </p>
+<p>\8.  &#x2F;&#x2F; 把1-10这6个端口划分给vlan10</p>
+<p>\9.  Switch(config)#interface range fastEthernet 0&#x2F;1-10 </p>
+<p>\10. Switch(config-if-range)#switchport mode access </p>
+<p>\11. Switch(config-if-range)#switchport access vlan 10 </p>
+<p>\12. Switch(config-if-range)#exit </p>
+<p>\13. &#x2F;&#x2F; 同理把11-20划分给vlan20 </p>
+<p>​     配置23-24为trunk口</p>
+<p>\1. Switch(config)#interface range fastEthernet 0&#x2F;23-24 </p>
+<p>\2. Switch(config-if-range)#switchport mode access  </p>
+<p>\3. Switch(config-if-range)#switchport mode trunk </p>
+<p>\4. Switch(config-if-range)#exit </p>
+<p>检查配置情况</p>
+<p>\1. Switch#show vlan </p>
+<p>\2.  </p>
+<p>\3. VLAN   Name    Status  Ports </p>
+<p>\4. ————————————————————– </p>
+<p>\5.   1  default   active  Fa0&#x2F;21, Fa0&#x2F;22, Fa0&#x2F;23 </p>
+<p>\6.                Gig0&#x2F;1 , Gig0&#x2F;2 </p>
+<p>\7.  10  VLAN10   active  Fa0&#x2F;1, Fa0&#x2F;2, Fa0&#x2F;3 </p>
+<p>\8.                Fa0&#x2F;4 ,Fa0&#x2F;5, Fa0&#x2F;6 </p>
+<p>\9.                  Fa0&#x2F;7, Fa0&#x2F;8, Fa0&#x2F;9, Fa0&#x2F;10</p>
+<p>\10.  20  VLAN20   active  Fa0&#x2F;11, Fa0&#x2F;12, Fa0&#x2F;13, Fa0&#x2F;14 </p>
+<p>\11.                Fa0&#x2F;15, Fa0&#x2F;16, Fa0&#x2F;17, Fa0&#x2F;18</p>
+<p>\12.                  Fa0&#x2F;19, Fa0&#x2F;20</p>
+<p>​    <strong>配置三层交换机</strong></p>
+<p>   建立vlan10和vlan20,并分别给他们ip 192.168.10.1 和192.168.20.1</p>
+<p>   开启ip路由功能。指令是ip routing。</p>
+<p>3、    配置PC</p>
+<p>修改IP（以其中一台pc为例）</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/456.png" alt="456">
+
+ 
+
+<p>4、    ping测试</p>
+<p>一下所有的ping均是从一台IP为192.168.10.2发起的</p>
+<p>都在左边交换机下的两台pc 拼,192.168.10.2ping192.168.20.2</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789.png" alt="789">
+
+<p>左边的pc拼右边pc中同vlan,192.168.10.2ping192.168.10.3</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614016541.png" alt="789">
+
+<p>左边的pc拼右边pc中不同vlan, 192.168.10.2ping192.168.20.3</p>
+<img src="/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/789-16536614301232.png" alt="789">
+
+<p>5、    问题与反思</p>
+<p>在实验过程中出现了配置没问题但是不能ping的问题，解决措施是重新连接设备，重启解决。</p>
+<h4 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h4><p>  IP路由是网络层设备所特有的功能，这里三层交换机实现了这个功能，所以说是能够实现在不同的局域网下进行通信。  </p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>交换机</tag>
+        <tag>VLAN</tag>
+        <tag>实验报告</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ch01_ 跨交换机实现VLAN</title>
+    <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th><strong>实验目的</strong></th>
+<th>掌握如何在交换机上划分基于端口的 VLAN、如何给 VLAN 内添加端口，理解跨交换机 之间 VLAN 的特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实验设备</strong></td>
+<td>三层交换机 1 台 二层交换机 1 台 PC 6 台</td>
+</tr>
+<tr>
+<td><strong>实验基本要求</strong></td>
+<td>交换机的基本配置方法，VLAN 的工作原理和配置方法，Trunk 的工作原理和配置方法</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>实验原理及过程</p>
+<h3 id="一、原理："><a href="#一、原理：" class="headerlink" title="一、原理："></a>一、原理：</h3><p>​	VLAN（Virtual Local Area Network，虚拟局域网）是指在一个物理网段内，进行逻辑的 划分，划分成若干个虚拟局域网。</p>
+<h3 id="二、-过程"><a href="#二、-过程" class="headerlink" title="二、   过程"></a>二、   过程</h3><h5 id="1、按照文档搭建拓扑。"><a href="#1、按照文档搭建拓扑。" class="headerlink" title="1、按照文档搭建拓扑。"></a>1、按照文档搭建拓扑。</h5><img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg" alt="1">
+
+<h5 id="2、配置交换机"><a href="#2、配置交换机" class="headerlink" title="2、配置交换机"></a>2、配置交换机</h5><p>​	两台交换机配置类似，我在此举其中一个栗子。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 进入配置模式</span></span><br><span class="line">Switch&gt;enable  </span><br><span class="line">Switch<span class="meta">#config terminal  </span></span><br><span class="line"><span class="comment">// 配置vlan,‘vlan 10’如果不存在此vlan会创建</span></span><br><span class="line">Switch(config)<span class="meta">#vlan 10   </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#name VLAN10  </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#exit  </span></span><br><span class="line"><span class="comment">// 把1-6这6个端口划分给vlan10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/1-6  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit</span></span><br><span class="line"><span class="comment">// 配置19-24为trunk口</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/19-24  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access   </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode trunk  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit </span></span><br><span class="line"><span class="comment">// 检查配置情况</span></span><br><span class="line">Switch<span class="meta">#show vlan  	  </span></span><br><span class="line">VLAN     Name       Status    Ports  </span><br><span class="line">--------------------------------------------------------------  </span><br><span class="line">  <span class="number">1</span>    <span class="keyword">default</span>     active    Fa0/<span class="number">21</span>, Fa0/<span class="number">22</span>, Fa0/<span class="number">23</span>  </span><br><span class="line">                              Gig0/<span class="number">1</span> , Gig0/<span class="number">2</span>  </span><br><span class="line">  <span class="number">10</span>    VLAN10      active    Fa0/<span class="number">1</span>, Fa0/<span class="number">2</span>, Fa0/<span class="number">3</span>  </span><br><span class="line">                              Fa0/<span class="number">4</span> ,Fa0/<span class="number">5</span>, Fa0/<span class="number">6</span>  </span><br><span class="line">  <span class="number">20</span>    VLAN20      active    Fa0/<span class="number">7</span>, Fa0/<span class="number">8</span>, Fa0/<span class="number">9</span>, Fa0/<span class="number">10</span>  </span><br><span class="line">                              Fa0/<span class="number">11</span>, Fa0/<span class="number">12</span>, Fa0/<span class="number">19</span>, Fa0/<span class="number">20</span>  </span><br><span class="line">  <span class="number">30</span>    VLAN30      active    Fa0/<span class="number">13</span>, Fa0/<span class="number">14</span>, Fa0/<span class="number">15</span>  </span><br><span class="line">                              Fa0/<span class="number">16</span>, Fa0/<span class="number">17</span>, Fa0/<span class="number">18</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="3、配置PC"><a href="#3、配置PC" class="headerlink" title="3、配置PC"></a>3、配置PC</h5><p>修改IP</p>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.png" alt="1">
+
+<h5 id="5、-ping测试"><a href="#5、-ping测试" class="headerlink" title="5、 ping测试"></a>5、 ping测试</h5><p>​		同VLAN10下ping,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.10.3&#x3D;&#x3D;</p>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg.png" alt="1.jpg">
+
+<p>不同VLAN下ping不通,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.20.3&#x3D;&#x3D;</p>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg-16501605614501.png" alt="1.jpg">
+
+
+
+<h3 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h3><p>Vlan技术是一种易于实现，划分清楚，高效的局域网划分技术。通过vlan的划分，熟悉并学会到了交换机的基本配置，也知道了如何配置trunk以及trunk是什么。</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>交换机</tag>
+        <tag>VLAN</tag>
+        <tag>实验报告</tag>
       </tags>
   </entry>
   <entry>
