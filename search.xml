@@ -120,6 +120,1127 @@
       </tags>
   </entry>
   <entry>
+    <title>Composition API实战</title>
+    <url>/2022/06/13/Composition%20API%E5%AE%9E%E6%88%98/</url>
+    <content><![CDATA[<p>这是看完B站vue3视频后的总结</p>
+<p><a class="link" href="https://www.bilibili.com/video/BV1SZ4y157m8?vd_source=edb513392f7aebe4a605451e200149b4">https://www.bilibili.com/video/BV1SZ4y157m8?vd_source=edb513392f7aebe4a605451e200149b4<i class="fas fa-external-link-alt"></i></a></p>
+<p>![image-20220613221556510](Composition API实战&#x2F;image-20220613221556510.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot; @mousedown=&quot;mouseDown&quot;&gt;</span><br><span class="line">    &lt;h1&gt;ToDoList&lt;/h1&gt;</span><br><span class="line">    &lt;h3&gt;共有&lt;span class=&quot;text-primary&quot;&gt;&#123;&#123; lists.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">      个任务，其中&lt;span class=&quot;text-success&quot;&gt;&#123;&#123; finished.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">      项已完成&lt;/h3&gt;</span><br><span class="line">    &lt;h3&gt;未完成的列表&lt;/h3&gt;</span><br><span class="line">    &lt;ul class=&quot;list-group&quot;&gt;</span><br><span class="line">      &lt;template v-for=&quot;(item, index) in lists&quot;&gt;</span><br><span class="line">        &lt;li</span><br><span class="line">            v-if=&quot;!item.checked&quot;</span><br><span class="line">            :key=&quot;index&quot;</span><br><span class="line">            class=&quot;list-group-item d-flex justify-content-between&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;div class=&quot;form-group form-check mb-0&quot;&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">                :id=&quot;&#x27;item-&#x27; + index&quot;</span><br><span class="line">                v-model=&quot;item.checked&quot;</span><br><span class="line">                class=&quot;form-check-input&quot;</span><br><span class="line">                type=&quot;checkbox&quot;</span><br><span class="line">                @click=&quot;() =&gt; (item.checked = ! item.checked)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">            &lt;label</span><br><span class="line">                v-if=&quot;!item.isEdit&quot;</span><br><span class="line">                class=&quot;form-check-label&quot;</span><br><span class="line">                @dblclick=&quot;showEdit(item, index)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;&#123; item.name &#125;&#125;</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">            &lt;label v-else :for=&quot;&#x27;item-&#x27; + index&quot; class=&quot;form-check-label&quot;&gt;</span><br><span class="line">              &lt;input ref=&quot;myInput&quot; v-model=&quot;editValue&quot; type=&quot;text&quot;&gt;</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">          &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;</span><br><span class="line">                  @click=&quot;remove(index)&quot;</span><br><span class="line">          &gt;</span><br><span class="line">            &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span><br><span class="line">          &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;h3&gt;已完成的列表&lt;/h3&gt;</span><br><span class="line">    &lt;ul class=&quot;list-group&quot;&gt;</span><br><span class="line">      &lt;li</span><br><span class="line">          v-for=&quot;(item, index) in finished&quot;</span><br><span class="line">          :key=&quot;&#x27;finished-&#x27;+index&quot;</span><br><span class="line">          class=&quot;list-group-item&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;div class=&quot;form-group form-check&quot;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">              :id=&quot;&#x27;finished-&#x27; + index&quot;</span><br><span class="line">              v-model=&quot;item.checked&quot;</span><br><span class="line">              class=&quot;form-check-input&quot;</span><br><span class="line">              disabled</span><br><span class="line">              type=&quot;checkbox&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;label :for=&quot;&#x27;finished-&#x27; + index&quot; class=&quot;form-check-label&quot;&gt;</span><br><span class="line">            &#123;&#123; item.name &#125;&#125;</span><br><span class="line">          &lt;/label&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h3&gt;添加新的Task&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;add&quot;&gt;添加&lt;/label&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">          id=&quot;add&quot;</span><br><span class="line">          v-model=&quot;value&quot;</span><br><span class="line">          class=&quot;form-control&quot;</span><br><span class="line">          placeholder=&quot;添加新的Task&quot;</span><br><span class="line">          type=&quot;text&quot;</span><br><span class="line">          @keydown.enter=&quot;add&quot;</span><br><span class="line">      &gt;</span><br><span class="line">      &lt;button</span><br><span class="line">          class=&quot;btn btn-primary btn-lg btn-block&quot;</span><br><span class="line">          type=&quot;button&quot; @click=&quot;add()&quot;&gt;</span><br><span class="line">        Block level button</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;ref, reactive, toRefs, computed, onUpdated&#125; from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HelloWorld&#x27;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String</span><br><span class="line">  &#125;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const myInput = ref(null);</span><br><span class="line"></span><br><span class="line">    let editIndex = 0;</span><br><span class="line">    //1.加入checkbox -&gt; checked</span><br><span class="line">    //2.统计哪些 -&gt; checked -&gt; finish列表</span><br><span class="line">    //3.add添加item -&gt; item数据结构 -&gt; name,checked,isEdit</span><br><span class="line">    const add = () =&gt; &#123;</span><br><span class="line">      state.lists.push(&#123;</span><br><span class="line">        name: state.value,</span><br><span class="line">        checked: false,</span><br><span class="line">        isEdit: false</span><br><span class="line">      &#125;)</span><br><span class="line">      state.value = &#x27;&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">    //4.双击进行编辑</span><br><span class="line">    const showEdit = (item, index) =&gt; &#123;</span><br><span class="line">      editIndex = index;</span><br><span class="line">      item.isEdit = true;</span><br><span class="line">      state.editValue = item.name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const mouseDown = (e) =&gt; &#123;</span><br><span class="line">      console.log(e.target)</span><br><span class="line">      if (myInput.value &amp;&amp; !e.target.contains(myInput.value[0])) &#123;</span><br><span class="line">        state.lists[editIndex] = &#123;</span><br><span class="line">          name: state.editValue,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    //5.删除功能 -&gt; 删除特定index的元素 You,a few seconds</span><br><span class="line">    const remove = (index) =&gt; &#123;</span><br><span class="line">      state.lists.splice(index, 1)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const state = reactive(&#123;</span><br><span class="line">      value: &quot;&quot;,</span><br><span class="line">      editValue: &quot;&quot;,</span><br><span class="line">      lists: [</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;1&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;2&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;3&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      finished: computed(() =&gt;</span><br><span class="line">          state.lists.filter((item) =&gt; item.checked === true)</span><br><span class="line">      ),</span><br><span class="line">      myInput,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    onUpdated(() =&gt; &#123;</span><br><span class="line">      console.log(myInput.value)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      ...toRefs(state),</span><br><span class="line">      add,</span><br><span class="line">      showEdit,</span><br><span class="line">      mouseDown,</span><br><span class="line">      remove</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大学生~活便签</title>
+    <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
+    <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
+<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
+<center class="half">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204743200.png" alt="image-20220416204743200" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204830583.png" alt="image-20220416204830583" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204851139.png" alt="image-20220416204851139" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204908872.png" alt="image-20220416204908872" width="140">
+</center>
+
+
+
+
+
+<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
+
+<p>数据库我们采用sqllite，用jetpack下的ROOM框架，以下是5张关系型表，每个表对应一个大的功能块，待办，账单，日记，树洞，课表。</p>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_todo</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">待办表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">todo_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="2">待办的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_content</td>
+        <td colspan="2">待办的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_finish</td>
+        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
+        <td>tinyint</td>
+        <td>0(未完成)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_date</td>
+        <td colspan="2">待办的时间</td>
+        <td>datetime</td>
+        <td>null</td>
+        <td>flase</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_aBook</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">账本表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">aBook_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_id</td>
+        <td colspan="2">账本的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_money</td>
+        <td colspan="2">账单的金额(元)</td>
+        <td>int</td>
+        <td>0</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_type</td>
+        <td colspan="2">账本类型</td>
+        <td>enum</td>
+        <td>支出，收入...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_mark</td>
+        <td colspan="2">账本的备注</td>
+        <td>varchar(20)</td>
+        <td>null</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>aBook_date</td>
+        <td colspan="2">账单产生的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_diary</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">日历表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">diary_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_id</td>
+        <td colspan="2">日记的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_content</td>
+        <td colspan="2">日记的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_date</td>
+        <td colspan="2">创建日记的时间</td>
+        <td>datetime</td>
+        <td>当天的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_theme</td>
+        <td colspan="2">日历的主题</td>
+        <td>varchar</td>
+        <td>例如：世界读书日</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_weather</td>
+        <td colspan="2">当天的天气</td>
+        <td>enum</td>
+        <td>晴朗，阴...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_mood</td>
+        <td colspan="2">当天的心情</td>
+        <td>enum</td>
+        <td>开心，伤心...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_hole</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">树洞表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">hole_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_id</td>
+        <td colspan="2">树洞的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_content</td>
+        <td colspan="2">树洞的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_date</td>
+        <td colspan="2">树洞发布的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_schedule</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">课程表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">schedule_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_id</td>
+        <td colspan="2">课程的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_type</td>
+        <td colspan="2">课程是否是单双周</td>
+        <td>tinyint</td>
+        <td>1(单周)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_content</td>
+        <td colspan="2">课表的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_day</td>
+        <td colspan="2">星期几,1-7</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_section</td>
+        <td colspan="2">每天第几节课,1-6</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+
+
+<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
+
+<p>用户的操作也主要是集中在：待办，账单，日记，树洞，课表这五个板块</p>
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
+
+<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
+
+<p>待办，账单，日记，树洞，课表这五个功能点将会存在于三个界面，查看浏览界面，添加页面，管理（个人）页面。</p>
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/首页-16501064756811.png" alt="首页-16501064756811">
+
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/添加页面-16501064812702.png" alt="添加页面-16501064812702">
+
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/我的页面.png" alt="我的页面">
+
+
+
+<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
+
+<p>后端可以考虑采用java系列，springboot是易于实现且十分成熟的后端服务框架，服务器采用 本地tomcat + 阿里云的组合。</p>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/diary/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取日记的detail</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="3">待办的唯一标签</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/todo/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取某一天的待办</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期，day</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/aBook/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">按天查询账单</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">某一天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/hole/getList/1/10</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取树洞的信息，分页，一次十条，restful风格</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>无</td>
+        <td colspan="3">不需要参数，参数在url上</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/schedule/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取当日的课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/diary/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建日记</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建日记的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>theme</td>
+        <td colspan="3">日记的主题</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>weather</td>
+        <td colspan="3">创建日记的天气</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mood</td>
+        <td colspan="3">创建日记时的心情</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建日记的内容</td>
+        <td>longtext</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/todo/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建待办(可批量)</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建待办的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建待办的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/aBook/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建账本</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建账本的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>money</td>
+        <td colspan="3">账本的金额</td>
+        <td>int</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">创建账本的类型（收入，支出）</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mark</td>
+        <td colspan="3">创建账本的备注</td>
+        <td>varchar(20)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/hole/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建树洞话</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">树洞的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">树洞的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/schedule/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">创建课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">单周还是双周</td>
+        <td>tinyint</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">课程名字</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>day</td>
+        <td colspan="3">一周中的第几天</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>section</td>
+        <td colspan="3">每天的第几节课</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+
+<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
+
+<p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
+<p>对于安全来说，我们考虑文件会存在于本地，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
+<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">引用资料（以github为基础）</span><br><span class="line">    implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;, &quot;*.aar&quot;])</span><br><span class="line">    implementation project(&quot;:architecture&quot;)</span><br><span class="line">    implementation &quot;org.jetbrains:annotations:23.0.0&quot;</span><br><span class="line">    implementation &#x27;androidx.legacy:legacy-support-v4:1.0.0&#x27;</span><br><span class="line">    implementation &#x27;androidx.lifecycle:lifecycle-livedata-ktx:2.3.1&#x27;</span><br><span class="line">    testImplementation &quot;junit:junit:4.13.2&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.ext:junit:1.1.3&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.espresso:espresso-core:3.4.0&quot;</span><br><span class="line">    implementation &quot;androidx.constraintlayout:constraintlayout:2.1.3&quot;</span><br><span class="line">    implementation &quot;androidx.room:room-runtime:$roomVersion&quot;</span><br><span class="line">    annotationProcessor &quot;androidx.room:room-compiler:$roomVersion&quot;</span><br><span class="line">    implementation &quot;com.google.android.material:material:1.5.0&quot;</span><br><span class="line">    implementation &quot;androidx.recyclerview:recyclerview:1.2.1&quot;</span><br><span class="line">    </span><br><span class="line">    implementation &quot;com.kunminx.arch:binding-recyclerview:3.9.0-beta1&quot;</span><br><span class="line">    implementation &quot;com.kunminx.player:player:3.3.0&quot;</span><br><span class="line">    implementation &quot;com.google.code.gson:gson:2.9.0&quot;</span><br><span class="line">    implementation &quot;org.slf4j:slf4j-android:1.7.36&quot;</span><br><span class="line">    implementation &quot;com.github.bumptech.glide:glide:4.13.2&quot;</span><br><span class="line">    implementation &quot;com.sothree.slidinguppanel:library:3.4.0&quot;</span><br><span class="line"></span><br><span class="line">    implementation &quot;com.squareup.retrofit2:retrofit:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.retrofit2:converter-gson:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:logging-interceptor:$okHttpVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:okhttp:$okHttpVersion&quot;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;com.github.getActivity:XXPermissions:13.6&#x27;</span><br><span class="line"></span><br><span class="line">    implementation(&quot;cn.hutool:hutool-all:5.7.22&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<h3 id="8、进度情况"><a href="#8、进度情况" class="headerlink" title="8、进度情况"></a>8、进度情况</h3><p>4.26定下了第一版的大致UI</p>
+<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220603212248253.png" alt="image-20220603212248253"></p>
+<p><strong>截止5.12号</strong></p>
+<p>李薇完成了：初步的UI （XML）</p>
+<p>李晨佳完成了 ： 数据库的大致建立 </p>
+<p>衡先焘：整合代码，编写逻辑控制语句</p>
+<p>+++++++++++++++++++++++++++++++++++++++</p>
+<p><strong>引入Jetpack框架，进行了代码的重构</strong> </p>
+<p><a class="link" href="https://www.bilibili.com/video/BV1Ry4y1t7Tj">https://www.bilibili.com/video/BV1Ry4y1t7Tj<i class="fas fa-external-link-alt"></i></a></p>
+<p>（<a class="link" href="https://github.com/KunMinX/Jetpack-MVVM-Best-Practice">KunMinX&#x2F;Jetpack-MVVM-Best-Practice: 是 难得一见 的 Jetpack MVVM 最佳实践！在 以简驭繁 的代码中，对 视图控制器 乃至 标准化开发模式 形成正确、深入的理解！ (github.com)<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>+++++++++++++++++++++++++++++++++++++++++++++++</p>
+<p><strong>截止5.28号</strong></p>
+<p>李薇完成了：继续更新UI </p>
+<p>李晨佳完成了 ： 数据库的深入学习</p>
+<p>衡先焘完成了 ：UI的，数据库的整合，逻辑的重构</p>
+<h3 id="9、架构结构"><a href="#9、架构结构" class="headerlink" title="9、架构结构"></a>9、架构结构</h3><p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/colifestote%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="colifestote架构图"></p>
+<h3 id="10、项目的版本控制"><a href="#10、项目的版本控制" class="headerlink" title="10、项目的版本控制"></a>10、项目的版本控制</h3><table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">版本</th>
+        <th style="color: #23bb68">时间</th>
+        <th style="color: #23bb68">主要内容</th>
+        <th style="color: #23bb68">主要负责人</th>
+        <th style="color: #23bb68">备注</th>
+      </tr>
+      <tr>
+        <td>0.1</td>
+        <td>2022.6.4</td>
+        <td>最初的功能大致上线</td>
+        <td>全部成员</td>
+        <td>3人分工</td>
+      </tr>
+      <tr>
+        <td>0.2</td>
+        <td>2022.</td>
+        <td>敬请期待...</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>开发文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大学生~活便签</title>
     <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
@@ -1234,65 +2355,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分治法解决括号匹配</title>
-    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
-
-<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
-<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
-<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
-<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果如下</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
-
-<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>截取一段结果就能发现</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
-
-<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
-<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
-<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
-<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
-<br>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
-<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
-
-<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
-<br>
-
-<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
-<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用hexo,并部署到page</title>
     <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
     <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
@@ -1426,6 +2488,65 @@
       </tags>
   </entry>
   <entry>
+    <title>分治法解决括号匹配</title>
+    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
+
+<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
+<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
+<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
+<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
+
+<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>截取一段结果就能发现</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
+
+<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
+<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
+<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
+<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
+<br>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
+<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
+
+<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
+<br>
+
+<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
+<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>动态规划法解决最大子矩阵</title>
     <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大子矩阵和"><a href="#最大子矩阵和" class="headerlink" title="最大子矩阵和"></a>最大子矩阵和</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 × 1)子矩阵。</span><br><span class="line">输入：</span><br><span class="line">一个N×N的矩阵。输入的第一行给出N(0&lt;N≤100)。再后面的若干行中，依次(首先从左到右给出第一行的N个整数，</span><br><span class="line">再从左到右给出第二行的N个整数……)给出矩阵中的N2个整数，整数之间由空白字符分隔(空格或者空行)。</span><br><span class="line">已知矩阵中整数的范围都在[−127,127]。</span><br><span class="line">输出：</span><br><span class="line">最大子矩阵的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1517,1111 +2638,6 @@
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大学生~活便签</title>
-    <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
-    <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
-<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
-<center class="half">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204743200.png" alt="image-20220416204743200" width="140">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204830583.png" alt="image-20220416204830583" width="140">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204851139.png" alt="image-20220416204851139" width="140">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204908872.png" alt="image-20220416204908872" width="140">
-</center>
-
-
-
-
-
-<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
-
-<p>数据库我们采用sqllite，用jetpack下的ROOM框架，以下是5张关系型表，每个表对应一个大的功能块，待办，账单，日记，树洞，课表。</p>
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_todo</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">待办表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">todo_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_id</td>
-        <td colspan="2">待办的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_content</td>
-        <td colspan="2">待办的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_finish</td>
-        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
-        <td>tinyint</td>
-        <td>0(未完成)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_date</td>
-        <td colspan="2">待办的时间</td>
-        <td>datetime</td>
-        <td>null</td>
-        <td>flase</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_aBook</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">账本表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">aBook_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_id</td>
-        <td colspan="2">账本的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_money</td>
-        <td colspan="2">账单的金额(元)</td>
-        <td>int</td>
-        <td>0</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_type</td>
-        <td colspan="2">账本类型</td>
-        <td>enum</td>
-        <td>支出，收入...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_mark</td>
-        <td colspan="2">账本的备注</td>
-        <td>varchar(20)</td>
-        <td>null</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>aBook_date</td>
-        <td colspan="2">账单产生的时间</td>
-        <td>datetime</td>
-        <td>当前的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_diary</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">日历表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">diary_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_id</td>
-        <td colspan="2">日记的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_content</td>
-        <td colspan="2">日记的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_date</td>
-        <td colspan="2">创建日记的时间</td>
-        <td>datetime</td>
-        <td>当天的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_theme</td>
-        <td colspan="2">日历的主题</td>
-        <td>varchar</td>
-        <td>例如：世界读书日</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_weather</td>
-        <td colspan="2">当天的天气</td>
-        <td>enum</td>
-        <td>晴朗，阴...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_mood</td>
-        <td colspan="2">当天的心情</td>
-        <td>enum</td>
-        <td>开心，伤心...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_hole</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">树洞表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">hole_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_id</td>
-        <td colspan="2">树洞的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_content</td>
-        <td colspan="2">树洞的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_date</td>
-        <td colspan="2">树洞发布的时间</td>
-        <td>datetime</td>
-        <td>当前的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_schedule</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">课程表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">schedule_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_id</td>
-        <td colspan="2">课程的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_type</td>
-        <td colspan="2">课程是否是单双周</td>
-        <td>tinyint</td>
-        <td>1(单周)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_content</td>
-        <td colspan="2">课表的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_day</td>
-        <td colspan="2">星期几,1-7</td>
-        <td>tinyint</td>
-        <td>1</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_section</td>
-        <td colspan="2">每天第几节课,1-6</td>
-        <td>tinyint</td>
-        <td>1</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
-
-
-<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
-
-<p>用户的操作也主要是集中在：待办，账单，日记，树洞，课表这五个板块</p>
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
-
-<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
-
-<p>待办，账单，日记，树洞，课表这五个功能点将会存在于三个界面，查看浏览界面，添加页面，管理（个人）页面。</p>
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/首页-16501064756811.png" alt="首页-16501064756811">
-
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/添加页面-16501064812702.png" alt="添加页面-16501064812702">
-
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/我的页面.png" alt="我的页面">
-
-
-
-<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
-
-<p>后端可以考虑采用java系列，springboot是易于实现且十分成熟的后端服务框架，服务器采用 本地tomcat + 阿里云的组合。</p>
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/diary/getOne</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取日记的detail</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>todo_id</td>
-        <td colspan="3">待办的唯一标签</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/todo/getByDay</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取某一天的待办</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">当天的日期，day</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/aBook/getByDay</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">按天查询账单</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">某一天的日期</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/hole/getList/1/10</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取树洞的信息，分页，一次十条，restful风格</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>无</td>
-        <td colspan="3">不需要参数，参数在url上</td>
-        <td>...</td>
-        <td>...</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ],[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ]...
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/schedule/getOne</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取当日的课表</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">当天的日期</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ],[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ]...
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/diary/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建日记</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">创建日记的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>theme</td>
-        <td colspan="3">日记的主题</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>weather</td>
-        <td colspan="3">创建日记的天气</td>
-        <td>enum</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>mood</td>
-        <td colspan="3">创建日记时的心情</td>
-        <td>enum</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">创建日记的内容</td>
-        <td>longtext</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/todo/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建待办(可批量)</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">创建待办的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">创建待办的内容</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/aBook/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建账本</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">创建账本的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>money</td>
-        <td colspan="3">账本的金额</td>
-        <td>int</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td colspan="3">创建账本的类型（收入，支出）</td>
-        <td>enum</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>mark</td>
-        <td colspan="3">创建账本的备注</td>
-        <td>varchar(20)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/hole/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建树洞话</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">树洞的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">树洞的内容</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/schedule/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">创建课表</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td colspan="3">单周还是双周</td>
-        <td>tinyint</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">课程名字</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>day</td>
-        <td colspan="3">一周中的第几天</td>
-        <td>tinyint(3)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>section</td>
-        <td colspan="3">每天的第几节课</td>
-        <td>tinyint(3)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-<br>
-
-
-<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
-
-<p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
-<p>对于安全来说，我们考虑文件会存在于本地，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
-<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">引用资料（以github为基础）</span><br><span class="line">    implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;, &quot;*.aar&quot;])</span><br><span class="line">    implementation project(&quot;:architecture&quot;)</span><br><span class="line">    implementation &quot;org.jetbrains:annotations:23.0.0&quot;</span><br><span class="line">    implementation &#x27;androidx.legacy:legacy-support-v4:1.0.0&#x27;</span><br><span class="line">    implementation &#x27;androidx.lifecycle:lifecycle-livedata-ktx:2.3.1&#x27;</span><br><span class="line">    testImplementation &quot;junit:junit:4.13.2&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.ext:junit:1.1.3&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.espresso:espresso-core:3.4.0&quot;</span><br><span class="line">    implementation &quot;androidx.constraintlayout:constraintlayout:2.1.3&quot;</span><br><span class="line">    implementation &quot;androidx.room:room-runtime:$roomVersion&quot;</span><br><span class="line">    annotationProcessor &quot;androidx.room:room-compiler:$roomVersion&quot;</span><br><span class="line">    implementation &quot;com.google.android.material:material:1.5.0&quot;</span><br><span class="line">    implementation &quot;androidx.recyclerview:recyclerview:1.2.1&quot;</span><br><span class="line">    </span><br><span class="line">    implementation &quot;com.kunminx.arch:binding-recyclerview:3.9.0-beta1&quot;</span><br><span class="line">    implementation &quot;com.kunminx.player:player:3.3.0&quot;</span><br><span class="line">    implementation &quot;com.google.code.gson:gson:2.9.0&quot;</span><br><span class="line">    implementation &quot;org.slf4j:slf4j-android:1.7.36&quot;</span><br><span class="line">    implementation &quot;com.github.bumptech.glide:glide:4.13.2&quot;</span><br><span class="line">    implementation &quot;com.sothree.slidinguppanel:library:3.4.0&quot;</span><br><span class="line"></span><br><span class="line">    implementation &quot;com.squareup.retrofit2:retrofit:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.retrofit2:converter-gson:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:logging-interceptor:$okHttpVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:okhttp:$okHttpVersion&quot;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;com.github.getActivity:XXPermissions:13.6&#x27;</span><br><span class="line"></span><br><span class="line">    implementation(&quot;cn.hutool:hutool-all:5.7.22&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-<h3 id="8、进度情况"><a href="#8、进度情况" class="headerlink" title="8、进度情况"></a>8、进度情况</h3><p>4.26定下了第一版的大致UI</p>
-<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220603212248253.png" alt="image-20220603212248253"></p>
-<p><strong>截止5.12号</strong></p>
-<p>李薇完成了：初步的UI （XML）</p>
-<p>李晨佳完成了 ： 数据库的大致建立 </p>
-<p>衡先焘：整合代码，编写逻辑控制语句</p>
-<p>+++++++++++++++++++++++++++++++++++++++</p>
-<p><strong>引入Jetpack框架，进行了代码的重构</strong> </p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Ry4y1t7Tj">https://www.bilibili.com/video/BV1Ry4y1t7Tj<i class="fas fa-external-link-alt"></i></a></p>
-<p>（<a class="link" href="https://github.com/KunMinX/Jetpack-MVVM-Best-Practice">KunMinX&#x2F;Jetpack-MVVM-Best-Practice: 是 难得一见 的 Jetpack MVVM 最佳实践！在 以简驭繁 的代码中，对 视图控制器 乃至 标准化开发模式 形成正确、深入的理解！ (github.com)<i class="fas fa-external-link-alt"></i></a>）</p>
-<p>+++++++++++++++++++++++++++++++++++++++++++++++</p>
-<p><strong>截止5.28号</strong></p>
-<p>李薇完成了：继续更新UI </p>
-<p>李晨佳完成了 ： 数据库的深入学习</p>
-<p>衡先焘完成了 ：UI的，数据库的整合，逻辑的重构</p>
-<h3 id="9、架构结构"><a href="#9、架构结构" class="headerlink" title="9、架构结构"></a>9、架构结构</h3><p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/colifestote%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="colifestote架构图"></p>
-<h3 id="10、项目的版本控制"><a href="#10、项目的版本控制" class="headerlink" title="10、项目的版本控制"></a>10、项目的版本控制</h3><table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">版本</th>
-        <th style="color: #23bb68">时间</th>
-        <th style="color: #23bb68">主要内容</th>
-        <th style="color: #23bb68">主要负责人</th>
-        <th style="color: #23bb68">备注</th>
-      </tr>
-      <tr>
-        <td>0.1</td>
-        <td>2022.6.4</td>
-        <td>最初的功能大致上线</td>
-        <td>全部成员</td>
-        <td>3人分工</td>
-      </tr>
-      <tr>
-        <td>0.2</td>
-        <td>2022.</td>
-        <td>敬请期待...</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>...</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>...</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>开发文档</tag>
       </tags>
   </entry>
   <entry>
@@ -3258,39 +3274,6 @@
       </tags>
   </entry>
   <entry>
-    <title>回溯法解决最小重量机器设计问题</title>
-    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<br>
-
-<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
-<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
-<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
-<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
-<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
-<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
-<br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
-<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
-<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
-
-<br>
-
-<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>回溯法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ch02_ 跨交换机实现VLAN间路由</title>
     <url>/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<table>
@@ -3385,6 +3368,39 @@
       </tags>
   </entry>
   <entry>
+    <title>回溯法解决最小重量机器设计问题</title>
+    <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<br>
+
+<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设wij是从供应商j处够来的部件i的重量，cij是相应的价格。</p>
+<p> 试设计一个算法，给出总价格不超过c的最小重量机器设计。</p>
+<h4 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h4><p>对于给定的机器部件重量和机器部件价格，计算总价值不超过d的最小重量机器设计。</p>
+<h4 id="数据输入："><a href="#数据输入：" class="headerlink" title="数据输入："></a>数据输入：</h4><p>第一行由3个正整数n，m，d。接下来的2n行，每行m个数。前n行是c，后n行是w。</p>
+<h4 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h4><p>结果输出:将计算的最小重量及每个部件的供应商输出到文件 output.txt。</p>
+<h5 id="数据输入示例：-输出示例："><a href="#数据输入示例：-输出示例：" class="headerlink" title="数据输入示例：                        输出示例："></a>数据输入示例：                        输出示例：</h5><p>  3 3 4                                       4<br>  1 2 3                                       1 3 1<br>  3 2 1<br>  2 2 2<br>  1 2 3<br>  3 2 1<br>  2 2 2</p>
+<br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p> 题目给出了上限，总价格C。还要保证重量最优，所以这里定义两个变量cw，cp，分别表示重量和价格。</p>
+<p>价格是上限，决定了是否有解，重量是一个约束，决定了解的最优性，所以再定义一个变量bsetw来表示最优解。</p>
+<p>循环部件，从第一个开始选，选出一个生产改部件的厂商，如果价格大了就回溯，反之则继续找下一个部件。  </p>
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/未命名绘图.drawio.png" alt="未命名绘图.drawio">
+
+<br>
+
+<h3 id="2️⃣完整代码"><a href="#2️⃣完整代码" class="headerlink" title="2️⃣完整代码"></a>2️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> backtracking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Work53</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] price = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[][] weight = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="comment">// 记录所选取的部件提供厂商</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span>[] X1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> n, m, d;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">cp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">bestw</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        d = scanner.nextInt();</span><br><span class="line">        Arrays.fill(X, <span class="number">0</span>);</span><br><span class="line">        Arrays.fill(X1, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(price[i], <span class="number">0</span>);</span><br><span class="line">            Arrays.fill(weight[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                price[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                weight[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        machine(<span class="number">0</span>);</span><br><span class="line">        System.out.println(bestw);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(X1[i] + <span class="number">1</span> + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">machine</span><span class="params">(<span class="type">int</span> t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cw &lt; bestw) &#123;</span><br><span class="line">                bestw = cw;</span><br><span class="line">                <span class="keyword">if</span> (n &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    System.arraycopy(X, <span class="number">0</span>, X1, <span class="number">0</span>, n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            cp += price[t][i];</span><br><span class="line">            cw += weight[t][i];</span><br><span class="line">            X[t] = i;</span><br><span class="line">            <span class="keyword">if</span> (cp &lt;= d &amp;&amp; cw &lt;= bestw) &#123;</span><br><span class="line">                machine(t + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cp -= price[t][i];</span><br><span class="line">            cw -= weight[t][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<img src="/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/image-20220515141110582.png" alt="image-20220515141110582">
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>回溯法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ch01_ 跨交换机实现VLAN</title>
     <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
     <content><![CDATA[<table>
@@ -3440,13 +3456,20 @@
     <title>软件项目管理认识与实践总结</title>
     <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="软件项目管理认识与实践总结"><a href="#软件项目管理认识与实践总结" class="headerlink" title="软件项目管理认识与实践总结"></a>软件项目管理认识与实践总结</h2><p>衡先焘2020010661</p>
-<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习，我深深的体会到了项目管理在软件工程等领域的重要性。通过老师的讲解，我了解到了项目管理的理念目前在实践中起到了越来越重要的作用，对于技术而言，管理意味着决策和支持。只有对生产过程进行科学的、全面的管理，才能保证达到提高生产率，改善产品质量的工程目标。</p>
-<p>​		好好研究学习软件项目管理对于我们以后要从事IT行业的学生而言有着决定性的作用。首先，我刚开始听到《CMM软件项目管理》的名字的时候就产生了软件工程和软件项目之间有什么区别的疑惑，通过后来对课程的深入学习，才了解到了：(1)软件工程是研究和应用如何以系统性的、规范化的、可定量的过程化方法去开发和维护软件，以及如何把经过时间考验而证明正确的管理技术和当前能够得到的最好的技术方法结合起来。(2)项目管理是一个管理学分支的学科，指在项目活动中运用专门的知识、技能、工具和方法，使项目能够在有限资源限定条件下，实现或超过设定的需求和期望。</p>
-<p>　　项目管理是对一些与成功地达成一系列目标相关的活动(譬如任务)的整体。这包括策划、进度计划和维护组成项目的活动的进展。也就是说，软件工程为我们提供的具有指导意义的软件开发方法，项目管理是更从更高的角度思考问题，它总结出了项目管理中会碰到的问题及常规的解决方案，他不仅仅针对软件开发，而可以适用任何项目工程。那么软件项目管理则是项目管理在软件行业的应用了。在课程接下来的学习中，我有了一个深切的体会，在以往的小软件开发中，都是自己根据想象确定软件所需功能，然后编写代码，做成了一些具有“死”功能的软件，由于没有在实际应用中大量使用所写的软件，所以忽略了很重要的一点，客户对软件的需求变更要求，那么就要求项目开发相关人员对用户的需求变更有一个好的回复。所以在软件开发的过程中我们项目开发人员要了解可能导致需求变更的原因，如何管理变更需求，以及如何正确的处理需求变更。</p>
-<p>　　然后学习到了一个重要的成本控制方法—挣值法，挣值分析相比于传统分析方法是一种更好的项目&#x2F;工程管理方法，因为它综合了成本、进度与范围，可以用来预测未来绩效与工程完工日期。作为一种早期预警项目管理手段。可以使工程管理人员识别与控制问题，以免问题扩大化。能够使工程管理更高效、更及时的反应预算情况。下面举例说明：你被指定负责一个软件项目，其中有4部分，项目总预算为53000，A任务为26000，B任务为120xx，C任务为10000，D任务为5000，截止到5月31日，A任务已经全部完成，B任务过半，C任务刚开始，D任务还没有开始，采用50&#x2F;50规则计算截止到5月31日的CV，SV，CPI，SPI?</p>
-<p>　　通过公式计算得：cv&#x3D;1400sv&#x3D;-5400cpi&#x3D;1.042spi&#x3D;0.864从上面的数据可以看出本项目花费低于成本，项目进度落后，参考这些数据可以适当地对项目进行调整。</p>
-<p>　　最后，对于软件配置管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。</p>
-<p>　　对于本课程的学习，让我了解到了许多关于软件项目管理的知识，可以对之前工作室开发的打卡小软件作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
+<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
+<ol>
+<li><p>何为项目管理？</p>
+<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
+</li>
+<li><p>如何使用先进的项目管理工具</p>
+<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
+</li>
+<li><p>团队协作的收获与感想</p>
+<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
+</li>
+</ol>
+<p>​		</p>
+<p>　　最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
 ]]></content>
       <categories>
         <category>CMM</category>
