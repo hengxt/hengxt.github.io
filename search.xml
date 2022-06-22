@@ -137,1110 +137,6 @@
       </tags>
   </entry>
   <entry>
-    <title>大学生~活便签（2）</title>
-    <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
-    <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
-<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
-<center class="half">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204743200.png" alt="image-20220416204743200" width="140">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204830583.png" alt="image-20220416204830583" width="140">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204851139.png" alt="image-20220416204851139" width="140">
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204908872.png" alt="image-20220416204908872" width="140">
-</center>
-
-
-
-
-
-<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
-
-<p>数据库我们采用sqllite，用jetpack下的ROOM框架，以下是5张关系型表，每个表对应一个大的功能块，待办，账单，日记，树洞，课表。</p>
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_todo</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">待办表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">todo_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_id</td>
-        <td colspan="2">待办的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_content</td>
-        <td colspan="2">待办的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_finish</td>
-        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
-        <td>tinyint</td>
-        <td>0(未完成)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>todo_date</td>
-        <td colspan="2">待办的时间</td>
-        <td>datetime</td>
-        <td>null</td>
-        <td>flase</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_aBook</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">账本表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">aBook_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_id</td>
-        <td colspan="2">账本的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_money</td>
-        <td colspan="2">账单的金额(元)</td>
-        <td>int</td>
-        <td>0</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_type</td>
-        <td colspan="2">账本类型</td>
-        <td>enum</td>
-        <td>支出，收入...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>aBook_mark</td>
-        <td colspan="2">账本的备注</td>
-        <td>varchar(20)</td>
-        <td>null</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>aBook_date</td>
-        <td colspan="2">账单产生的时间</td>
-        <td>datetime</td>
-        <td>当前的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_diary</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">日历表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">diary_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_id</td>
-        <td colspan="2">日记的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_content</td>
-        <td colspan="2">日记的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_date</td>
-        <td colspan="2">创建日记的时间</td>
-        <td>datetime</td>
-        <td>当天的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_theme</td>
-        <td colspan="2">日历的主题</td>
-        <td>varchar</td>
-        <td>例如：世界读书日</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_weather</td>
-        <td colspan="2">当天的天气</td>
-        <td>enum</td>
-        <td>晴朗，阴...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>diary_mood</td>
-        <td colspan="2">当天的心情</td>
-        <td>enum</td>
-        <td>开心，伤心...</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_hole</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">树洞表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">hole_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_id</td>
-        <td colspan="2">树洞的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_content</td>
-        <td colspan="2">树洞的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>hole_date</td>
-        <td colspan="2">树洞发布的时间</td>
-        <td>datetime</td>
-        <td>当前的时间</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">表名</th>
-        <th colspan="5" style="color: #23bb68">tb_schedule</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">课程表</td>
-      </tr>
-      <tr>
-        <th>主键</th>
-        <td colspan="5">id</td>
-      </tr>
-      <tr>
-        <th>索引</th>
-        <td colspan="5">schedule_id</td>
-      </tr>
-      <tr>
-        <th>字段名</th>
-        <th colspan="2">描述</th>
-        <th>类型</th>
-        <th>默认值</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td colspan="2">内码</td>
-        <td>bigint(20)</td>
-        <td>自增长</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_id</td>
-        <td colspan="2">课程的唯一标签</td>
-        <td>varchar(50)</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_type</td>
-        <td colspan="2">课程是否是单双周</td>
-        <td>tinyint</td>
-        <td>1(单周)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_content</td>
-        <td colspan="2">课表的主要内容</td>
-        <td>varchar(200)</td>
-        <td>null</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_day</td>
-        <td colspan="2">星期几,1-7</td>
-        <td>tinyint</td>
-        <td>1</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>schedule_section</td>
-        <td colspan="2">每天第几节课,1-6</td>
-        <td>tinyint</td>
-        <td>1</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>......</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-<br>
-
-
-
-<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
-
-<p>用户的操作也主要是集中在：待办，账单，日记，树洞，课表这五个板块</p>
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
-
-<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
-
-<p>待办，账单，日记，树洞，课表这五个功能点将会存在于三个界面，查看浏览界面，添加页面，管理（个人）页面。</p>
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/首页-16501064756811.png" alt="首页-16501064756811">
-
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/添加页面-16501064812702.png" alt="添加页面-16501064812702">
-
-<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/我的页面.png" alt="我的页面">
-
-
-
-<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
-
-<p>后端可以考虑采用java系列，springboot是易于实现且十分成熟的后端服务框架，服务器采用 本地tomcat + 阿里云的组合。</p>
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/diary/getOne</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取日记的detail</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>todo_id</td>
-        <td colspan="3">待办的唯一标签</td>
-        <td>uuid</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/todo/getByDay</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取某一天的待办</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">当天的日期，day</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/aBook/getByDay</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">按天查询账单</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">某一天的日期</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/hole/getList/1/10</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取树洞的信息，分页，一次十条，restful风格</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>无</td>
-        <td colspan="3">不需要参数，参数在url上</td>
-        <td>...</td>
-        <td>...</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ],[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ]...
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/schedule/getOne</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">获取当日的课表</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">当天的日期</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ],[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ]...
-             }
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
- <table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/diary/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建日记</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">创建日记的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>theme</td>
-        <td colspan="3">日记的主题</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>weather</td>
-        <td colspan="3">创建日记的天气</td>
-        <td>enum</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>mood</td>
-        <td colspan="3">创建日记时的心情</td>
-        <td>enum</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">创建日记的内容</td>
-        <td>longtext</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/todo/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建待办(可批量)</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">创建待办的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">创建待办的内容</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/aBook/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建账本</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">创建账本的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>money</td>
-        <td colspan="3">账本的金额</td>
-        <td>int</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td colspan="3">创建账本的类型（收入，支出）</td>
-        <td>enum</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>mark</td>
-        <td colspan="3">创建账本的备注</td>
-        <td>varchar(20)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/hole/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">新建树洞话</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>date</td>
-        <td colspan="3">树洞的时间</td>
-        <td>datetime</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">树洞的内容</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-<br>
-
-<table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">接口\方法</th>
-        <th colspan="5" style="color: #23bb68">/schedule/create</th>
-      </tr>
-      <tr>
-        <th>描述</th>
-        <td colspan="5">创建课表</td>
-      </tr>
-      <tr>
-        <th>方式</th>
-        <td colspan="5">POST</td>
-      </tr>
-      <tr>
-        <th>传参方式</th>
-        <td colspan="5">application/json</td>
-      </tr>
-      <tr>
-        <th>参数名</th>
-        <th colspan="3">描述</th>
-        <th>类型</th>
-        <th>是否必录</th>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td colspan="3">单周还是双周</td>
-        <td>tinyint</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td colspan="3">课程名字</td>
-        <td>varchar</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>day</td>
-        <td colspan="3">一周中的第几天</td>
-        <td>tinyint(3)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>section</td>
-        <td colspan="3">每天的第几节课</td>
-        <td>tinyint(3)</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th colspan="6">输出</th>
-      </tr>
-      <tr>
-        <td colspan="6"><span><pre>         
-        {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
-         }</pre></span></td>
-      </tr>
-    </table>
-<br>
-
-
-<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
-
-<p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
-<p>对于安全来说，我们考虑文件会存在于本地，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
-<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">引用资料（以github为基础）</span><br><span class="line">    implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;, &quot;*.aar&quot;])</span><br><span class="line">    implementation project(&quot;:architecture&quot;)</span><br><span class="line">    implementation &quot;org.jetbrains:annotations:23.0.0&quot;</span><br><span class="line">    implementation &#x27;androidx.legacy:legacy-support-v4:1.0.0&#x27;</span><br><span class="line">    implementation &#x27;androidx.lifecycle:lifecycle-livedata-ktx:2.3.1&#x27;</span><br><span class="line">    testImplementation &quot;junit:junit:4.13.2&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.ext:junit:1.1.3&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.espresso:espresso-core:3.4.0&quot;</span><br><span class="line">    implementation &quot;androidx.constraintlayout:constraintlayout:2.1.3&quot;</span><br><span class="line">    implementation &quot;androidx.room:room-runtime:$roomVersion&quot;</span><br><span class="line">    annotationProcessor &quot;androidx.room:room-compiler:$roomVersion&quot;</span><br><span class="line">    implementation &quot;com.google.android.material:material:1.5.0&quot;</span><br><span class="line">    implementation &quot;androidx.recyclerview:recyclerview:1.2.1&quot;</span><br><span class="line">    </span><br><span class="line">    implementation &quot;com.kunminx.arch:binding-recyclerview:3.9.0-beta1&quot;</span><br><span class="line">    implementation &quot;com.kunminx.player:player:3.3.0&quot;</span><br><span class="line">    implementation &quot;com.google.code.gson:gson:2.9.0&quot;</span><br><span class="line">    implementation &quot;org.slf4j:slf4j-android:1.7.36&quot;</span><br><span class="line">    implementation &quot;com.github.bumptech.glide:glide:4.13.2&quot;</span><br><span class="line">    implementation &quot;com.sothree.slidinguppanel:library:3.4.0&quot;</span><br><span class="line"></span><br><span class="line">    implementation &quot;com.squareup.retrofit2:retrofit:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.retrofit2:converter-gson:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:logging-interceptor:$okHttpVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:okhttp:$okHttpVersion&quot;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;com.github.getActivity:XXPermissions:13.6&#x27;</span><br><span class="line"></span><br><span class="line">    implementation(&quot;cn.hutool:hutool-all:5.7.22&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-<h3 id="8、进度情况"><a href="#8、进度情况" class="headerlink" title="8、进度情况"></a>8、进度情况</h3><p>4.26定下了第一版的大致UI</p>
-<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220603212248253.png" alt="image-20220603212248253"></p>
-<p><strong>截止5.12号</strong></p>
-<p>李薇完成了：初步的UI （XML）</p>
-<p>李晨佳完成了 ： 数据库的大致建立 </p>
-<p>衡先焘：整合代码，编写逻辑控制语句</p>
-<p>+++++++++++++++++++++++++++++++++++++++</p>
-<p><strong>引入Jetpack框架，进行了代码的重构</strong> </p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Ry4y1t7Tj">https://www.bilibili.com/video/BV1Ry4y1t7Tj<i class="fas fa-external-link-alt"></i></a></p>
-<p>（<a class="link" href="https://github.com/KunMinX/Jetpack-MVVM-Best-Practice">KunMinX&#x2F;Jetpack-MVVM-Best-Practice: 是 难得一见 的 Jetpack MVVM 最佳实践！在 以简驭繁 的代码中，对 视图控制器 乃至 标准化开发模式 形成正确、深入的理解！ (github.com)<i class="fas fa-external-link-alt"></i></a>）</p>
-<p>+++++++++++++++++++++++++++++++++++++++++++++++</p>
-<p><strong>截止5.28号</strong></p>
-<p>李薇完成了：继续更新UI </p>
-<p>李晨佳完成了 ： 数据库的深入学习</p>
-<p>衡先焘完成了 ：UI的，数据库的整合，逻辑的重构</p>
-<h3 id="9、架构结构"><a href="#9、架构结构" class="headerlink" title="9、架构结构"></a>9、架构结构</h3><p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/colifestote%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="colifestote架构图"></p>
-<h3 id="10、项目的版本控制"><a href="#10、项目的版本控制" class="headerlink" title="10、项目的版本控制"></a>10、项目的版本控制</h3><table>
-       <style>
-            th,td{
-                text-align: left;
-            }
-     </style>
-      <tr>
-        <th style="color: #23bb68">版本</th>
-        <th style="color: #23bb68">时间</th>
-        <th style="color: #23bb68">主要内容</th>
-        <th style="color: #23bb68">主要负责人</th>
-        <th style="color: #23bb68">备注</th>
-      </tr>
-      <tr>
-        <td>0.1</td>
-        <td>2022.6.4</td>
-        <td>最初的功能大致上线</td>
-        <td>全部成员</td>
-        <td>3人分工</td>
-      </tr>
-      <tr>
-        <td>0.2</td>
-        <td>2022.</td>
-        <td>敬请期待...</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>...</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>...</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>开发文档</category>
-      </categories>
-      <tags>
-        <tag>开发文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大学生~活便签（1）</title>
     <url>/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
@@ -2547,6 +1443,1204 @@
       </tags>
   </entry>
   <entry>
+    <title>大学生~活便签（2）</title>
+    <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
+    <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
+<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
+<center class="half">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204743200.png" alt="image-20220416204743200" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204830583.png" alt="image-20220416204830583" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204851139.png" alt="image-20220416204851139" width="140">
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220416204908872.png" alt="image-20220416204908872" width="140">
+</center>
+
+
+
+
+
+<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
+
+<p>数据库我们采用sqllite，用jetpack下的ROOM框架，以下是5张关系型表，每个表对应一个大的功能块，待办，账单，日记，树洞，课表。</p>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_todo</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">待办表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">todo_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="2">待办的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_content</td>
+        <td colspan="2">待办的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_finish</td>
+        <td colspan="2">待办的状态（未完成，已完成，丢弃）</td>
+        <td>tinyint</td>
+        <td>0(未完成)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>todo_date</td>
+        <td colspan="2">待办的时间</td>
+        <td>datetime</td>
+        <td>null</td>
+        <td>flase</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_aBook</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">账本表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">aBook_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_id</td>
+        <td colspan="2">账本的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_money</td>
+        <td colspan="2">账单的金额(元)</td>
+        <td>int</td>
+        <td>0</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_type</td>
+        <td colspan="2">账本类型</td>
+        <td>enum</td>
+        <td>支出，收入...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>aBook_mark</td>
+        <td colspan="2">账本的备注</td>
+        <td>varchar(20)</td>
+        <td>null</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>aBook_date</td>
+        <td colspan="2">账单产生的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_diary</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">日历表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">diary_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_id</td>
+        <td colspan="2">日记的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_content</td>
+        <td colspan="2">日记的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_date</td>
+        <td colspan="2">创建日记的时间</td>
+        <td>datetime</td>
+        <td>当天的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_theme</td>
+        <td colspan="2">日历的主题</td>
+        <td>varchar</td>
+        <td>例如：世界读书日</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_weather</td>
+        <td colspan="2">当天的天气</td>
+        <td>enum</td>
+        <td>晴朗，阴...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>diary_mood</td>
+        <td colspan="2">当天的心情</td>
+        <td>enum</td>
+        <td>开心，伤心...</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_hole</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">树洞表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">hole_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_id</td>
+        <td colspan="2">树洞的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_content</td>
+        <td colspan="2">树洞的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hole_date</td>
+        <td colspan="2">树洞发布的时间</td>
+        <td>datetime</td>
+        <td>当前的时间</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">表名</th>
+        <th colspan="5" style="color: #23bb68">tb_schedule</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">课程表</td>
+      </tr>
+      <tr>
+        <th>主键</th>
+        <td colspan="5">id</td>
+      </tr>
+      <tr>
+        <th>索引</th>
+        <td colspan="5">schedule_id</td>
+      </tr>
+      <tr>
+        <th>字段名</th>
+        <th colspan="2">描述</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td colspan="2">内码</td>
+        <td>bigint(20)</td>
+        <td>自增长</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_id</td>
+        <td colspan="2">课程的唯一标签</td>
+        <td>varchar(50)</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_type</td>
+        <td colspan="2">课程是否是单双周</td>
+        <td>tinyint</td>
+        <td>1(单周)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_content</td>
+        <td colspan="2">课表的主要内容</td>
+        <td>varchar(200)</td>
+        <td>null</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_day</td>
+        <td colspan="2">星期几,1-7</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>schedule_section</td>
+        <td colspan="2">每天第几节课,1-6</td>
+        <td>tinyint</td>
+        <td>1</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>......</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+<br>
+
+
+
+<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
+
+<p>用户的操作也主要是集中在：待办，账单，日记，树洞，课表这五个板块</p>
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
+
+<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
+
+<p>待办，账单，日记，树洞，课表这五个功能点将会存在于三个界面，查看浏览界面，添加页面，管理（个人）页面。</p>
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/首页-16501064756811.png" alt="首页-16501064756811">
+
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/添加页面-16501064812702.png" alt="添加页面-16501064812702">
+
+<img src="/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/我的页面.png" alt="我的页面">
+
+
+
+<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
+
+<p>后端可以考虑采用java系列，springboot是易于实现且十分成熟的后端服务框架，服务器采用 本地tomcat + 阿里云的组合。</p>
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/diary/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取日记的detail</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>todo_id</td>
+        <td colspan="3">待办的唯一标签</td>
+        <td>uuid</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/todo/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取某一天的待办</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期，day</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/aBook/getByDay</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">按天查询账单</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">某一天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/hole/getList/1/10</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取树洞的信息，分页，一次十条，restful风格</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>无</td>
+        <td colspan="3">不需要参数，参数在url上</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/schedule/getOne</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">获取当日的课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">当天的日期</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功获取",
+             "data": {[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ],[
+                 "name": "第一个日记",
+                 "date": "日记的时间"
+                 ]...
+             }
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+ <table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/diary/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建日记</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建日记的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>theme</td>
+        <td colspan="3">日记的主题</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>weather</td>
+        <td colspan="3">创建日记的天气</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mood</td>
+        <td colspan="3">创建日记时的心情</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建日记的内容</td>
+        <td>longtext</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/todo/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建待办(可批量)</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建待办的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">创建待办的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/aBook/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建账本</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">创建账本的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>money</td>
+        <td colspan="3">账本的金额</td>
+        <td>int</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">创建账本的类型（收入，支出）</td>
+        <td>enum</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>mark</td>
+        <td colspan="3">创建账本的备注</td>
+        <td>varchar(20)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/hole/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">新建树洞话</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td colspan="3">树洞的时间</td>
+        <td>datetime</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">树洞的内容</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+<table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">接口\方法</th>
+        <th colspan="5" style="color: #23bb68">/schedule/create</th>
+      </tr>
+      <tr>
+        <th>描述</th>
+        <td colspan="5">创建课表</td>
+      </tr>
+      <tr>
+        <th>方式</th>
+        <td colspan="5">POST</td>
+      </tr>
+      <tr>
+        <th>传参方式</th>
+        <td colspan="5">application/json</td>
+      </tr>
+      <tr>
+        <th>参数名</th>
+        <th colspan="3">描述</th>
+        <th>类型</th>
+        <th>是否必录</th>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td colspan="3">单周还是双周</td>
+        <td>tinyint</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td colspan="3">课程名字</td>
+        <td>varchar</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>day</td>
+        <td colspan="3">一周中的第几天</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>section</td>
+        <td colspan="3">每天的第几节课</td>
+        <td>tinyint(3)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th colspan="6">输出</th>
+      </tr>
+      <tr>
+        <td colspan="6"><span><pre>         
+        {
+             "code": 200,
+             "msg": "成功创建",
+             "data": {}
+         }</pre></span></td>
+      </tr>
+    </table>
+<br>
+
+
+<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
+
+<p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
+<p>对于安全来说，我们考虑文件会存在于本地，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
+<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">引用资料（以github为基础）</span><br><span class="line">    implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;, &quot;*.aar&quot;])</span><br><span class="line">    implementation project(&quot;:architecture&quot;)</span><br><span class="line">    implementation &quot;org.jetbrains:annotations:23.0.0&quot;</span><br><span class="line">    implementation &#x27;androidx.legacy:legacy-support-v4:1.0.0&#x27;</span><br><span class="line">    implementation &#x27;androidx.lifecycle:lifecycle-livedata-ktx:2.3.1&#x27;</span><br><span class="line">    testImplementation &quot;junit:junit:4.13.2&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.ext:junit:1.1.3&quot;</span><br><span class="line">    androidTestImplementation &quot;androidx.test.espresso:espresso-core:3.4.0&quot;</span><br><span class="line">    implementation &quot;androidx.constraintlayout:constraintlayout:2.1.3&quot;</span><br><span class="line">    implementation &quot;androidx.room:room-runtime:$roomVersion&quot;</span><br><span class="line">    annotationProcessor &quot;androidx.room:room-compiler:$roomVersion&quot;</span><br><span class="line">    implementation &quot;com.google.android.material:material:1.5.0&quot;</span><br><span class="line">    implementation &quot;androidx.recyclerview:recyclerview:1.2.1&quot;</span><br><span class="line">    </span><br><span class="line">    implementation &quot;com.kunminx.arch:binding-recyclerview:3.9.0-beta1&quot;</span><br><span class="line">    implementation &quot;com.kunminx.player:player:3.3.0&quot;</span><br><span class="line">    implementation &quot;com.google.code.gson:gson:2.9.0&quot;</span><br><span class="line">    implementation &quot;org.slf4j:slf4j-android:1.7.36&quot;</span><br><span class="line">    implementation &quot;com.github.bumptech.glide:glide:4.13.2&quot;</span><br><span class="line">    implementation &quot;com.sothree.slidinguppanel:library:3.4.0&quot;</span><br><span class="line"></span><br><span class="line">    implementation &quot;com.squareup.retrofit2:retrofit:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.retrofit2:converter-gson:$retrofitVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:logging-interceptor:$okHttpVersion&quot;</span><br><span class="line">    implementation &quot;com.squareup.okhttp3:okhttp:$okHttpVersion&quot;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;com.github.getActivity:XXPermissions:13.6&#x27;</span><br><span class="line"></span><br><span class="line">    implementation(&quot;cn.hutool:hutool-all:5.7.22&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<h3 id="8、进度情况"><a href="#8、进度情况" class="headerlink" title="8、进度情况"></a>8、进度情况</h3><p>4.26定下了第一版的大致UI</p>
+<p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/image-20220603212248253.png" alt="image-20220603212248253"></p>
+<p><strong>截止5.12号</strong></p>
+<p>李薇完成了：初步的UI （XML）</p>
+<p>李晨佳完成了 ： 数据库的大致建立 </p>
+<p>衡先焘：整合代码，编写逻辑控制语句</p>
+<p>+++++++++++++++++++++++++++++++++++++++</p>
+<p><strong>引入Jetpack框架，进行了代码的重构</strong> </p>
+<p><a class="link" href="https://www.bilibili.com/video/BV1Ry4y1t7Tj">https://www.bilibili.com/video/BV1Ry4y1t7Tj<i class="fas fa-external-link-alt"></i></a></p>
+<p>（<a class="link" href="https://github.com/KunMinX/Jetpack-MVVM-Best-Practice">KunMinX&#x2F;Jetpack-MVVM-Best-Practice: 是 难得一见 的 Jetpack MVVM 最佳实践！在 以简驭繁 的代码中，对 视图控制器 乃至 标准化开发模式 形成正确、深入的理解！ (github.com)<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>+++++++++++++++++++++++++++++++++++++++++++++++</p>
+<p><strong>截止5.28号</strong></p>
+<p>李薇完成了：继续更新UI </p>
+<p>李晨佳完成了 ： 数据库的深入学习</p>
+<p>衡先焘完成了 ：UI的，数据库的整合，逻辑的重构</p>
+<h3 id="9、架构结构"><a href="#9、架构结构" class="headerlink" title="9、架构结构"></a>9、架构结构</h3><p><img src="/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/colifestote%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="colifestote架构图"></p>
+<h3 id="10、项目的版本控制"><a href="#10、项目的版本控制" class="headerlink" title="10、项目的版本控制"></a>10、项目的版本控制</h3><table>
+       <style>
+            th,td{
+                text-align: left;
+            }
+     </style>
+      <tr>
+        <th style="color: #23bb68">版本</th>
+        <th style="color: #23bb68">时间</th>
+        <th style="color: #23bb68">主要内容</th>
+        <th style="color: #23bb68">主要负责人</th>
+        <th style="color: #23bb68">备注</th>
+      </tr>
+      <tr>
+        <td>0.1</td>
+        <td>2022.6.4</td>
+        <td>最初的功能大致上线</td>
+        <td>全部成员</td>
+        <td>3人分工</td>
+      </tr>
+      <tr>
+        <td>0.2</td>
+        <td>2022.</td>
+        <td>敬请期待...</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>...</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>开发文档</category>
+      </categories>
+      <tags>
+        <tag>开发文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态规划法解决最大子矩阵</title>
+    <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大子矩阵和"><a href="#最大子矩阵和" class="headerlink" title="最大子矩阵和"></a>最大子矩阵和</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 × 1)子矩阵。</span><br><span class="line">输入：</span><br><span class="line">一个N×N的矩阵。输入的第一行给出N(0&lt;N≤100)。再后面的若干行中，依次(首先从左到右给出第一行的N个整数，</span><br><span class="line">再从左到右给出第二行的N个整数……)给出矩阵中的N2个整数，整数之间由空白字符分隔(空格或者空行)。</span><br><span class="line">已知矩阵中整数的范围都在[−127,127]。</span><br><span class="line">输出：</span><br><span class="line">最大子矩阵的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p>假设矩阵如下：（括号里的数是例子）</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>第一列</th>
+<th>第二列</th>
+<th>第三列</th>
+<th>第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一行</td>
+<td>a11 （-5）</td>
+<td>a12（-3）</td>
+<td>a13（-6）</td>
+<td>a14（1）</td>
+</tr>
+<tr>
+<td>第二行</td>
+<td>a21（2）</td>
+<td>a22（-30）</td>
+<td>&#x3D;&#x3D;a23（50）&#x3D;&#x3D;</td>
+<td>&#x3D;&#x3D;a24（10）&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>第三行</td>
+<td>a31（3）</td>
+<td>a32（-12）</td>
+<td>&#x3D;&#x3D;a33（10）&#x3D;&#x3D;</td>
+<td>&#x3D;&#x3D;a34（3）&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>第四行</td>
+<td>a41（7）</td>
+<td>a42（-9）</td>
+<td>a43（-5）</td>
+<td>a44（-3）</td>
+</tr>
+</tbody></table>
+<p>其中标黄的部分为最大子矩阵</p>
+<p>如果通过枚举出这个母矩阵的所有子矩阵，再计算出矩阵的大小，时间复杂度将达到  O (n^6)，很明显不可取。这时候就需要通过动态规划去存储一些中间值，降低重复计算。</p>
+<p>通过观察，可以发现，把子矩阵的每一列加起来，构成(a23+a33，a24+a34)这样的列之和矩阵，这样的矩阵有什么用呢？</p>
+<p>当我们再向外扩展一个矩阵（a22+a32，a23+a33，a24+a34)，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     (a23+a33，a24+a34)  ----- &gt;  (60, 13)                  ①</span><br><span class="line"></span><br><span class="line">     (a22+a32，a23+a33，a24+a34) ----- &gt; (-42, 60, 13)      ②</span><br><span class="line"></span><br><span class="line">①序列是②序列的最大字段和。</span><br></pre></td></tr></table></figure>
+
+<p>同理  ①序列也是 第二行和第三行所有列元素之和构成的序列即 （a21+a31，a22+a32，a23+a33，a24+a34）的最大字段和。</p>
+<p>构造一个这样的序列可以通过一个简单的循环做到</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">          row[k] += matrix[j][k];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// TODO</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 这样做可以实现: 从首行开始，对下面的每一列依次加起来，一列一列加的过程是开放的，可以做其他任务。</span></span><br><span class="line"><span class="comment">// 但是有个问题是，不是每个子矩阵都要包含首行，所有需要加一层循环，使之可以从其他行开始。</span></span><br><span class="line"><span class="comment">// 以下使对此做出的修改</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    Arrays.fill(row, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= n; j++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">        row[k] += matrix[j][k];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// TODO</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是写最大子段和的代码。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> row 每一列的数加起来的数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n   最大子序列的最终位</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/5/3 18:02</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 找最大子序列的算法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxArray</span><span class="params">(<span class="type">int</span>[] row, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) sum += row[i];</span><br><span class="line">        <span class="keyword">else</span> sum = row[i];</span><br><span class="line">        max = Math.max(max, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这一段代码就用到动态规划的思想。</p>
+<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/image-20220505160710337.png" alt="image-20220505160710337">
+
+<p>测试结果</p>
+<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/image-20220505160736202.png" alt="image-20220505160736202">
+
+<br>
+
+<h3 id="2️⃣适用动态规划法的原因"><a href="#2️⃣适用动态规划法的原因" class="headerlink" title="2️⃣适用动态规划法的原因"></a>2️⃣适用动态规划法的原因</h3><h4 id="1、问题满足最优性原理：具有最优子结构性质"><a href="#1、问题满足最优性原理：具有最优子结构性质" class="headerlink" title="1、问题满足最优性原理：具有最优子结构性质"></a>1、问题满足最优性原理：具有最优子结构性质</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">子问题是去掉一行或者一列的数据，这么做之后仍能找到最优解。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"><a href="#2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"></a>2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当问题被分解到1×1时候，最大矩阵就是 a11，当规模扩大到  2× 2时候，找到的解就要要求去和 1× 1的解做比较，这样才能判断最后的解是否是最优的。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> dynamicProgramming;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MaxMatrix</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> -<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 输入矩阵</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;输入矩阵的大小&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span>[][] matrix = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                matrix[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 归并一列的数到一个新的数组</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="type">int</span>[] row = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            Arrays.fill(row, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">                    row[k] += matrix[j][k];</span><br><span class="line">                &#125;</span><br><span class="line">                max = Math.max(max, maxArray(row, n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;最大子矩阵是: &quot;</span> + max);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> row 每一列的数加起来的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n   最大子序列的最终位</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/5/3 18:02</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 找最大子序列的算法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxArray</span><span class="params">(<span class="type">int</span>[] row, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) sum += row[i];</span><br><span class="line">            <span class="keyword">else</span> sum = row[i];</span><br><span class="line">            max = Math.max(max, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="动态规划解题步骤："><a href="#动态规划解题步骤：" class="headerlink" title="动态规划解题步骤："></a>动态规划解题步骤：</h5><p>（1）、划分子问题， 找到子问题的边界。</p>
+<p>（2）、构建状态转移方程（分析）。列优化函数的递推方程和边界条件</p>
+<p>（3）、存储状态的值求解（填表）。自底向上计算，设计备忘录 (表格）</p>
+<p>在本次实验中以上三个问题都得到了很好的体现，使我对动态规划的理解更加的深入了，更能理解动态规划算法。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>动态规划法解决最大长方体</title>
     <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/</url>
     <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大长方体"><a href="#最大长方体" class="headerlink" title="最大长方体"></a>最大长方体</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">一个长,宽,高分别是m,n,p的长方体被分割成m*n*p个小立方体。每个小立方体内含一个整数。</span><br><span class="line">试着设计一个算法，计算所给长方体的最大子长方体。子长方体的大小由它内部所含所有整数之和确定。</span><br><span class="line">约定：当该长方体所有元素均为负数时,输出最大子长方体为0。</span><br><span class="line">输入：</span><br><span class="line">  第一行3个正整数m,n,p，其中 1&lt;=m,n,p&lt;=50 接下来的m*n行中每行p个整数，表示小立方体中的数。</span><br><span class="line">输出：</span><br><span class="line">  计算出的最大子长方体的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -2608,6 +2702,33 @@
 <h3 id="反面事例：代码合并"><a href="#反面事例：代码合并" class="headerlink" title="反面事例：代码合并"></a>反面事例：代码合并</h3><p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
 <p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开闭原则OCP</title>
+    <url>/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="二、开闭原则OCP"><a href="#二、开闭原则OCP" class="headerlink" title="二、开闭原则OCP"></a>二、开闭原则OCP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
+<p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
+<h3 id><a href="#" class="headerlink" title></a><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3><p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
+<p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
+<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
+
+<p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
+<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
+
+
+
+
+
 ]]></content>
       <categories>
         <category>软件开发设计原则</category>
@@ -3208,127 +3329,6 @@
       </tags>
   </entry>
   <entry>
-    <title>动态规划法解决最大子矩阵</title>
-    <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大子矩阵和"><a href="#最大子矩阵和" class="headerlink" title="最大子矩阵和"></a>最大子矩阵和</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 × 1)子矩阵。</span><br><span class="line">输入：</span><br><span class="line">一个N×N的矩阵。输入的第一行给出N(0&lt;N≤100)。再后面的若干行中，依次(首先从左到右给出第一行的N个整数，</span><br><span class="line">再从左到右给出第二行的N个整数……)给出矩阵中的N2个整数，整数之间由空白字符分隔(空格或者空行)。</span><br><span class="line">已知矩阵中整数的范围都在[−127,127]。</span><br><span class="line">输出：</span><br><span class="line">最大子矩阵的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p>假设矩阵如下：（括号里的数是例子）</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>第一列</th>
-<th>第二列</th>
-<th>第三列</th>
-<th>第四列</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一行</td>
-<td>a11 （-5）</td>
-<td>a12（-3）</td>
-<td>a13（-6）</td>
-<td>a14（1）</td>
-</tr>
-<tr>
-<td>第二行</td>
-<td>a21（2）</td>
-<td>a22（-30）</td>
-<td>&#x3D;&#x3D;a23（50）&#x3D;&#x3D;</td>
-<td>&#x3D;&#x3D;a24（10）&#x3D;&#x3D;</td>
-</tr>
-<tr>
-<td>第三行</td>
-<td>a31（3）</td>
-<td>a32（-12）</td>
-<td>&#x3D;&#x3D;a33（10）&#x3D;&#x3D;</td>
-<td>&#x3D;&#x3D;a34（3）&#x3D;&#x3D;</td>
-</tr>
-<tr>
-<td>第四行</td>
-<td>a41（7）</td>
-<td>a42（-9）</td>
-<td>a43（-5）</td>
-<td>a44（-3）</td>
-</tr>
-</tbody></table>
-<p>其中标黄的部分为最大子矩阵</p>
-<p>如果通过枚举出这个母矩阵的所有子矩阵，再计算出矩阵的大小，时间复杂度将达到  O (n^6)，很明显不可取。这时候就需要通过动态规划去存储一些中间值，降低重复计算。</p>
-<p>通过观察，可以发现，把子矩阵的每一列加起来，构成(a23+a33，a24+a34)这样的列之和矩阵，这样的矩阵有什么用呢？</p>
-<p>当我们再向外扩展一个矩阵（a22+a32，a23+a33，a24+a34)，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     (a23+a33，a24+a34)  ----- &gt;  (60, 13)                  ①</span><br><span class="line"></span><br><span class="line">     (a22+a32，a23+a33，a24+a34) ----- &gt; (-42, 60, 13)      ②</span><br><span class="line"></span><br><span class="line">①序列是②序列的最大字段和。</span><br></pre></td></tr></table></figure>
-
-<p>同理  ①序列也是 第二行和第三行所有列元素之和构成的序列即 （a21+a31，a22+a32，a23+a33，a24+a34）的最大字段和。</p>
-<p>构造一个这样的序列可以通过一个简单的循环做到</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">          row[k] += matrix[j][k];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// TODO</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 这样做可以实现: 从首行开始，对下面的每一列依次加起来，一列一列加的过程是开放的，可以做其他任务。</span></span><br><span class="line"><span class="comment">// 但是有个问题是，不是每个子矩阵都要包含首行，所有需要加一层循环，使之可以从其他行开始。</span></span><br><span class="line"><span class="comment">// 以下使对此做出的修改</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    Arrays.fill(row, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= n; j++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">        row[k] += matrix[j][k];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// TODO</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来就是写最大子段和的代码。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> row 每一列的数加起来的数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n   最大子序列的最终位</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/5/3 18:02</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 找最大子序列的算法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxArray</span><span class="params">(<span class="type">int</span>[] row, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) sum += row[i];</span><br><span class="line">        <span class="keyword">else</span> sum = row[i];</span><br><span class="line">        max = Math.max(max, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面这一段代码就用到动态规划的思想。</p>
-<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/image-20220505160710337.png" alt="image-20220505160710337">
-
-<p>测试结果</p>
-<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/image-20220505160736202.png" alt="image-20220505160736202">
-
-<br>
-
-<h3 id="2️⃣适用动态规划法的原因"><a href="#2️⃣适用动态规划法的原因" class="headerlink" title="2️⃣适用动态规划法的原因"></a>2️⃣适用动态规划法的原因</h3><h4 id="1、问题满足最优性原理：具有最优子结构性质"><a href="#1、问题满足最优性原理：具有最优子结构性质" class="headerlink" title="1、问题满足最优性原理：具有最优子结构性质"></a>1、问题满足最优性原理：具有最优子结构性质</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">子问题是去掉一行或者一列的数据，这么做之后仍能找到最优解。</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h4 id="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"><a href="#2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"></a>2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当问题被分解到1×1时候，最大矩阵就是 a11，当规模扩大到  2× 2时候，找到的解就要要求去和 1× 1的解做比较，这样才能判断最后的解是否是最优的。</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<br>
-
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> dynamicProgramming;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MaxMatrix</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> -<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 输入矩阵</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;输入矩阵的大小&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span>[][] matrix = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                matrix[i][j] = scanner.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 归并一列的数到一个新的数组</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="type">int</span>[] row = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            Arrays.fill(row, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">                    row[k] += matrix[j][k];</span><br><span class="line">                &#125;</span><br><span class="line">                max = Math.max(max, maxArray(row, n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;最大子矩阵是: &quot;</span> + max);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> row 每一列的数加起来的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n   最大子序列的最终位</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/5/3 18:02</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 找最大子序列的算法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxArray</span><span class="params">(<span class="type">int</span>[] row, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) sum += row[i];</span><br><span class="line">            <span class="keyword">else</span> sum = row[i];</span><br><span class="line">            max = Math.max(max, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="动态规划解题步骤："><a href="#动态规划解题步骤：" class="headerlink" title="动态规划解题步骤："></a>动态规划解题步骤：</h5><p>（1）、划分子问题， 找到子问题的边界。</p>
-<p>（2）、构建状态转移方程（分析）。列优化函数的递推方程和边界条件</p>
-<p>（3）、存储状态的值求解（填表）。自底向上计算，设计备忘录 (表格）</p>
-<p>在本次实验中以上三个问题都得到了很好的体现，使我对动态规划的理解更加的深入了，更能理解动态规划算法。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开闭原则OCP</title>
-    <url>/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/</url>
-    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="二、开闭原则OCP"><a href="#二、开闭原则OCP" class="headerlink" title="二、开闭原则OCP"></a>二、开闭原则OCP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
-<p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
-<h3 id><a href="#" class="headerlink" title></a><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3><p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
-<p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
-<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
-
-<p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
-<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>回溯法解决最小重量机器设计问题</title>
     <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<br>
@@ -3456,6 +3456,33 @@
       </tags>
   </entry>
   <entry>
+    <title>软件项目管理认识与实践总结</title>
+    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="软件项目管理认识与实践总结"><a href="#软件项目管理认识与实践总结" class="headerlink" title="软件项目管理认识与实践总结"></a>软件项目管理认识与实践总结</h2><p>衡先焘2020010661</p>
+<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
+<ol>
+<li><p>何为项目管理？</p>
+<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
+</li>
+<li><p>如何使用先进的项目管理工具</p>
+<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
+</li>
+<li><p>团队协作的收获与感想</p>
+<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
+</li>
+</ol>
+<p>​		</p>
+<p>　　最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
+]]></content>
+      <categories>
+        <category>课程论文</category>
+      </categories>
+      <tags>
+        <tag>项目管理</tag>
+        <tag>课程总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ch01_ 跨交换机实现VLAN</title>
     <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
     <content><![CDATA[<table>
@@ -3505,33 +3532,6 @@
         <tag>交换机</tag>
         <tag>VLAN</tag>
         <tag>实验报告</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件项目管理认识与实践总结</title>
-    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="软件项目管理认识与实践总结"><a href="#软件项目管理认识与实践总结" class="headerlink" title="软件项目管理认识与实践总结"></a>软件项目管理认识与实践总结</h2><p>衡先焘2020010661</p>
-<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
-<ol>
-<li><p>何为项目管理？</p>
-<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
-</li>
-<li><p>如何使用先进的项目管理工具</p>
-<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
-</li>
-<li><p>团队协作的收获与感想</p>
-<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
-</li>
-</ol>
-<p>​		</p>
-<p>　　最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
-]]></content>
-      <categories>
-        <category>课程论文</category>
-      </categories>
-      <tags>
-        <tag>项目管理</tag>
-        <tag>课程总结</tag>
       </tags>
   </entry>
   <entry>
