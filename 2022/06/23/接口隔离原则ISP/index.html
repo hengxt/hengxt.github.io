@@ -9,7 +9,7 @@
     
     <title>
         
-            里氏替换原则LSP |
+            接口隔离原则ISP |
         
         (゜燾゜;)┛
     </title>
@@ -183,7 +183,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">里氏替换原则LSP</span>
+            <span class="title-hover-animation">接口隔离原则ISP</span>
         </div>
 
         
@@ -202,8 +202,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-06-22 18:11:14</span>
-        <span class="mobile">2022-06-22 18:11</span>
+        <span class="pc">2022-06-23 15:19:19</span>
+        <span class="mobile">2022-06-23 15:19</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -248,15 +248,9 @@
         <div class="article-content markdown-body">
             <p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="三、里氏替换原则LSP"><a href="#三、里氏替换原则LSP" class="headerlink" title="三、里氏替换原则LSP"></a>三、里氏替换原则LSP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
-<h3 id="举例一"><a href="#举例一" class="headerlink" title="举例一"></a>举例一</h3><p>假设我们有一个License类，其结构如图9.1所示。该类中有一个 名为calcFee（）的方法，该方法将由Billing应用程序来调用。而 License类有两个“子类型”:PersonalLicense与BusinessLicense， 这两个类会用不同的算法来计算授权费用。</p>
-<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151618648.png" alt="image-20220623151618648">
+<h2 id="四、接口隔离原则ISP"><a href="#四、接口隔离原则ISP" class="headerlink" title="四、接口隔离原则ISP"></a>四、接口隔离原则ISP</h2><img src="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/image-20220623152044370.png" alt="image-20220623152044370">
 
-<p>上述设计是符合LSP原则的，因为Billing应用程序的行为并不依 赖于其使用的任何一个衍生类。也就是说，这两个衍生类的对象都是 可以用来替换License类对象的。</p>
-<h3 id="举例二"><a href="#举例二" class="headerlink" title="举例二"></a>举例二</h3><p>正方形&#x2F;长方形问题是一个著名（或者说臭名远扬）的违反LSP的 设计案例（该问题的结构如图9.2所示）。</p>
-<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151711133.png" alt="image-20220623151711133">
-
-<p>在这个案例中，Square类并不是Rectangle类的子类型，因为 Rectangle类的高和宽可以分别修改，而Square类的高和宽则必须一同 修改。由于User类始终认为自己在操作Rectangle类，因此会带来一些 混淆。例如在下面的代码中： Rectangle r &#x3D; … r.setW（5）； r.setH（2）； assert（r.area（）&#x3D;&#x3D; 10）； 很显然，如果上述代码在…处返回的是Square类，则最后的这个 assert是不会成立的。 如果想要防范这种违反LSP的行为，唯一的办法就是在User类中增 加用于区分Rectangle和Square的检测逻辑（例如增加if语句）。但这 样一来，User类的行为又将依赖于它所使用的类，这两个类就不能互 相替换了。</p>
+<p>在图10.1所描绘的应用中，有多个用户需要操作OPS类。现在，我 们假设这里的User1只需要使用op1,User2只需要使用op2,User3只需要 使用op3。 在这种情况下，如果OPS类是用Java编程语言编写的，那么很明 显，User1虽然不需要调用op2、op3，但在源代码层次上也与它们形成 依赖关系。这种依赖意味着我们对OPS代码中op2所做的任何修改，即 使不会影响到User1的功能，也会导致它需要被重新编译和部署。 这个问题可以通过将不同的操作隔离成接口来解决，具体如图 10.2所示。 同样，我们也假设这个例子是用Java这种静态类型语言来实现 的，那么现在User1的源代码会依赖于U1Ops和op1，但不会依赖于 OPS。这样一来，我们之后对OPS做的修改只要不影响到User1的功能， 就不需要重新编译和部署User1了。</p>
 
         </div>
 
@@ -264,11 +258,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：里氏替换原则LSP</li>
+        <li>本文标题：接口隔离原则ISP</li>
         <li>本文作者：衡先焘</li>
-        <li>创建时间：2022-06-22 18:11:14</li>
+        <li>创建时间：2022-06-23 15:19:19</li>
         <li>
-            本文链接：https://hengxt.github.io/2022/06/22/里氏替换原则LSP/
+            本文链接：https://hengxt.github.io/2022/06/23/接口隔离原则ISP/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -295,13 +289,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/"
+                           href="/2022/06/23/%E4%BE%9D%E8%B5%96%E5%8F%8D%E8%BD%AC%E5%8E%9F%E5%88%99DIP/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">接口隔离原则ISP</span>
+                                <span class="post-nav-title-item">依赖反转原则DIP</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -311,10 +305,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/"
+                           href="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">开闭原则OCP</span>
+                                <span class="post-nav-title-item">里氏替换原则LSP</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -522,7 +516,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP"><span class="nav-text">三、里氏替换原则LSP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A6%82%E5%BF%B5"><span class="nav-text">定义概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%E4%B8%80"><span class="nav-text">举例一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%E4%BA%8C"><span class="nav-text">举例二</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP"><span class="nav-text">四、接口隔离原则ISP</span></a></li></ol>
     </div>
 </div>
         </aside>

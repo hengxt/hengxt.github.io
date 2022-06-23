@@ -1251,198 +1251,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用hexo,并部署到page</title>
-    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
-    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
-<thead>
-<tr>
-<th>表名</th>
-<th>todo</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>描述</td>
-<td>待办</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>主键</td>
-<td>id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>索引</td>
-<td>todo_id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>字段名</td>
-<td>描述</td>
-<td>类型</td>
-<td>默认值</td>
-<td>是否必录</td>
-</tr>
-<tr>
-<td>id</td>
-<td>主键</td>
-<td>bigint(20)</td>
-<td>自增</td>
-<td>是</td>
-</tr>
-<tr>
-<td>todo_id</td>
-<td>todo的标志符号</td>
-<td>uuid</td>
-<td>uuid</td>
-<td>是</td>
-</tr>
-</tbody></table>
-<table>
-    <tr>
-        <th>属性</th>
-        <th>属性值</th>
-        <th>描述</th>  
-    </tr>
-    <tr>
-        <td rowspan="9">type</td>
-        <td>text</td>
-        <td>单行文本输入框</td>
-    </tr>
-    <tr>
-        <td>password</td>
-        <td>密码输入框</td>
-    </tr>
-    <tr>
-        <td>radio</td>
-        <td>单选按钮</td>
-    </tr>
-    <tr>
-        <td>CheckBox</td>
-        <td>复选按钮</td>
-    </tr>
-    <tr><td>button</td>
-        <td>普通按钮</td>
-    </tr>
-    <tr>
-        <td>submit</td>
-        <td>提交按钮</td>
-    </tr>
-    <tr>
-        <td>reset</td>
-        <td>重置按钮</td>
-    </tr>
-    <tr>
-        <td>image</td>
-        <td>图像形式的提交按钮</td>
-    </tr>
-    <tr>
-        <td>file</td>
-        <td>文件域</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>用户自定义</td>
-        <td>控件名称</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>用户自定义</td>
-        <td>默认文本值</td>
-    </tr>
-    <tr>
-        <td>size</td>
-        <td>正整数</td>
-        <td>控件在页面中的显示宽度</td>
-    </tr>
-    <tr>
-        <td>checked</td>
-        <td>checked</td>
-        <td>定义选择控件默认被选中项</td>
-    </tr>
-    <tr>
-        <td>maxlength</td>
-        <td>正整数</td>
-        <td>控件允许输入的最多字符</td>
-    </tr>
-</table>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分治法解决括号匹配</title>
-    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
-
-<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
-<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
-<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
-<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果如下</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
-
-<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>截取一段结果就能发现</p>
-<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
-
-<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
-<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
-<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
-<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
-<br>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
-<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
-
-<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
-<br>
-
-<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
-<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大学生~活便签（2）</title>
     <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
     <content><![CDATA[<h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
@@ -2547,6 +2355,216 @@
       </tags>
   </entry>
   <entry>
+    <title>使用hexo,并部署到page</title>
+    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
+    <content><![CDATA[<p>第一步，安装node和npm<br>第二步，npm install hexo -g<br>第三步，hexo init blog<br>第四步, 进入hexo的根目录<br>第五步, npm install<br>hexo -s</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>todo</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>描述</td>
+<td>待办</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主键</td>
+<td>id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>todo_id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字段名</td>
+<td>描述</td>
+<td>类型</td>
+<td>默认值</td>
+<td>是否必录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>主键</td>
+<td>bigint(20)</td>
+<td>自增</td>
+<td>是</td>
+</tr>
+<tr>
+<td>todo_id</td>
+<td>todo的标志符号</td>
+<td>uuid</td>
+<td>uuid</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>属性值</th>
+        <th>描述</th>  
+    </tr>
+    <tr>
+        <td rowspan="9">type</td>
+        <td>text</td>
+        <td>单行文本输入框</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>密码输入框</td>
+    </tr>
+    <tr>
+        <td>radio</td>
+        <td>单选按钮</td>
+    </tr>
+    <tr>
+        <td>CheckBox</td>
+        <td>复选按钮</td>
+    </tr>
+    <tr><td>button</td>
+        <td>普通按钮</td>
+    </tr>
+    <tr>
+        <td>submit</td>
+        <td>提交按钮</td>
+    </tr>
+    <tr>
+        <td>reset</td>
+        <td>重置按钮</td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td>图像形式的提交按钮</td>
+    </tr>
+    <tr>
+        <td>file</td>
+        <td>文件域</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>用户自定义</td>
+        <td>控件名称</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>用户自定义</td>
+        <td>默认文本值</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>正整数</td>
+        <td>控件在页面中的显示宽度</td>
+    </tr>
+    <tr>
+        <td>checked</td>
+        <td>checked</td>
+        <td>定义选择控件默认被选中项</td>
+    </tr>
+    <tr>
+        <td>maxlength</td>
+        <td>正整数</td>
+        <td>控件允许输入的最多字符</td>
+    </tr>
+</table>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>依赖反转原则DIP</title>
+    <url>/2022/06/23/%E4%BE%9D%E8%B5%96%E5%8F%8D%E8%BD%AC%E5%8E%9F%E5%88%99DIP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="五、依赖反转原则DIP"><a href="#五、依赖反转原则DIP" class="headerlink" title="五、依赖反转原则DIP"></a>五、依赖反转原则DIP</h2><p>依赖反转原则（DIP）主要想告诉我们的是，如果想要设计一个灵 活的系统，在源代码层次的依赖关系中就应该多引用抽象类型，而非 具体实现。</p>
+<h3 id="稳定的抽象层"><a href="#稳定的抽象层" class="headerlink" title="稳定的抽象层"></a>稳定的抽象层</h3><p><strong>应在代码中多使用抽象接口，尽量避免使用那些多变的具体实现类。</strong>这条守则适用于所有编程语言，无论静态类型语言还是动态类型 语言。同时，对象的创建过程也应该受到严格限制，对此，我们通常 会选择用抽象工厂（abstract factory）这个设计模式。</p>
+<p><strong>不要在具体实现类上创建衍生类。上一条守则虽然也隐含了这层 意思，但它还是值得被单独拿出来做一次详细声明。</strong>在静态类型的编 程语言中，继承关系是所有一切源代码依赖关系中最强的、最难被修 改的，所以我们对继承的使用应该格外小心。即使是在稍微便于修改 的动态类型语言中，这条守则也应该被认真考虑。</p>
+<p><strong>不要覆盖（override）包含具体实现的函数。调用包含具体实现 的函数通常就意味着引入了源代码级别的依赖。</strong>即使覆盖了这些函 数，我们也无法消除这其中的依赖——这些函数继承了那些依赖关 系。在这里，控制依赖关系的唯一办法，就是创建一个抽象函数，然 后再为该函数提供多种具体实现。 </p>
+<p><strong>应避免在代码中写入与任何具体实现相关的名字，或者是其他容 易变动的事物的名字。</strong>这基本上是DIP原则的另外一个表达方式。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分治法解决括号匹配</title>
+    <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。"><a href="#n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（））-。" class="headerlink" title="n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。"></a>n对括号有多少种匹配方式？比如两对括号可以有两种：（）（）和（（）） 。</h4><br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><h4 id="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"><a href="#首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。" class="headerlink" title="首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。"></a>首先，看到括号匹配，我想到了栈，栈的入栈和出栈，只要最后栈为空就行。然后想了想，没有递归，就放弃了栈的思考，追求分治和递归。</h4><br>
+
+<h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><p>用&#x3D;&#x3D;leftNum&#x3D;&#x3D;代表未被放的左括号数，&#x3D;&#x3D;rightNum&#x3D;&#x3D;代表未被放的右括号数目，那么初始情况就是leftNum&#x3D;&#x3D;rightNum;</p>
+<p>当leftNum和rightNum全部被放完时，就把括号全部放完了。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>把每一次leftNum等于rightNum的时，都视为一对，例如第一次执行的时候，先不看递归，if(leftNum&gt;0) 和if(rightNum&gt;0)都是成立的，那么这一对括号一定是先左括号后右括号，一定是匹配成立的。那么子问题就是每一对左右括号的放置。</p>
+<h4 id="实际情况："><a href="#实际情况：" class="headerlink" title="实际情况："></a>实际情况：</h4><p>1、一对括号。我先放左括号，后放右括号，就匹配成功。（）</p>
+<p>2、两对括号。先放左括号，后放右括号。为了实现左右括号是在随机的时间段放置的，只需要递归一下，就可以得出很多的结果。如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/0b340e0b8940beb2053ea9428a442c7a.png" alt="截图" style="zoom:50%;">
+
+<h5 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h5><p>发现出现了不合法的匹配。先通过打印各个时间点出现的括号来判断问题出现在了哪儿？修改代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">    generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (rightNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">    generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>截取一段结果就能发现</p>
+<img src="/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1af6d7d4671c881d71fb8fbddb50c2bd.png" alt="截图" style="zoom:50%;">
+
+<p>这一块标红的地方他做了先右后左的操作，仔细观察此时的leftNum和rightNum可以发现：合法的括号对都有个特点，从左向右取子段，左括号数目都大于右括号，例如</p>
+<p>&#x3D;&#x3D;(())&#x3D;&#x3D;中取前2个&#x3D;&#x3D;((&#x3D;&#x3D;，然后就是左括号为2，右括号为0，左&gt;右（匹配）</p>
+<p>&#x3D;&#x3D;)(()&#x3D;&#x3D;中取前2个&#x3D;&#x3D;)(&#x3D;&#x3D;，然后就是左括为1，右括号为1，左&#x3D;&#x3D;右（不匹配）</p>
+<p>那么就是要先用更多的左括号，即是leftNum &lt; rightNum 于是代码修改</p>
+<br>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">        generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">        generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过测试，当2对括号的时候，结果正确，()(),(())。</p>
+<p>3、大于等于三对括号。通过两对括号的解法，算出3对括号有5种，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((()))  (()())  (())()  ()(())  ()()()</span><br></pre></td></tr></table></figure>
+
+<p>并且这5种均是成功匹配，自己也画不出第6种了。括号对数再大就难易手动判断了。</p>
+<br>
+
+<h3 id="2️⃣适用分治法的原因"><a href="#2️⃣适用分治法的原因" class="headerlink" title="2️⃣适用分治法的原因"></a>2️⃣适用分治法的原因</h3><h4 id="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"><a href="#1、当问题规模缩小到一对，两对括号时会比较容易的解决。" class="headerlink" title="1、当问题规模缩小到一对，两对括号时会比较容易的解决。"></a>1、当问题规模缩小到一对，两对括号时会比较容易的解决。</h4><h4 id="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"><a href="#2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。"></a>2、问题可以分解到若干个规模较小的相同问题，具有最优子结构性质。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将整个问题用分成很多个小问题——对每一组括号先放左括号后方右括号。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、利用该问题分解出的子问题的解可以合并为该问题的解。"><a href="#3、利用该问题分解出的子问题的解可以合并为该问题的解。" class="headerlink" title="3、利用该问题分解出的子问题的解可以合并为该问题的解。"></a>3、利用该问题分解出的子问题的解可以合并为该问题的解。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当每一对的括号都正确的匹配放置，那么整个括号大组就匹配正确了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"><a href="#4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。" class="headerlink" title="4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。"></a>4、问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">每一对括号的放置都是相互独立的。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            generate(m, m, n);</span><br><span class="line">            System.out.println(count);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入有几对括号：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate</span><span class="params">(<span class="type">int</span> leftNum, <span class="type">int</span> rightNum, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftNum == <span class="number">0</span> &amp;&amp; rightNum == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;;此时执行的括号是：(&quot;</span>);</span><br><span class="line">            generate(leftNum - <span class="number">1</span>, rightNum, s + <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightNum &gt; <span class="number">0</span> &amp;&amp; leftNum &lt; rightNum) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;lefNum: &quot;</span> + leftNum + <span class="string">&quot;;rightNum: &quot;</span> + rightNum + <span class="string">&quot;此时执行的括号是：)&quot;</span>);</span><br><span class="line">            generate(leftNum, rightNum - <span class="number">1</span>, s + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"><a href="#在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。" class="headerlink" title="在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。"></a>在本次实验中，我对分治的了解更加深入了。分治解决问题时，要多多关注小问题，从小的方向入手，先算当规模小的时候，这道题就是先算1对。2对，慢慢找规律。</h5><p>找规律是个漫长的过程，最开始我想的是：放两对括号就是在一对括号的基础上加上左右括号，把这个问题处理成排列组合，可是这样犯了分治的一个大问题——小问题之间是相互独立的，而我这种处理方式每次都是在前一次的基础上加括号，排列组合的位置也在不断变化。后面我就抛弃了这个办法，并且这个办法在实践时很难处理，当规模到3对时就已经难弄了。</p>
+<h5 id="对于此次实验，个人感觉是成功的！"><a href="#对于此次实验，个人感觉是成功的！" class="headerlink" title="对于此次实验，个人感觉是成功的！"></a>对于此次实验，个人感觉是成功的！</h5>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>动态规划法解决最大子矩阵</title>
     <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大子矩阵和"><a href="#最大子矩阵和" class="headerlink" title="最大子矩阵和"></a>最大子矩阵和</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 × 1)子矩阵。</span><br><span class="line">输入：</span><br><span class="line">一个N×N的矩阵。输入的第一行给出N(0&lt;N≤100)。再后面的若干行中，依次(首先从左到右给出第一行的N个整数，</span><br><span class="line">再从左到右给出第二行的N个整数……)给出矩阵中的N2个整数，整数之间由空白字符分隔(空格或者空行)。</span><br><span class="line">已知矩阵中整数的范围都在[−127,127]。</span><br><span class="line">输出：</span><br><span class="line">最大子矩阵的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -2638,103 +2656,6 @@
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>动态规划法解决最大长方体</title>
-    <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/</url>
-    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大长方体"><a href="#最大长方体" class="headerlink" title="最大长方体"></a>最大长方体</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">一个长,宽,高分别是m,n,p的长方体被分割成m*n*p个小立方体。每个小立方体内含一个整数。</span><br><span class="line">试着设计一个算法，计算所给长方体的最大子长方体。子长方体的大小由它内部所含所有整数之和确定。</span><br><span class="line">约定：当该长方体所有元素均为负数时,输出最大子长方体为0。</span><br><span class="line">输入：</span><br><span class="line">  第一行3个正整数m,n,p，其中 1&lt;=m,n,p&lt;=50 接下来的m*n行中每行p个整数，表示小立方体中的数。</span><br><span class="line">输出：</span><br><span class="line">  计算出的最大子长方体的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p>思想同最大子矩阵和，把三维的矩阵先转成二维，就变成了求最大子矩阵和的问题，再转成一维就成了求最大子段和的问题。</p>
-<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/image-20220505161024115.png" alt="image-20220505161024115">
-
-<p>例如图中被标记的两个小方块，假设这两个（1号和2号）构成了最大的长方体，那么加上3号时候，这个长方体的大小将会减小，</p>
-<p>可以近似将这三个小正方体抽象成  （1，2，3），其中最大的是（1，2），后者是前者的最大子段和，所以从高度上要找到一个最大的子段。</p>
-<p>接着考虑在忽略高度的情况下（假设确定了高度）,找一个面中最大的组合，问题完全等同于动态规划解决最大子矩阵和。</p>
-<br>
-
-<p>测试结果（测试样例来自网络）</p>
-<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/image-20220505161041232.png" alt="image-20220505161041232">
-
-<br>
-
-<h3 id="2️⃣适用动态规划法的原因"><a href="#2️⃣适用动态规划法的原因" class="headerlink" title="2️⃣适用动态规划法的原因"></a>2️⃣适用动态规划法的原因</h3><h4 id="1、问题满足最优性原理：具有最优子结构性质"><a href="#1、问题满足最优性原理：具有最优子结构性质" class="headerlink" title="1、问题满足最优性原理：具有最优子结构性质"></a>1、问题满足最优性原理：具有最优子结构性质</h4><br>
-
-<h4 id="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"><a href="#2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"></a>2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的</h4><br>
-
-<br>
-
-<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> dynamicProgramming;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MaxCuboid</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> -<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入长方体的长宽高&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="comment">// 定义并输入三维数组</span></span><br><span class="line">        <span class="type">int</span>[][][] cuboid = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>][p + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= p; k++) &#123;</span><br><span class="line">                    cuboid[i][j][k] = scanner.nextInt();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 将三维的数组转成二维</span></span><br><span class="line">        <span class="type">int</span>[][] matrix = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= p; i++) &#123;</span><br><span class="line">            <span class="comment">// 置零</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= m; k++) Arrays.fill(matrix[k], <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= p; j++) &#123;</span><br><span class="line">                <span class="comment">// 压缩高度到一个面上</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= m; k++) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">1</span>; l &lt;= n; l++) &#123;</span><br><span class="line">                        matrix[k][l] += cuboid[k][l][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                max = Math.max(max, maxMatrix(matrix, m, n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;最大长方体是: &quot;</span> + max);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/5/3 20:12</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> flour 面，子矩阵</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> m 长</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n 宽</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 求最大子矩阵</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int max</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxMatrix</span><span class="params">(<span class="type">int</span>[][] flour, <span class="type">int</span> m, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="type">int</span>[] raw = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            Arrays.fill(raw, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">                    raw[k] += flour[j][k];</span><br><span class="line">                &#125;</span><br><span class="line">                max = Math.max(max, maxArray(raw, n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/5/3 20:12</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> raw 序列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n 序列长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 求最长子序列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int max</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxArray</span><span class="params">(<span class="type">int</span>[] raw, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                sum += raw[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = raw[i];</span><br><span class="line">            &#125;</span><br><span class="line">            max = Math.max(max, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="动态规划解题步骤："><a href="#动态规划解题步骤：" class="headerlink" title="动态规划解题步骤："></a>动态规划解题步骤：</h5><p>（1）、划分子问题， 找到子问题的边界。</p>
-<p>（2）、构建状态转移方程（分析）。列优化函数的递推方程和边界条件</p>
-<p>（3）、存储状态的值求解（填表）。自底向上计算，设计备忘录 (表格）</p>
-<p>这个问题是在最大矩阵和上的深入，扩展到了三维空间，理解上加深了难度，但按照最大矩阵和的做法一步一步的实现，最终也是能成功实现。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单一职责原则SRP</title>
-    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
-    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的总结。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="一、单一职责原则（SRP）"><a href="#一、单一职责原则（SRP）" class="headerlink" title="一、单一职责原则（SRP）"></a>一、单一职责原则（SRP）</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
-<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
-<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
-
-<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
-<p>在上面例子的基础上修改</p>
-<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
-
-<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
-<h3 id="反面事例：代码合并"><a href="#反面事例：代码合并" class="headerlink" title="反面事例：代码合并"></a>反面事例：代码合并</h3><p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
-<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开闭原则OCP</title>
-    <url>/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/</url>
-    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="二、开闭原则OCP"><a href="#二、开闭原则OCP" class="headerlink" title="二、开闭原则OCP"></a>二、开闭原则OCP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
-<p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
-<h3 id><a href="#" class="headerlink" title></a><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3><p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
-<p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
-<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
-
-<p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
-<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
@@ -3329,6 +3250,76 @@
       </tags>
   </entry>
   <entry>
+    <title>动态规划法解决最大长方体</title>
+    <url>/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/</url>
+    <content><![CDATA[<h2 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h2><h4 id="最大长方体"><a href="#最大长方体" class="headerlink" title="最大长方体"></a>最大长方体</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">一个长,宽,高分别是m,n,p的长方体被分割成m*n*p个小立方体。每个小立方体内含一个整数。</span><br><span class="line">试着设计一个算法，计算所给长方体的最大子长方体。子长方体的大小由它内部所含所有整数之和确定。</span><br><span class="line">约定：当该长方体所有元素均为负数时,输出最大子长方体为0。</span><br><span class="line">输入：</span><br><span class="line">  第一行3个正整数m,n,p，其中 1&lt;=m,n,p&lt;=50 接下来的m*n行中每行p个整数，表示小立方体中的数。</span><br><span class="line">输出：</span><br><span class="line">  计算出的最大子长方体的大小。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><h3 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h3><p>思想同最大子矩阵和，把三维的矩阵先转成二维，就变成了求最大子矩阵和的问题，再转成一维就成了求最大子段和的问题。</p>
+<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/image-20220505161024115.png" alt="image-20220505161024115">
+
+<p>例如图中被标记的两个小方块，假设这两个（1号和2号）构成了最大的长方体，那么加上3号时候，这个长方体的大小将会减小，</p>
+<p>可以近似将这三个小正方体抽象成  （1，2，3），其中最大的是（1，2），后者是前者的最大子段和，所以从高度上要找到一个最大的子段。</p>
+<p>接着考虑在忽略高度的情况下（假设确定了高度）,找一个面中最大的组合，问题完全等同于动态规划解决最大子矩阵和。</p>
+<br>
+
+<p>测试结果（测试样例来自网络）</p>
+<img src="/2022/05/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E4%BD%93/image-20220505161041232.png" alt="image-20220505161041232">
+
+<br>
+
+<h3 id="2️⃣适用动态规划法的原因"><a href="#2️⃣适用动态规划法的原因" class="headerlink" title="2️⃣适用动态规划法的原因"></a>2️⃣适用动态规划法的原因</h3><h4 id="1、问题满足最优性原理：具有最优子结构性质"><a href="#1、问题满足最优性原理：具有最优子结构性质" class="headerlink" title="1、问题满足最优性原理：具有最优子结构性质"></a>1、问题满足最优性原理：具有最优子结构性质</h4><br>
+
+<h4 id="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"><a href="#2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的" class="headerlink" title="2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的"></a>2、问题可以分解到若干个规模较小的相同问题，且每个问题之间不是独立的</h4><br>
+
+<br>
+
+<h3 id="3️⃣完整代码"><a href="#3️⃣完整代码" class="headerlink" title="3️⃣完整代码"></a>3️⃣完整代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> dynamicProgramming;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11468</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MaxCuboid</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> -<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入长方体的长宽高&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="comment">// 定义并输入三维数组</span></span><br><span class="line">        <span class="type">int</span>[][][] cuboid = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>][p + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= p; k++) &#123;</span><br><span class="line">                    cuboid[i][j][k] = scanner.nextInt();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 将三维的数组转成二维</span></span><br><span class="line">        <span class="type">int</span>[][] matrix = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= p; i++) &#123;</span><br><span class="line">            <span class="comment">// 置零</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= m; k++) Arrays.fill(matrix[k], <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= p; j++) &#123;</span><br><span class="line">                <span class="comment">// 压缩高度到一个面上</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= m; k++) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">1</span>; l &lt;= n; l++) &#123;</span><br><span class="line">                        matrix[k][l] += cuboid[k][l][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                max = Math.max(max, maxMatrix(matrix, m, n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;最大长方体是: &quot;</span> + max);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/5/3 20:12</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> flour 面，子矩阵</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> m 长</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n 宽</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 求最大子矩阵</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int max</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxMatrix</span><span class="params">(<span class="type">int</span>[][] flour, <span class="type">int</span> m, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="type">int</span>[] raw = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            Arrays.fill(raw, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">                    raw[k] += flour[j][k];</span><br><span class="line">                &#125;</span><br><span class="line">                max = Math.max(max, maxArray(raw, n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> xth</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/5/3 20:12</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> raw 序列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n 序列长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 求最长子序列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int max</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">maxArray</span><span class="params">(<span class="type">int</span>[] raw, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> INF;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                sum += raw[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = raw[i];</span><br><span class="line">            &#125;</span><br><span class="line">            max = Math.max(max, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="总结与讨论"><a href="#总结与讨论" class="headerlink" title="总结与讨论"></a>总结与讨论</h2><h5 id="动态规划解题步骤："><a href="#动态规划解题步骤：" class="headerlink" title="动态规划解题步骤："></a>动态规划解题步骤：</h5><p>（1）、划分子问题， 找到子问题的边界。</p>
+<p>（2）、构建状态转移方程（分析）。列优化函数的递推方程和边界条件</p>
+<p>（3）、存储状态的值求解（填表）。自底向上计算，设计备忘录 (表格）</p>
+<p>这个问题是在最大矩阵和上的深入，扩展到了三维空间，理解上加深了难度，但按照最大矩阵和的做法一步一步的实现，最终也是能成功实现。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单一职责原则SRP</title>
+    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
+    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的总结。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="一、单一职责原则（SRP）"><a href="#一、单一职责原则（SRP）" class="headerlink" title="一、单一职责原则（SRP）"></a>一、单一职责原则（SRP）</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
+<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
+<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
+
+<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
+<p>在上面例子的基础上修改</p>
+<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
+
+<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
+<h3 id="反面事例：代码合并"><a href="#反面事例：代码合并" class="headerlink" title="反面事例：代码合并"></a>反面事例：代码合并</h3><p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
+<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回溯法解决最小重量机器设计问题</title>
     <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<br>
@@ -3359,6 +3350,49 @@
       </categories>
       <tags>
         <tag>回溯法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开闭原则OCP</title>
+    <url>/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="二、开闭原则OCP"><a href="#二、开闭原则OCP" class="headerlink" title="二、开闭原则OCP"></a>二、开闭原则OCP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
+<p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
+<h3 id><a href="#" class="headerlink" title></a><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3><p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
+<p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
+<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
+
+<p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
+<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接口隔离原则ISP</title>
+    <url>/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="四、接口隔离原则ISP"><a href="#四、接口隔离原则ISP" class="headerlink" title="四、接口隔离原则ISP"></a>四、接口隔离原则ISP</h2><img src="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/image-20220623152044370.png" alt="image-20220623152044370">
+
+<p>在图10.1所描绘的应用中，有多个用户需要操作OPS类。现在，我 们假设这里的User1只需要使用op1,User2只需要使用op2,User3只需要 使用op3。 在这种情况下，如果OPS类是用Java编程语言编写的，那么很明 显，User1虽然不需要调用op2、op3，但在源代码层次上也与它们形成 依赖关系。这种依赖意味着我们对OPS代码中op2所做的任何修改，即 使不会影响到User1的功能，也会导致它需要被重新编译和部署。 这个问题可以通过将不同的操作隔离成接口来解决，具体如图 10.2所示。 同样，我们也假设这个例子是用Java这种静态类型语言来实现 的，那么现在User1的源代码会依赖于U1Ops和op1，但不会依赖于 OPS。这样一来，我们之后对OPS做的修改只要不影响到User1的功能， 就不需要重新编译和部署User1了。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
@@ -3456,33 +3490,6 @@
       </tags>
   </entry>
   <entry>
-    <title>软件项目管理认识与实践总结</title>
-    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="软件项目管理认识与实践总结"><a href="#软件项目管理认识与实践总结" class="headerlink" title="软件项目管理认识与实践总结"></a>软件项目管理认识与实践总结</h2><p>衡先焘2020010661</p>
-<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
-<ol>
-<li><p>何为项目管理？</p>
-<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
-</li>
-<li><p>如何使用先进的项目管理工具</p>
-<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
-</li>
-<li><p>团队协作的收获与感想</p>
-<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
-</li>
-</ol>
-<p>​		</p>
-<p>　　最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
-]]></content>
-      <categories>
-        <category>课程论文</category>
-      </categories>
-      <tags>
-        <tag>项目管理</tag>
-        <tag>课程总结</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ch01_ 跨交换机实现VLAN</title>
     <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
     <content><![CDATA[<table>
@@ -3535,12 +3542,47 @@
       </tags>
   </entry>
   <entry>
+    <title>软件项目管理认识与实践总结</title>
+    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="软件项目管理认识与实践总结"><a href="#软件项目管理认识与实践总结" class="headerlink" title="软件项目管理认识与实践总结"></a>软件项目管理认识与实践总结</h2><p>衡先焘2020010661</p>
+<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
+<ol>
+<li><p>何为项目管理？</p>
+<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
+</li>
+<li><p>如何使用先进的项目管理工具</p>
+<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
+</li>
+<li><p>团队协作的收获与感想</p>
+<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
+</li>
+</ol>
+<p>​		</p>
+<p>　　最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
+]]></content>
+      <categories>
+        <category>课程论文</category>
+      </categories>
+      <tags>
+        <tag>项目管理</tag>
+        <tag>课程总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>里氏替换原则LSP</title>
     <url>/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/</url>
     <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
 <p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="二、里氏替换原则LSP"><a href="#二、里氏替换原则LSP" class="headerlink" title="二、里氏替换原则LSP"></a>二、里氏替换原则LSP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3>]]></content>
+<h2 id="三、里氏替换原则LSP"><a href="#三、里氏替换原则LSP" class="headerlink" title="三、里氏替换原则LSP"></a>三、里氏替换原则LSP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
+<h3 id="举例一"><a href="#举例一" class="headerlink" title="举例一"></a>举例一</h3><p>假设我们有一个License类，其结构如图9.1所示。该类中有一个 名为calcFee（）的方法，该方法将由Billing应用程序来调用。而 License类有两个“子类型”:PersonalLicense与BusinessLicense， 这两个类会用不同的算法来计算授权费用。</p>
+<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151618648.png" alt="image-20220623151618648">
+
+<p>上述设计是符合LSP原则的，因为Billing应用程序的行为并不依 赖于其使用的任何一个衍生类。也就是说，这两个衍生类的对象都是 可以用来替换License类对象的。</p>
+<h3 id="举例二"><a href="#举例二" class="headerlink" title="举例二"></a>举例二</h3><p>正方形&#x2F;长方形问题是一个著名（或者说臭名远扬）的违反LSP的 设计案例（该问题的结构如图9.2所示）。</p>
+<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151711133.png" alt="image-20220623151711133">
+
+<p>在这个案例中，Square类并不是Rectangle类的子类型，因为 Rectangle类的高和宽可以分别修改，而Square类的高和宽则必须一同 修改。由于User类始终认为自己在操作Rectangle类，因此会带来一些 混淆。例如在下面的代码中： Rectangle r &#x3D; … r.setW（5）； r.setH（2）； assert（r.area（）&#x3D;&#x3D; 10）； 很显然，如果上述代码在…处返回的是Square类，则最后的这个 assert是不会成立的。 如果想要防范这种违反LSP的行为，唯一的办法就是在User类中增 加用于区分Rectangle和Square的检测逻辑（例如增加if语句）。但这 样一来，User类的行为又将依赖于它所使用的类，这两个类就不能互 相替换了。</p>
+]]></content>
       <categories>
         <category>软件开发设计原则</category>
       </categories>
