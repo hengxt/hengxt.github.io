@@ -128,6 +128,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Composition API实战</title>
+    <url>/2022/06/13/Composition%20API%E5%AE%9E%E6%88%98/</url>
+    <content><![CDATA[<p>这是看完B站vue3视频后的总结</p>
+<p><a class="link" href="https://www.bilibili.com/video/BV1SZ4y157m8?vd_source=edb513392f7aebe4a605451e200149b4">https://www.bilibili.com/video/BV1SZ4y157m8?vd_source=edb513392f7aebe4a605451e200149b4<i class="fas fa-external-link-alt"></i></a></p>
+<img src="/2022/06/13/Composition%20API%E5%AE%9E%E6%88%98/image-20220613221556510.png" alt="image-20220613221556510">
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot; @mousedown=&quot;mouseDown&quot;&gt;</span><br><span class="line">    &lt;h1&gt;ToDoList&lt;/h1&gt;</span><br><span class="line">    &lt;h3&gt;共有&lt;span class=&quot;text-primary&quot;&gt;&#123;&#123; lists.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">      个任务，其中&lt;span class=&quot;text-success&quot;&gt;&#123;&#123; finished.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">      项已完成&lt;/h3&gt;</span><br><span class="line">    &lt;h3&gt;未完成的列表&lt;/h3&gt;</span><br><span class="line">    &lt;ul class=&quot;list-group&quot;&gt;</span><br><span class="line">      &lt;template v-for=&quot;(item, index) in lists&quot;&gt;</span><br><span class="line">        &lt;li</span><br><span class="line">            v-if=&quot;!item.checked&quot;</span><br><span class="line">            :key=&quot;index&quot;</span><br><span class="line">            class=&quot;list-group-item d-flex justify-content-between&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;div class=&quot;form-group form-check mb-0&quot;&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">                :id=&quot;&#x27;item-&#x27; + index&quot;</span><br><span class="line">                v-model=&quot;item.checked&quot;</span><br><span class="line">                class=&quot;form-check-input&quot;</span><br><span class="line">                type=&quot;checkbox&quot;</span><br><span class="line">                @click=&quot;() =&gt; (item.checked = ! item.checked)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">            &lt;label</span><br><span class="line">                v-if=&quot;!item.isEdit&quot;</span><br><span class="line">                class=&quot;form-check-label&quot;</span><br><span class="line">                @dblclick=&quot;showEdit(item, index)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;&#123; item.name &#125;&#125;</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">            &lt;label v-else :for=&quot;&#x27;item-&#x27; + index&quot; class=&quot;form-check-label&quot;&gt;</span><br><span class="line">              &lt;input ref=&quot;myInput&quot; v-model=&quot;editValue&quot; type=&quot;text&quot;&gt;</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">          &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;</span><br><span class="line">                  @click=&quot;remove(index)&quot;</span><br><span class="line">          &gt;</span><br><span class="line">            &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span><br><span class="line">          &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;h3&gt;已完成的列表&lt;/h3&gt;</span><br><span class="line">    &lt;ul class=&quot;list-group&quot;&gt;</span><br><span class="line">      &lt;li</span><br><span class="line">          v-for=&quot;(item, index) in finished&quot;</span><br><span class="line">          :key=&quot;&#x27;finished-&#x27;+index&quot;</span><br><span class="line">          class=&quot;list-group-item&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;div class=&quot;form-group form-check&quot;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">              :id=&quot;&#x27;finished-&#x27; + index&quot;</span><br><span class="line">              v-model=&quot;item.checked&quot;</span><br><span class="line">              class=&quot;form-check-input&quot;</span><br><span class="line">              disabled</span><br><span class="line">              type=&quot;checkbox&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;label :for=&quot;&#x27;finished-&#x27; + index&quot; class=&quot;form-check-label&quot;&gt;</span><br><span class="line">            &#123;&#123; item.name &#125;&#125;</span><br><span class="line">          &lt;/label&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h3&gt;添加新的Task&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;add&quot;&gt;添加&lt;/label&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">          id=&quot;add&quot;</span><br><span class="line">          v-model=&quot;value&quot;</span><br><span class="line">          class=&quot;form-control&quot;</span><br><span class="line">          placeholder=&quot;添加新的Task&quot;</span><br><span class="line">          type=&quot;text&quot;</span><br><span class="line">          @keydown.enter=&quot;add&quot;</span><br><span class="line">      &gt;</span><br><span class="line">      &lt;button</span><br><span class="line">          class=&quot;btn btn-primary btn-lg btn-block&quot;</span><br><span class="line">          type=&quot;button&quot; @click=&quot;add()&quot;&gt;</span><br><span class="line">        Block level button</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;ref, reactive, toRefs, computed, onUpdated&#125; from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HelloWorld&#x27;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String</span><br><span class="line">  &#125;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const myInput = ref(null);</span><br><span class="line"></span><br><span class="line">    let editIndex = 0;</span><br><span class="line">    //1.加入checkbox -&gt; checked</span><br><span class="line">    //2.统计哪些 -&gt; checked -&gt; finish列表</span><br><span class="line">    //3.add添加item -&gt; item数据结构 -&gt; name,checked,isEdit</span><br><span class="line">    const add = () =&gt; &#123;</span><br><span class="line">      state.lists.push(&#123;</span><br><span class="line">        name: state.value,</span><br><span class="line">        checked: false,</span><br><span class="line">        isEdit: false</span><br><span class="line">      &#125;)</span><br><span class="line">      state.value = &#x27;&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">    //4.双击进行编辑</span><br><span class="line">    const showEdit = (item, index) =&gt; &#123;</span><br><span class="line">      editIndex = index;</span><br><span class="line">      item.isEdit = true;</span><br><span class="line">      state.editValue = item.name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const mouseDown = (e) =&gt; &#123;</span><br><span class="line">      console.log(e.target)</span><br><span class="line">      if (myInput.value &amp;&amp; !e.target.contains(myInput.value[0])) &#123;</span><br><span class="line">        state.lists[editIndex] = &#123;</span><br><span class="line">          name: state.editValue,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    //5.删除功能 -&gt; 删除特定index的元素 You,a few seconds</span><br><span class="line">    const remove = (index) =&gt; &#123;</span><br><span class="line">      state.lists.splice(index, 1)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const state = reactive(&#123;</span><br><span class="line">      value: &quot;&quot;,</span><br><span class="line">      editValue: &quot;&quot;,</span><br><span class="line">      lists: [</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;1&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;2&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;3&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      finished: computed(() =&gt;</span><br><span class="line">          state.lists.filter((item) =&gt; item.checked === true)</span><br><span class="line">      ),</span><br><span class="line">      myInput,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    onUpdated(() =&gt; &#123;</span><br><span class="line">      console.log(myInput.value)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      ...toRefs(state),</span><br><span class="line">      add,</span><br><span class="line">      showEdit,</span><br><span class="line">      mouseDown,</span><br><span class="line">      remove</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>keras各个组件</title>
     <url>/2022/07/23/keras%E5%90%84%E4%B8%AA%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<h2 id="keras">keras</h2>
@@ -211,21 +226,6 @@
       </categories>
       <tags>
         <tag>keras</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Composition API实战</title>
-    <url>/2022/06/13/Composition%20API%E5%AE%9E%E6%88%98/</url>
-    <content><![CDATA[<p>这是看完B站vue3视频后的总结</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1SZ4y157m8?vd_source=edb513392f7aebe4a605451e200149b4">https://www.bilibili.com/video/BV1SZ4y157m8?vd_source=edb513392f7aebe4a605451e200149b4<i class="fas fa-external-link-alt"></i></a></p>
-<img src="/2022/06/13/Composition%20API%E5%AE%9E%E6%88%98/image-20220613221556510.png" alt="image-20220613221556510">
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot; @mousedown=&quot;mouseDown&quot;&gt;</span><br><span class="line">    &lt;h1&gt;ToDoList&lt;/h1&gt;</span><br><span class="line">    &lt;h3&gt;共有&lt;span class=&quot;text-primary&quot;&gt;&#123;&#123; lists.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">      个任务，其中&lt;span class=&quot;text-success&quot;&gt;&#123;&#123; finished.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">      项已完成&lt;/h3&gt;</span><br><span class="line">    &lt;h3&gt;未完成的列表&lt;/h3&gt;</span><br><span class="line">    &lt;ul class=&quot;list-group&quot;&gt;</span><br><span class="line">      &lt;template v-for=&quot;(item, index) in lists&quot;&gt;</span><br><span class="line">        &lt;li</span><br><span class="line">            v-if=&quot;!item.checked&quot;</span><br><span class="line">            :key=&quot;index&quot;</span><br><span class="line">            class=&quot;list-group-item d-flex justify-content-between&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;div class=&quot;form-group form-check mb-0&quot;&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">                :id=&quot;&#x27;item-&#x27; + index&quot;</span><br><span class="line">                v-model=&quot;item.checked&quot;</span><br><span class="line">                class=&quot;form-check-input&quot;</span><br><span class="line">                type=&quot;checkbox&quot;</span><br><span class="line">                @click=&quot;() =&gt; (item.checked = ! item.checked)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">            &lt;label</span><br><span class="line">                v-if=&quot;!item.isEdit&quot;</span><br><span class="line">                class=&quot;form-check-label&quot;</span><br><span class="line">                @dblclick=&quot;showEdit(item, index)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;&#123; item.name &#125;&#125;</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">            &lt;label v-else :for=&quot;&#x27;item-&#x27; + index&quot; class=&quot;form-check-label&quot;&gt;</span><br><span class="line">              &lt;input ref=&quot;myInput&quot; v-model=&quot;editValue&quot; type=&quot;text&quot;&gt;</span><br><span class="line">            &lt;/label&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">          &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;</span><br><span class="line">                  @click=&quot;remove(index)&quot;</span><br><span class="line">          &gt;</span><br><span class="line">            &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span><br><span class="line">          &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;h3&gt;已完成的列表&lt;/h3&gt;</span><br><span class="line">    &lt;ul class=&quot;list-group&quot;&gt;</span><br><span class="line">      &lt;li</span><br><span class="line">          v-for=&quot;(item, index) in finished&quot;</span><br><span class="line">          :key=&quot;&#x27;finished-&#x27;+index&quot;</span><br><span class="line">          class=&quot;list-group-item&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;div class=&quot;form-group form-check&quot;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">              :id=&quot;&#x27;finished-&#x27; + index&quot;</span><br><span class="line">              v-model=&quot;item.checked&quot;</span><br><span class="line">              class=&quot;form-check-input&quot;</span><br><span class="line">              disabled</span><br><span class="line">              type=&quot;checkbox&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;label :for=&quot;&#x27;finished-&#x27; + index&quot; class=&quot;form-check-label&quot;&gt;</span><br><span class="line">            &#123;&#123; item.name &#125;&#125;</span><br><span class="line">          &lt;/label&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h3&gt;添加新的Task&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;add&quot;&gt;添加&lt;/label&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">          id=&quot;add&quot;</span><br><span class="line">          v-model=&quot;value&quot;</span><br><span class="line">          class=&quot;form-control&quot;</span><br><span class="line">          placeholder=&quot;添加新的Task&quot;</span><br><span class="line">          type=&quot;text&quot;</span><br><span class="line">          @keydown.enter=&quot;add&quot;</span><br><span class="line">      &gt;</span><br><span class="line">      &lt;button</span><br><span class="line">          class=&quot;btn btn-primary btn-lg btn-block&quot;</span><br><span class="line">          type=&quot;button&quot; @click=&quot;add()&quot;&gt;</span><br><span class="line">        Block level button</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;ref, reactive, toRefs, computed, onUpdated&#125; from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HelloWorld&#x27;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String</span><br><span class="line">  &#125;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const myInput = ref(null);</span><br><span class="line"></span><br><span class="line">    let editIndex = 0;</span><br><span class="line">    //1.加入checkbox -&gt; checked</span><br><span class="line">    //2.统计哪些 -&gt; checked -&gt; finish列表</span><br><span class="line">    //3.add添加item -&gt; item数据结构 -&gt; name,checked,isEdit</span><br><span class="line">    const add = () =&gt; &#123;</span><br><span class="line">      state.lists.push(&#123;</span><br><span class="line">        name: state.value,</span><br><span class="line">        checked: false,</span><br><span class="line">        isEdit: false</span><br><span class="line">      &#125;)</span><br><span class="line">      state.value = &#x27;&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">    //4.双击进行编辑</span><br><span class="line">    const showEdit = (item, index) =&gt; &#123;</span><br><span class="line">      editIndex = index;</span><br><span class="line">      item.isEdit = true;</span><br><span class="line">      state.editValue = item.name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const mouseDown = (e) =&gt; &#123;</span><br><span class="line">      console.log(e.target)</span><br><span class="line">      if (myInput.value &amp;&amp; !e.target.contains(myInput.value[0])) &#123;</span><br><span class="line">        state.lists[editIndex] = &#123;</span><br><span class="line">          name: state.editValue,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    //5.删除功能 -&gt; 删除特定index的元素 You,a few seconds</span><br><span class="line">    const remove = (index) =&gt; &#123;</span><br><span class="line">      state.lists.splice(index, 1)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const state = reactive(&#123;</span><br><span class="line">      value: &quot;&quot;,</span><br><span class="line">      editValue: &quot;&quot;,</span><br><span class="line">      lists: [</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;1&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;2&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          name: &#x27;3&#x27;,</span><br><span class="line">          checked: false,</span><br><span class="line">          isEdit: false</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      finished: computed(() =&gt;</span><br><span class="line">          state.lists.filter((item) =&gt; item.checked === true)</span><br><span class="line">      ),</span><br><span class="line">      myInput,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    onUpdated(() =&gt; &#123;</span><br><span class="line">      console.log(myInput.value)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      ...toRefs(state),</span><br><span class="line">      add,</span><br><span class="line">      showEdit,</span><br><span class="line">      mouseDown,</span><br><span class="line">      remove</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>vue3</tag>
       </tags>
   </entry>
   <entry>
@@ -2727,6 +2727,37 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
+    <title>单一职责原则SRP</title>
+    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
+    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的总结。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="一、单一职责原则（SRP）">一、单一职责原则（SRP）</h2>
+<h3 id="定义概念">定义概念</h3>
+<p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
+<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
+<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
+<h3 id="举例">举例</h3>
+<p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
+<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
+<p>在上面例子的基础上修改</p>
+<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
+<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
+<h3 id="反面事例：代码合并">反面事例：代码合并</h3>
+<p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
+<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
+<h3 id="解决方案">解决方案</h3>
+<p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Enjoy开发文档</title>
     <url>/2022/04/23/%E5%8D%93%E9%9F%B3%E6%89%93%E5%8D%A1%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<img src="/2022/04/23/%E5%8D%93%E9%9F%B3%E6%89%93%E5%8D%A1%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/clip_image002-16506817747051.png" alt="img"> 
@@ -3424,62 +3455,6 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
-    <title>单一职责原则SRP</title>
-    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
-    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的总结。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="一、单一职责原则（SRP）">一、单一职责原则（SRP）</h2>
-<h3 id="定义概念">定义概念</h3>
-<p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
-<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
-<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
-<h3 id="举例">举例</h3>
-<p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
-<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
-<p>在上面例子的基础上修改</p>
-<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
-<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
-<h3 id="反面事例：代码合并">反面事例：代码合并</h3>
-<p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
-<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
-<h3 id="解决方案">解决方案</h3>
-<p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开闭原则OCP</title>
-    <url>/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/</url>
-    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="二、开闭原则OCP">二、开闭原则OCP</h2>
-<h3 id="定义概念-2">定义概念</h3>
-<p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
-<p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
-<h3 id="举例-2">举例</h3>
-<p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
-<h3 id="img-src-开闭原则OCP-image-20220622180414498-png-alt-image-20220622180414498"><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3>
-<p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
-<p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
-<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
-<p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
-<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>回溯法解决最小重量机器设计问题</title>
     <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<br>
@@ -3519,6 +3494,31 @@ hexo -s</p>
       </categories>
       <tags>
         <tag>回溯法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开闭原则OCP</title>
+    <url>/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="二、开闭原则OCP">二、开闭原则OCP</h2>
+<h3 id="定义概念-2">定义概念</h3>
+<p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
+<p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
+<h3 id="举例-2">举例</h3>
+<p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
+<h3 id="img-src-开闭原则OCP-image-20220622180414498-png-alt-image-20220622180414498"><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3>
+<p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
+<p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
+<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
+<p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
+<img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
