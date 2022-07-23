@@ -246,19 +246,20 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="大学生-活便签"><a href="#大学生-活便签" class="headerlink" title="大学生~活便签"></a>大学生~活便签</h2><p>小组成员：衡先焘，李薇，李晨佳</p>
+            <h2 id="大学生-活便签">大学生~活便签</h2>
+<p>小组成员：衡先焘，李薇，李晨佳</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://hengxt.github.io/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/">点击此处跳转网页文档<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="1、概要说明"><a href="#1、概要说明" class="headerlink" title="1、概要说明"></a>1、概要说明</h3><p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。<br>目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。<br>前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
+<h3 id="1、概要说明">1、概要说明</h3>
+<p>背景：作为一名大学生，在经过两年的大学校园生活后，我们经常感到时间总是在不经意间溜走。一次次的点开微信转账、手机银行账单来查看收支；通过学校的公众号来确认课程时间；总是忘记自己的待办事项……这些看似简单的事件却使我们的时间在不经意间浪费。基于以上背景，我们小组意在开发一个app，来帮助大学生通过它提高效率，节省时间，更好的享受大学生活。目标：此app将会包含待办记录、账本、课程表、日记、日历、树洞等功能。通过便签的方式实现方便简洁直观的效果，实现方便大学生活的目标。前景：以上功能虽有app已经实现，但此app面向大学生，功能的设计更符合学生的需求，且将多种功能集于一个app中，可以更高效的提供服务。</p>
 <center class="half">
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204743200.png" alt="image-20220416204743200" width="140">
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204830583.png" alt="image-20220416204830583" width="140">
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204851139.png" alt="image-20220416204851139" width="140">
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416204908872.png" alt="image-20220416204908872" width="140">
 </center>
-
 <p>​               (原型图来自墨刀Mociktt  <a class="link" target="_blank" rel="noopener" href="https://modao.cc/app/LFrOoRg7ra2t9toI0i0jNs">https://modao.cc/app/LFrOoRg7ra2t9toI0i0jNs<i class="fas fa-external-link-alt"></i></a> 《每日记录APP——忆日记》 )</p>
-<h3 id="2、表结构及其关系"><a href="#2、表结构及其关系" class="headerlink" title="2、表结构及其关系"></a>2、表结构及其关系</h3><br>
-
+<h3 id="2、表结构及其关系">2、表结构及其关系</h3>
+<br>
 <p>数据库我们采用mysql，以下是5张关系型表，每个表对应一个大的功能块，待办，账单，日记，树洞，课表，除此之外，我们还会获取用户手机的存储，从而做到本地存储。</p>
  <table>
        <style>
@@ -334,7 +335,6 @@
       </tr>
     </table>
 <br>
-
  <table>
        <style>
             th,td{
@@ -415,10 +415,7 @@
         <td></td>
       </tr>
     </table>
-
-
 <br>
-
  <table>
        <style>
             th,td{
@@ -507,7 +504,6 @@
       </tr>
     </table>
 <br>
-
  <table>
        <style>
             th,td{
@@ -574,9 +570,7 @@
         <td></td>
       </tr>
     </table>
-
 <br>
-
  <table>
        <style>
             th,td{
@@ -657,29 +651,19 @@
         <td></td>
       </tr>
     </table>
-
 <br>
-
-
-
-<h3 id="3、业务流程图、时序图（按照人操作的维度）"><a href="#3、业务流程图、时序图（按照人操作的维度）" class="headerlink" title="3、业务流程图、时序图（按照人操作的维度）"></a>3、业务流程图、时序图（按照人操作的维度）</h3><br>
-
+<h3 id="3、业务流程图、时序图（按照人操作的维度）">3、业务流程图、时序图（按照人操作的维度）</h3>
+<br>
 <p>用户的操作也主要是集中在：待办，账单，日记，树洞，课表这五个板块</p>
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/用户操作流程图.png" alt="用户操作流程图" style="zoom:50%;">
-
-<h3 id="4、程序流程图、时序图（按照代码执行的维度）"><a href="#4、程序流程图、时序图（按照代码执行的维度）" class="headerlink" title="4、程序流程图、时序图（按照代码执行的维度）"></a>4、程序流程图、时序图（按照代码执行的维度）</h3><br>
-
+<h3 id="4、程序流程图、时序图（按照代码执行的维度）">4、程序流程图、时序图（按照代码执行的维度）</h3>
+<br>
 <p>待办，账单，日记，树洞，课表这五个功能点将会存在于三个界面，查看浏览界面，添加页面，管理（个人）页面。</p>
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/首页-16501064756811.png" alt="首页-16501064756811">
-
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/添加页面-16501064812702.png" alt="添加页面-16501064812702">
-
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/我的页面.png" alt="我的页面">
-
-
-
-<h3 id="5、接口约定（对外公开的方法、api-接口等）"><a href="#5、接口约定（对外公开的方法、api-接口等）" class="headerlink" title="5、接口约定（对外公开的方法、api 接口等）"></a>5、接口约定（对外公开的方法、api 接口等）</h3><br>
-
+<h3 id="5、接口约定（对外公开的方法、api-接口等）">5、接口约定（对外公开的方法、api 接口等）</h3>
+<br>
 <p>后端可以考虑采用java系列，springboot是易于实现且十分成熟的后端服务框架，服务器采用 本地tomcat + 阿里云的组合。</p>
  <table>
        <style>
@@ -721,19 +705,16 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
+         	"code": 200,
+         	"msg": "成功获取",
+         	"data": {
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         	}
          }</pre></span></td>
       </tr>
     </table>
-
-
 <br>
-
  <table>
        <style>
             th,td{
@@ -774,17 +755,16 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
+         	"code": 200,
+         	"msg": "成功获取",
+         	"data": {
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         	}
          }</pre></span></td>
       </tr>
     </table>
 <br>
-
  <table>
        <style>
             th,td{
@@ -825,18 +805,16 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-             }
+         	"code": 200,
+         	"msg": "成功获取",
+         	"data": {
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         	}
          }</pre></span></td>
       </tr>
     </table>
-
 <br>
-
  <table>
        <style>
             th,td{
@@ -877,22 +855,20 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ],[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ]...
-             }
+         	"code": 200,
+         	"msg": "成功获取",
+         	"data": {[
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         		],[
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         		]...
+         	}
          }</pre></span></td>
       </tr>
     </table>
-
 <br>
-
  <table>
        <style>
             th,td{
@@ -933,22 +909,20 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功获取",
-             "data": {[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ],[
-                 "name": "第一个日记",
-                 "date": "日记的时间"
-                 ]...
-             }
+         	"code": 200,
+         	"msg": "成功获取",
+         	"data": {[
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         		],[
+         		"name": "第一个日记",
+         		"date": "日记的时间"
+         		]...
+         	}
          }</pre></span></td>
       </tr>
     </table>
-
 <br>
-
  <table>
        <style>
             th,td{
@@ -1013,15 +987,13 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
+         	"code": 200,
+         	"msg": "成功创建",
+         	"data": {}
          }</pre></span></td>
       </tr>
     </table>
-
 <br>
-
 <table>
        <style>
             th,td{
@@ -1068,15 +1040,13 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
+         	"code": 200,
+         	"msg": "成功创建",
+         	"data": {}
          }</pre></span></td>
       </tr>
     </table>
-
 <br>
-
 <table>
        <style>
             th,td{
@@ -1135,15 +1105,13 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
+         	"code": 200,
+         	"msg": "成功创建",
+         	"data": {}
          }</pre></span></td>
       </tr>
     </table>
-
 <br>
-
 <table>
        <style>
             th,td{
@@ -1190,14 +1158,13 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
+         	"code": 200,
+         	"msg": "成功创建",
+         	"data": {}
          }</pre></span></td>
       </tr>
     </table>
 <br>
-
 <table>
        <style>
             th,td{
@@ -1256,52 +1223,61 @@
       <tr>
         <td colspan="6"><span><pre>         
         {
-             "code": 200,
-             "msg": "成功创建",
-             "data": {}
+         	"code": 200,
+         	"msg": "成功创建",
+         	"data": {}
          }</pre></span></td>
       </tr>
     </table>
 <br>
-
-
-<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"><a href="#6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）" class="headerlink" title="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）"></a>6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3><br>
-
+<h3 id="6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）">6、其他（伪代码、类图、思维导图、泳道流程图，对安全、性能、边界情况、性价比的思考）</h3>
+<br>
 <p>代码方面严格遵循统一的驼峰命名，主要的实体类从数据库的名字来，代码模块化，例如</p>
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416192701364.png" alt="image-20220416192701364">
-
 <img src="/2022/04/14/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE/image-20220416192830943.png" alt="image-20220416192830943">
-
-
-
 <p>对于安全来说，我们考虑文件会存在于本地，树洞功能以网络（springboot的java项目）获取数据，总体来说，只要装载app的设备不丢，数据就不会丢。</p>
-<h3 id="7、附注（附加的解释和说明、引用资料）"><a href="#7、附注（附加的解释和说明、引用资料）" class="headerlink" title="7、附注（附加的解释和说明、引用资料）"></a>7、附注（附加的解释和说明、引用资料）</h3><br>
-
+<h3 id="7、附注（附加的解释和说明、引用资料）">7、附注（附加的解释和说明、引用资料）</h3>
+<br>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">引用资料（以github为基础）</span><br><span class="line">https://hndeveloper.github.io/2017/github-android-ui.html</span><br><span class="line"></span><br><span class="line">https://www.runoob.com/w3cnote/android-tutorial-intro.html//入门教程</span><br><span class="line">https://github.com/fashare2015/HoverView//底部抽屉</span><br><span class="line">https://github.com/henrytao-me/smooth-app-bar-layout//视觉布局</span><br><span class="line">https://github.com/arcadefire/nice-spinner//下拉选项</span><br><span class="line">https://github.com/google/flexbox-layout//页面布局</span><br><span class="line">https://github.com/kizitonwose/colorpreference//颜色</span><br><span class="line">https://github.com/ImangazalievM/CircleMenu//圆形菜单按钮</span><br><span class="line">https://github.com/ssseasonnn/PracticalRecyclerView//实用循环浏览</span><br><span class="line">https://github.com/yanbober/SlideLayout//侧滑删除</span><br><span class="line">https://github.com/Scalified/fab//浮动操作按钮设计</span><br><span class="line">https://github.com/SundeepK/CompactCalendarView//日历</span><br><span class="line">https://github.com/skydoves/ElasticViews//点击动画</span><br><span class="line">https://github.com/Chanven/CommonPullToRefresh//下拉刷新</span><br><span class="line">https://github.com/daimajia/NumberProgressBar//进度条</span><br><span class="line">implementation &#x27;com.github.imangazalievm:circlemenu:3.0.0&#x27;//圆形菜单按钮依赖项代码</span><br><span class="line">implementation &quot;com.github.skydoves:elasticviews:2.1.0&quot;//点击动画依赖项代码</span><br><span class="line">        </span><br><span class="line">Material design icons ★29344 - 谷歌官方图标</span><br><span class="line">material-icon-lib ★1917 - 1500个MD风格矢量图标</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-<h3 id="8、分工情况"><a href="#8、分工情况" class="headerlink" title="8、分工情况"></a>8、分工情况</h3><h5 id="大方向："><a href="#大方向：" class="headerlink" title="大方向："></a>大方向：</h5><ul>
-<li>​		衡先焘    ———— 首页</li>
-<li>​        李薇   —————  我的</li>
-<li>​        李晨佳 —————添加</li>
+<h3 id="8、分工情况">8、分工情况</h3>
+<h5 id="大方向：">大方向：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>​		衡先焘    ———— 首页</p>
+</li>
+<li class="lvl-2">
+<p>​        李薇   —————  我的</p>
+</li>
+<li class="lvl-2">
+<p>​        李晨佳 —————添加</p>
+</li>
 </ul>
-<h5 id="4-19-4-26"><a href="#4-19-4-26" class="headerlink" title="4.19 - 4.26"></a>4.19 - 4.26</h5><p>​						衡先焘 ‘首页‘页面整体设计</p>
+<h5 id="4-19-4-26">4.19 - 4.26</h5>
+<p>​						衡先焘 ‘首页‘页面整体设计</p>
 <p>​					    李薇  ‘我的’页面整体设计</p>
 <p>​						李晨佳  ‘添加’页面整体设计</p>
-<h5 id="4-27-5-4"><a href="#4-27-5-4" class="headerlink" title="4.27 - 5.4"></a>4.27 - 5.4</h5><p>​					    衡先焘 ’首页待办‘页面设计</p>
+<h5 id="4-27-5-4">4.27 - 5.4</h5>
+<p>​					    衡先焘 ’首页待办‘页面设计</p>
 <p>​				        李薇 ’我的待办‘页面设计</p>
 <p>​				        李晨佳  ’添加待办’页面设计</p>
-<h5 id="5-5-5-12"><a href="#5-5-5-12" class="headerlink" title="5.5 - 5.12"></a>5.5 - 5.12</h5><p>​				        衡先焘 ’首页日记，账本‘页面设计</p>
+<h5 id="5-5-5-12">5.5 - 5.12</h5>
+<p>​				        衡先焘 ’首页日记，账本‘页面设计</p>
 <p>​				        李薇 ’我的日记本，账本‘页面设计</p>
 <p>​				        李晨佳  ’添加日记，记账’页面设计</p>
-<h5 id="5-13-5-20"><a href="#5-13-5-20" class="headerlink" title="5.13 - 5.20"></a>5.13 - 5.20</h5><p>​						衡先焘 ’首页课表，树洞‘页面设计</p>
+<h5 id="5-13-5-20">5.13 - 5.20</h5>
+<p>​						衡先焘 ’首页课表，树洞‘页面设计</p>
 <p>​				        李薇 ’我的课表，树洞‘页面设计</p>
 <p>​				        李晨佳  ’添加课表，树洞’页面设计</p>
-<h5 id="5-21-5-28"><a href="#5-21-5-28" class="headerlink" title="5.21 - 5.28"></a>5.21 - 5.28</h5><p>​                        衡先焘 设计数据库</p>
-<p>​				        李薇，李晨佳   整合三个人的代码，底部导航栏的整理	</p>
-<h5 id="5-29-6-5"><a href="#5-29-6-5" class="headerlink" title="5.29 - 6.5"></a>5.29 - 6.5</h5><p>​                        衡先焘 对接数据库</p>
+<h5 id="5-21-5-28">5.21 - 5.28</h5>
+<p>​                        衡先焘 设计数据库</p>
+<p>​				        李薇，李晨佳   整合三个人的代码，底部导航栏的整理</p>
+<h5 id="5-29-6-5">5.29 - 6.5</h5>
+<p>​                        衡先焘 对接数据库</p>
 <p>​					    李薇，李晨佳  测试app，检测bug</p>
-<h5 id="6-6-6-11"><a href="#6-6-6-11" class="headerlink" title="6.6 - 6.11"></a>6.6 - 6.11</h5><p>​					    项目上线，后期维护。</p>
-<h3 id="9、项目的版本控制"><a href="#9、项目的版本控制" class="headerlink" title="9、项目的版本控制"></a>9、项目的版本控制</h3><table>
+<h5 id="6-6-6-11">6.6 - 6.11</h5>
+<p>​					    项目上线，后期维护。</p>
+<h3 id="9、项目的版本控制">9、项目的版本控制</h3>
+<table>
        <style>
             th,td{
                 text-align: left;
@@ -1343,12 +1319,6 @@
         <td></td>
       </tr>
     </table>
-
-
-
-
-
-
 
         </div>
 

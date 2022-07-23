@@ -261,7 +261,8 @@
 <th>掌握如何在交换机上划分基于端口的 VLAN、如何给 VLAN 内添加端口，理解跨交换机 之间 VLAN 的特点</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>实验设备</strong></td>
 <td>三层交换机 1 台 二层交换机 1 台 PC 6 台</td>
 </tr>
@@ -273,26 +274,27 @@
 <td></td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>实验原理及过程</p>
-<h3 id="一、原理："><a href="#一、原理：" class="headerlink" title="一、原理："></a>一、原理：</h3><p>​	VLAN（Virtual Local Area Network，虚拟局域网）是指在一个物理网段内，进行逻辑的 划分，划分成若干个虚拟局域网。</p>
-<h3 id="二、-过程"><a href="#二、-过程" class="headerlink" title="二、   过程"></a>二、   过程</h3><h5 id="1、按照文档搭建拓扑。"><a href="#1、按照文档搭建拓扑。" class="headerlink" title="1、按照文档搭建拓扑。"></a>1、按照文档搭建拓扑。</h5><img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg" alt="1">
-
-<h5 id="2、配置交换机"><a href="#2、配置交换机" class="headerlink" title="2、配置交换机"></a>2、配置交换机</h5><p>​	两台交换机配置类似，我在此举其中一个栗子。</p>
+<h3 id="一、原理：">一、原理：</h3>
+<p>​	VLAN（Virtual Local Area Network，虚拟局域网）是指在一个物理网段内，进行逻辑的 划分，划分成若干个虚拟局域网。</p>
+<h3 id="二、-过程">二、   过程</h3>
+<h5 id="1、按照文档搭建拓扑。">1、按照文档搭建拓扑。</h5>
+<img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg" alt="1">
+<h5 id="2、配置交换机">2、配置交换机</h5>
+<p>​	两台交换机配置类似，我在此举其中一个栗子。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 进入配置模式</span></span><br><span class="line">Switch&gt;enable  </span><br><span class="line">Switch<span class="meta">#config terminal  </span></span><br><span class="line"><span class="comment">// 配置vlan,‘vlan 10’如果不存在此vlan会创建</span></span><br><span class="line">Switch(config)<span class="meta">#vlan 10   </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#name VLAN10  </span></span><br><span class="line">Switch(config-vlan)<span class="meta">#exit  </span></span><br><span class="line"><span class="comment">// 把1-6这6个端口划分给vlan10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/1-6  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit</span></span><br><span class="line"><span class="comment">// 配置19-24为trunk口</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastEthernet 0/19-24  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access   </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode trunk  </span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#exit </span></span><br><span class="line"><span class="comment">// 检查配置情况</span></span><br><span class="line">Switch<span class="meta">#show vlan  	  </span></span><br><span class="line">VLAN     Name       Status    Ports  </span><br><span class="line">--------------------------------------------------------------  </span><br><span class="line">  <span class="number">1</span>    <span class="keyword">default</span>     active    Fa0/<span class="number">21</span>, Fa0/<span class="number">22</span>, Fa0/<span class="number">23</span>  </span><br><span class="line">                              Gig0/<span class="number">1</span> , Gig0/<span class="number">2</span>  </span><br><span class="line">  <span class="number">10</span>    VLAN10      active    Fa0/<span class="number">1</span>, Fa0/<span class="number">2</span>, Fa0/<span class="number">3</span>  </span><br><span class="line">                              Fa0/<span class="number">4</span> ,Fa0/<span class="number">5</span>, Fa0/<span class="number">6</span>  </span><br><span class="line">  <span class="number">20</span>    VLAN20      active    Fa0/<span class="number">7</span>, Fa0/<span class="number">8</span>, Fa0/<span class="number">9</span>, Fa0/<span class="number">10</span>  </span><br><span class="line">                              Fa0/<span class="number">11</span>, Fa0/<span class="number">12</span>, Fa0/<span class="number">19</span>, Fa0/<span class="number">20</span>  </span><br><span class="line">  <span class="number">30</span>    VLAN30      active    Fa0/<span class="number">13</span>, Fa0/<span class="number">14</span>, Fa0/<span class="number">15</span>  </span><br><span class="line">                              Fa0/<span class="number">16</span>, Fa0/<span class="number">17</span>, Fa0/<span class="number">18</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="3、配置PC"><a href="#3、配置PC" class="headerlink" title="3、配置PC"></a>3、配置PC</h5><p>修改IP</p>
+<h5 id="3、配置PC">3、配置PC</h5>
+<p>修改IP</p>
 <img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.png" alt="1">
-
-<h5 id="5、-ping测试"><a href="#5、-ping测试" class="headerlink" title="5、 ping测试"></a>5、 ping测试</h5><p>​		同VLAN10下ping,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.10.3&#x3D;&#x3D;</p>
+<h5 id="5、-ping测试">5、 ping测试</h5>
+<p>​		同VLAN10下ping,<mark>192.168.10.2</mark>ping<mark>192.168.10.3</mark></p>
 <img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg.png" alt="1.jpg">
-
-<p>不同VLAN下ping不通,&#x3D;&#x3D;192.168.10.2&#x3D;&#x3D;ping&#x3D;&#x3D;192.168.20.3&#x3D;&#x3D;</p>
+<p>不同VLAN下ping不通,<mark>192.168.10.2</mark>ping<mark>192.168.20.3</mark></p>
 <img src="/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/1.jpg-16501605614501.png" alt="1.jpg">
-
-
-
-<h3 id="实验结果或结论："><a href="#实验结果或结论：" class="headerlink" title="实验结果或结论："></a>实验结果或结论：</h3><p>Vlan技术是一种易于实现，划分清楚，高效的局域网划分技术。通过vlan的划分，熟悉并学会到了交换机的基本配置，也知道了如何配置trunk以及trunk是什么。</p>
+<h3 id="实验结果或结论：-2">实验结果或结论：</h3>
+<p>Vlan技术是一种易于实现，划分清楚，高效的局域网划分技术。通过vlan的划分，熟悉并学会到了交换机的基本配置，也知道了如何配置trunk以及trunk是什么。</p>
 
         </div>
 
@@ -566,7 +568,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-text">一、原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E8%BF%87%E7%A8%8B"><span class="nav-text">二、   过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8C%89%E7%85%A7%E6%96%87%E6%A1%A3%E6%90%AD%E5%BB%BA%E6%8B%93%E6%89%91%E3%80%82"><span class="nav-text">1、按照文档搭建拓扑。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AE%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-text">2、配置交换机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AEPC"><span class="nav-text">3、配置PC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81-ping%E6%B5%8B%E8%AF%95"><span class="nav-text">5、 ping测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E6%88%96%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="nav-text">实验结果或结论：</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-text">一、原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E8%BF%87%E7%A8%8B"><span class="nav-text">二、   过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8C%89%E7%85%A7%E6%96%87%E6%A1%A3%E6%90%AD%E5%BB%BA%E6%8B%93%E6%89%91%E3%80%82"><span class="nav-text">1、按照文档搭建拓扑。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AE%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-text">2、配置交换机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AEPC"><span class="nav-text">3、配置PC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81-ping%E6%B5%8B%E8%AF%95"><span class="nav-text">5、 ping测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E6%88%96%E7%BB%93%E8%AE%BA%EF%BC%9A-2"><span class="nav-text">实验结果或结论：</span></a></li></ol>
     </div>
 </div>
         </aside>

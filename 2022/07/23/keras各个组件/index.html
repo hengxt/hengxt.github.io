@@ -246,43 +246,80 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="keras"><a href="#keras" class="headerlink" title="keras"></a>keras</h2><p>[toc]</p>
-<h4 id="Dense层"><a href="#Dense层" class="headerlink" title="Dense层"></a>Dense层</h4><ul>
-<li>units: 正整数，输出空间维度。</li>
-<li>activation: 激活函数 (详见 activations)。 若不指定，则不使用激活函数 (即，「线性」激活: a(x) &#x3D; x)。</li>
-<li>use_bias: 布尔值，该层是否使用偏置向量。</li>
-<li>kernel_initializer: kernel 权值矩阵的初始化器 (详见 initializers)。</li>
-<li>bias_initializer: 偏置向量的初始化器 (see initializers).</li>
-<li>kernel_regularizer: 运用到 kernel 权值矩阵的正则化函数 (详见 regularizer)。</li>
-<li>bias_regularizer: 运用到偏置向的的正则化函数 (详见 regularizer)。</li>
-<li>activity_regularizer: 运用到层的输出的正则化函数 (它的 “activation”)。 (详见 regularizer)。</li>
-<li>kernel_constraint: 运用到 kernel 权值矩阵的约束函数 (详见 constraints)。</li>
-<li>bias_constraint: 运用到偏置向量的约束函数 (详见 constraints)。</li>
+            <h2 id="keras">keras</h2>
+<p>[toc]</p>
+<h4 id="Dense层">Dense层</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>units: 正整数，输出空间维度。</p>
+</li>
+<li class="lvl-2">
+<p>activation: 激活函数 (详见 activations)。 若不指定，则不使用激活函数 (即，「线性」激活: a(x) = x)。</p>
+</li>
+<li class="lvl-2">
+<p>use_bias: 布尔值，该层是否使用偏置向量。</p>
+</li>
+<li class="lvl-2">
+<p>kernel_initializer: kernel 权值矩阵的初始化器 (详见 initializers)。</p>
+</li>
+<li class="lvl-2">
+<p>bias_initializer: 偏置向量的初始化器 (see initializers).</p>
+</li>
+<li class="lvl-2">
+<p>kernel_regularizer: 运用到 kernel 权值矩阵的正则化函数 (详见 regularizer)。</p>
+</li>
+<li class="lvl-2">
+<p>bias_regularizer: 运用到偏置向的的正则化函数 (详见 regularizer)。</p>
+</li>
+<li class="lvl-2">
+<p>activity_regularizer: 运用到层的输出的正则化函数 (它的 “activation”)。 (详见 regularizer)。</p>
+</li>
+<li class="lvl-2">
+<p>kernel_constraint: 运用到 kernel 权值矩阵的约束函数 (详见 constraints)。</p>
+</li>
+<li class="lvl-2">
+<p>bias_constraint: 运用到偏置向量的约束函数 (详见 constraints)。</p>
+</li>
 </ul>
-<h4 id="optimizer优化器"><a href="#optimizer优化器" class="headerlink" title="optimizer优化器"></a>optimizer优化器</h4><p>参考B呼 <a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72039430">优化方法——AdaGrad、RMSProp、Adam - 知乎 (zhihu.com)<i class="fas fa-external-link-alt"></i></a></p>
-<ul>
-<li><h6 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h6><img src="https://pic4.zhimg.com/v2-8c0047c1dc1c8f43ee6c114eb2d5c013_r.jpg" alt="preview">
-
-<p><strong>AdaGrad的效果是：</strong>在参数空间中更为平缓的倾斜方向会取得更大的进步（因为平缓，所以历史梯度平方和较小，对应学习下降的幅度较小）。</p>
-<p><strong>优点：</strong>解决了SGD中学习率不能自适应调整的问题。</p>
+<h4 id="optimizer优化器">optimizer优化器</h4>
+<p>参考B呼 <a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72039430">优化方法——AdaGrad、RMSProp、Adam - 知乎 (zhihu.com)<i class="fas fa-external-link-alt"></i></a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<h6 id="Adagrad">Adagrad</h6>
+<img src="https://pic4.zhimg.com/v2-8c0047c1dc1c8f43ee6c114eb2d5c013_r.jpg" alt="preview">
+<p>**AdaGrad的效果是：**在参数空间中更为平缓的倾斜方向会取得更大的进步（因为平缓，所以历史梯度平方和较小，对应学习下降的幅度较小）。</p>
+<p>**优点：**解决了SGD中学习率不能自适应调整的问题。</p>
 <p><strong>缺点：</strong>（1）对于训练深度神经网络模型而言，从训练开始时<strong>累积平方梯度值会越来越大</strong>，会<strong>导致学习率过早和过量的减少</strong>，从而导致<strong>迭代后期收敛及其缓慢</strong>。AdaGrad在某些深度学习模型上效果不错，但不是全部。（2）需要手动设置全局学习率</p>
 </li>
-<li><h6 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h6><img src="https://pic4.zhimg.com/v2-8147eed78273f3a71b66c3b38ddabbe7_r.jpg" alt="img">
-
+<li class="lvl-2">
+<h6 id="RMSprop">RMSprop</h6>
+<img src="https://pic4.zhimg.com/v2-8147eed78273f3a71b66c3b38ddabbe7_r.jpg" alt="img">
 <p><strong>RMSProp主要思想：使用指数加权移动平均的方法计算累积梯度</strong>，以丢弃遥远的梯度历史信息（让距离当前越远的梯度的缩减学习率的权重越小）。</p>
-<p><strong>优点：</strong>完全自适应全局学习率，加速效果好。</p>
-<p><strong>缺点：</strong>后期容易在小范围内产生震荡。</p>
+<p>**优点：**完全自适应全局学习率，加速效果好。</p>
+<p>**缺点：**后期容易在小范围内产生震荡。</p>
 </li>
-<li><h6 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h6></li>
-<li><h6 id="Adadelta"><a href="#Adadelta" class="headerlink" title="Adadelta"></a>Adadelta</h6></li>
-<li><h6 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h6><p><strong>Adam算法</strong>可能是除了SGD算法之外大家最熟悉的了，<strong>如果你不知道用什么优化方法时，无脑用它就对了。</strong></p>
-<p><strong>Adam算法的本质：</strong>其实就是<strong>Momentum+RMSProp的结合</strong>，然后<strong>再修正其偏差</strong>。Adam对梯度的一阶和二阶都进行了估计与偏差修正，使用梯度的一阶矩估计和二阶矩估计来动态调整每个参数的学习率（参数更新的幅度）。</p>
-<p><strong>优点：</strong>Adam对<strong>学习率</strong>没有那么敏感，<strong>建议默认为0.001，实践中，也可以设置为 <img src="https://www.zhihu.com/equation?tex=5%5Ctimes10%5E%7B-4%7D" alt="[公式]"> 。</strong>Adam通常被认为对超参数的选择相当鲁棒，同时相比于Adagrad，不用存储全局所有的梯度，<strong>适合处理大规模数据</strong>。</p>
-<p><strong>缺点：</strong>Adam每次迭代参数的学习步长都有一个确定的范围，不会因为很大的梯度导致很大的学习步长，参数的值比较稳定，但是它也并非真的是参数不敏感的，学习率在训练的后期可仍然可能不稳定导致无法收敛到足够好的值，泛化能力较差。</p>
+<li class="lvl-2">
+<h6 id="SGD">SGD</h6>
 </li>
-<li><h6 id="Adamax"><a href="#Adamax" class="headerlink" title="Adamax"></a>Adamax</h6></li>
-<li><h6 id="Nadam"><a href="#Nadam" class="headerlink" title="Nadam"></a>Nadam</h6></li>
-<li><h6 id="TFOptimizer"><a href="#TFOptimizer" class="headerlink" title="TFOptimizer"></a>TFOptimizer</h6></li>
+<li class="lvl-2">
+<h6 id="Adadelta">Adadelta</h6>
+</li>
+<li class="lvl-2">
+<h6 id="Adam">Adam</h6>
+<p><strong>Adam算法</strong>可能是除了SGD算法之外大家最熟悉的了，<strong>如果你不知道用什么优化方法时，无脑用它就对了。</strong></p>
+<p><strong>Adam算法的本质：<strong>其实就是</strong>Momentum+RMSProp的结合</strong>，然后<strong>再修正其偏差</strong>。Adam对梯度的一阶和二阶都进行了估计与偏差修正，使用梯度的一阶矩估计和二阶矩估计来动态调整每个参数的学习率（参数更新的幅度）。</p>
+<p><strong>优点：<strong>Adam对</strong>学习率</strong>没有那么敏感，**建议默认为0.001，实践中，也可以设置为 <img src="https://www.zhihu.com/equation?tex=5%5Ctimes10%5E%7B-4%7D" alt="[公式]"> 。**Adam通常被认为对超参数的选择相当鲁棒，同时相比于Adagrad，不用存储全局所有的梯度，<strong>适合处理大规模数据</strong>。</p>
+<p>**缺点：**Adam每次迭代参数的学习步长都有一个确定的范围，不会因为很大的梯度导致很大的学习步长，参数的值比较稳定，但是它也并非真的是参数不敏感的，学习率在训练的后期可仍然可能不稳定导致无法收敛到足够好的值，泛化能力较差。</p>
+</li>
+<li class="lvl-2">
+<h6 id="Adamax">Adamax</h6>
+</li>
+<li class="lvl-2">
+<h6 id="Nadam">Nadam</h6>
+</li>
+<li class="lvl-2">
+<h6 id="TFOptimizer">TFOptimizer</h6>
+</li>
 </ul>
 
         </div>

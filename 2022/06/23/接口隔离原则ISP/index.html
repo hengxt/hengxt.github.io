@@ -246,10 +246,10 @@
         
 
         <div class="article-content markdown-body">
-            <p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
+            <p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" target="_blank" rel="noopener" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="四、接口隔离原则ISP"><a href="#四、接口隔离原则ISP" class="headerlink" title="四、接口隔离原则ISP"></a>四、接口隔离原则ISP</h2><img src="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/image-20220623152044370.png" alt="image-20220623152044370">
-
+<h2 id="四、接口隔离原则ISP">四、接口隔离原则ISP</h2>
+<img src="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/image-20220623152044370.png" alt="image-20220623152044370">
 <p>在图10.1所描绘的应用中，有多个用户需要操作OPS类。现在，我 们假设这里的User1只需要使用op1,User2只需要使用op2,User3只需要 使用op3。 在这种情况下，如果OPS类是用Java编程语言编写的，那么很明 显，User1虽然不需要调用op2、op3，但在源代码层次上也与它们形成 依赖关系。这种依赖意味着我们对OPS代码中op2所做的任何修改，即 使不会影响到User1的功能，也会导致它需要被重新编译和部署。 这个问题可以通过将不同的操作隔离成接口来解决，具体如图 10.2所示。 同样，我们也假设这个例子是用Java这种静态类型语言来实现 的，那么现在User1的源代码会依赖于U1Ops和op1，但不会依赖于 OPS。这样一来，我们之后对OPS做的修改只要不影响到User1的功能， 就不需要重新编译和部署User1了。</p>
 
         </div>

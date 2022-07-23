@@ -246,22 +246,20 @@
         
 
         <div class="article-content markdown-body">
-            <p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (z-lib.org) 之后的整理。（侵删）</p>
+            <p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" target="_blank" rel="noopener" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="二、开闭原则OCP"><a href="#二、开闭原则OCP" class="headerlink" title="二、开闭原则OCP"></a>二、开闭原则OCP</h2><h3 id="定义概念"><a href="#定义概念" class="headerlink" title="定义概念"></a>定义概念</h3><p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
+<h2 id="二、开闭原则OCP">二、开闭原则OCP</h2>
+<h3 id="定义概念-2">定义概念</h3>
+<p>开闭原则（OCP）是Bertrand Meyer在1988年提出的，该设计原 则认为： 设计良好的计算机软件应该易于扩展，同时抗拒修改。</p>
 <p>OCP是我们进行系统架构设计的主导原则，其主要目标是让系统易 于扩展，同时限制其每次被修改所影响的范围。实现方式是通过将系 统划分为一系列组件，并且将这些组件间的依赖关系按层次结构进行 组织，使得高阶组件不会因低阶组件被修改而受到影响。</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
-<h3 id><a href="#" class="headerlink" title></a><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3><p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
+<h3 id="举例-2">举例</h3>
+<p>假设我们现在要设计一个在Web页面上展示财务数据的系统，页面 上的数据要可以滚动显示，其中负值应显示为红色。 接下来，该系统的所有者又要求同样的数据需要形成一个报表， 该报表要能用黑白打印机打印，并且其报表格式要得到合理分页，每 页都要包含页头、页尾及栏目名。同时，负值应该以括号表示。 显然，我们需要增加一些代码来完成这个要求。但在这里我们更 关注的问题是，满足新的要求需要更改多少旧代码。</p>
+<h3 id="img-src-开闭原则OCP-image-20220622180414498-png-alt-image-20220622180414498"><img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180414498.png" alt="image-20220622180414498"></h3>
+<p>我们可以先将满足不同需求的代码分组 （即SRP），然后再来调整这些分组之间的依赖关系（即DIP）。 利用SRP，我们可以按图中所展示的方式来处理数据流。即先 用一段分析程序处理原始的财务数据，以形成报表的数据结构，最后 再用两个不同的报表生成器来产生报表</p>
 <p>这里的核心就是将应用生成报表的过程拆成两个不同的操作。即 先计算出报表数据，再生成具体的展示报表（分别以网页及纸质的形 式展示）。 接下来，我们就该修改其源代码之间的依赖关系了。这样做的目 的是保证其中一个操作被修改之后不会影响到另外一个操作。同时， 我们所构建的新的组织形式应该保证该程序后续在行为上的扩展都无 须修改现有代码。 在具体实现上，我们会将整个程序进程划分成一系列的类，然后 再将这些类分割成不同的组件。下面，我们用图8.2中的那些双线框来 具体描述一下整个实现。在这个图中，左上角的组件是Controller， 右上角是Interactor，右下角是Database，左下角则有四个组件分别 用于代表不同的Presenter和View。</p>
 <img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
-
 <p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
 <img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
-
-
-
-
-
 
         </div>
 
@@ -527,7 +525,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP"><span class="nav-text">二、开闭原则OCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A6%82%E5%BF%B5"><span class="nav-text">定义概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-text">举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text"></span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP"><span class="nav-text">二、开闭原则OCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A6%82%E5%BF%B5-2"><span class="nav-text">定义概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="nav-text">举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#img-src-%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP-image-20220622180414498-png-alt-image-20220622180414498"><span class="nav-text"></span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
