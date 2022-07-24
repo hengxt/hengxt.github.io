@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar2.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"~~~人生无常，大肠包小肠~~~"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar2.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":true},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"~~~人生无常，大肠包小肠~~~"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.5"};
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
   </script>
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -101,7 +101,7 @@
                             <a class=""
                                href="/links"
                             >
-                                友链
+                                链接
                             </a>
                         </li>
                     
@@ -156,7 +156,7 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/links">友链</a>
+                       href="/links">链接</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -281,8 +281,28 @@
 <p>bias_constraint: 运用到偏置向量的约束函数 (详见 constraints)。</p>
 </li>
 </ul>
+<h4 id="activation激活函数">activation激活函数</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>sigmoid</p>
+</li>
+<li class="lvl-2">
+<p>tanh</p>
+</li>
+<li class="lvl-2">
+<p>relu</p>
+</li>
+<li class="lvl-2">
+<p>eRelu</p>
+</li>
+<li class="lvl-2">
+<p>maxout</p>
+</li>
+</ul>
 <h4 id="optimizer优化器">optimizer优化器</h4>
-<p>参考B呼 <a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72039430">优化方法——AdaGrad、RMSProp、Adam - 知乎 (zhihu.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p>参考 <a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72039430">优化方法——AdaGrad、RMSProp、Adam - 知乎 (zhihu.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p>参考 <a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyaohua/p/8542554.html">深度学习——优化器算法Optimizer详解（BGD、SGD、MBGD、Momentum、NAG、Adagrad、Adadelta、RMSprop、Adam） - 郭耀华 - 博客园 (cnblogs.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p>参考 <a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/disanda/article/details/108942056">深度学习中优化器 (optimizer) 的选择：SGD, AdaGrad, AdaDelta_disanda的博客-CSDN博客_optimizer选择<i class="fas fa-external-link-alt"></i></a></p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <h6 id="Adagrad">Adagrad</h6>
@@ -300,9 +320,19 @@
 </li>
 <li class="lvl-2">
 <h6 id="SGD">SGD</h6>
+<p><strong>梯度更新规则:</strong></p>
+<p>和 BGD 的一次用所有数据计算梯度相比，SGD 每次更新时对每个样本进行梯度更新，对于很大的数据集来说，可能会有相似的样本，这样 BGD 在计算梯度时会出现冗余，而 SGD 一次只进行一次更新，就没有冗余，而且比较快，并且可以新增样本。</p>
+<p><strong>缺点：</strong></p>
+<p>SGD 因为更新比较频繁，会造成 cost function 有严重的震荡。</p>
+<p>BGD 可以收敛到局部极小值，当然 SGD 的震荡可能会跳到更好的局部极小值处。</p>
+<p>当我们稍微减小 learning rate，SGD 和 BGD 的收敛性是一样的。</p>
 </li>
 <li class="lvl-2">
 <h6 id="Adadelta">Adadelta</h6>
+<p>这个方法就是为了解决超参选择时学习率持续衰减的问题。之前的方法通过Hessian矩阵来估计学习率，但是需要计算全局的二阶导数，这个计算量太大了，用一个对角线矩阵来近似Hessian矩阵。这个对角线矩阵可以通过让模型一次前向传播和一次后向传播来计算。</p>
+<p>其中mu是一个较小的常数(用以保证分母不为0)。</p>
+<p>另外这个方法还有一个思考，就是SGD,Momentum,以及Adagrad这些优化方法更新参数都是根据Loss-function来进行计算的，并没有根据参数本身来更新参数。换句话说，就是根据梯度来更新参数，没有考虑到参数本书的特征。但是通过Hessian矩阵的估计通过参数的二阶导来更新参数，其更新方法考虑到了参数本身。(针对不同维度的参数)</p>
+<p>而这个方法最经典的思考就是用当前某一维度的参数unit x来近似当前总体的梯度 Delta x ，从而减化 Hessian 矩阵的计算。相当于用前一次的更新参数x来参与当前更新的梯度计算。</p>
 </li>
 <li class="lvl-2">
 <h6 id="Adam">Adam</h6>
@@ -321,6 +351,105 @@
 <h6 id="TFOptimizer">TFOptimizer</h6>
 </li>
 </ul>
+<p>others：</p>
+<p>两张画的很赞的图，来源 <a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyaohua/p/8542554.html">深度学习——优化器算法Optimizer详解（BGD、SGD、MBGD、Momentum、NAG、Adagrad、Adadelta、RMSprop、Adam） - 郭耀华 - 博客园 (cnblogs.com)<i class="fas fa-external-link-alt"></i></a></p>
+<img src="https://images2018.cnblogs.com/blog/1192699/201803/1192699-20180311105558593-251578131.gif" alt="SGD optimization on saddle point" style="zoom:80%;">
+<img src="https://images2018.cnblogs.com/blog/1192699/201803/1192699-20180311110108768-2113908893.gif" alt="img" style="zoom:80%;">
+<p><strong>如果数据是稀疏的，就用自适用方法，即 Adagrad, Adadelta, RMSprop, Adam。</strong></p>
+<p><strong>RMSprop, Adadelta, Adam 在很多情况下的效果是相似的。</strong></p>
+<p><strong>Adam 就是在 RMSprop 的基础上加了 bias-correction 和 momentum，</strong></p>
+<p><strong>随着梯度变的稀疏，Adam 比 RMSprop 效果会好。</strong></p>
+<p>整体来讲，<strong>Adam 是最好的选择</strong>。</p>
+<p>很多论文里都会用 SGD，没有 momentum 等。<strong>SGD 虽然能达到极小值，但是比其它算法用的时间长，而且可能会被困在鞍点</strong>。</p>
+<p>如果需要更快的收敛，或者是训练更深更复杂的神经网络，需要用一种自适应的算法。</p>
+<h4 id="loss损失函数">loss损失函数</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<h6 id="MeanSquaredError">MeanSquaredError:</h6>
+<p>均方误差</p>
+</li>
+<li class="lvl-2">
+<h6 id="MeanAbsoluteError">MeanAbsoluteError</h6>
+</li>
+<li class="lvl-2">
+<h6 id="MeanAbsolutePercentageError">MeanAbsolutePercentageError</h6>
+</li>
+<li class="lvl-2">
+<h6 id="MeanSquaredLogarithmicError">MeanSquaredLogarithmicError</h6>
+</li>
+<li class="lvl-2">
+<h6 id="BinaryCrossentropy">BinaryCrossentropy</h6>
+</li>
+<li class="lvl-2">
+<h6 id="CategoricalCrossentropy">CategoricalCrossentropy</h6>
+</li>
+<li class="lvl-2">
+<h6 id="SparseCategoricalCrossentropy">SparseCategoricalCrossentropy</h6>
+</li>
+<li class="lvl-2">
+<h6 id="Hinge">Hinge</h6>
+</li>
+<li class="lvl-2">
+<h6 id="SquaredHinge">SquaredHinge</h6>
+</li>
+<li class="lvl-2">
+<h6 id="CategoricalHinge">CategoricalHinge</h6>
+</li>
+<li class="lvl-2">
+<h6 id="Poisson">Poisson</h6>
+</li>
+<li class="lvl-2">
+<h6 id="LogCosh">LogCosh</h6>
+</li>
+<li class="lvl-2">
+<h6 id="KLDivergence">KLDivergence</h6>
+</li>
+<li class="lvl-2">
+<h6 id="Huber">Huber</h6>
+</li>
+</ul>
+<h4 id="metrics评价函数">metrics评价函数</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Reduce</p>
+</li>
+<li class="lvl-2">
+<p>Sum</p>
+</li>
+<li class="lvl-2">
+<p>Mean</p>
+</li>
+<li class="lvl-2">
+<p>MeanMetricWrapper</p>
+</li>
+<li class="lvl-2">
+<p>MeanSquaredError</p>
+</li>
+<li class="lvl-2">
+<p>Hinge</p>
+</li>
+<li class="lvl-2">
+<p>binary_accuracy</p>
+<p>​	binary_accuracy(y_true, y_pred)</p>
+</li>
+<li class="lvl-2">
+<p>categorical_accuracy</p>
+<p>​	categorical_accuracy(y_true, y_pred)</p>
+</li>
+<li class="lvl-2">
+<p>sparse_categorical_accuracy</p>
+<p>​	sparse_categorical_accuracy(y_true, y_pred)</p>
+</li>
+<li class="lvl-2">
+<p>top_k_categorical_accuracy</p>
+<p>​	top_k_categorical_accuracy(y_true, y_pred, k=5)</p>
+</li>
+<li class="lvl-2">
+<p>sparse_top_k_categorical_accuracy</p>
+<p>​	sparse_top_k_categorical_accuracy(y_true, y_pred, k=5)</p>
+</li>
+</ul>
+<p>…</p>
 
         </div>
 
@@ -571,7 +700,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#keras"><span class="nav-text">keras</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dense%E5%B1%82"><span class="nav-text">Dense层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optimizer%E4%BC%98%E5%8C%96%E5%99%A8"><span class="nav-text">optimizer优化器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RMSprop"><span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SGD"><span class="nav-text">SGD</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Adadelta"><span class="nav-text">Adadelta</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Adam"><span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Adamax"><span class="nav-text">Adamax</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Nadam"><span class="nav-text">Nadam</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#TFOptimizer"><span class="nav-text">TFOptimizer</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#keras"><span class="nav-text">keras</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dense%E5%B1%82"><span class="nav-text">Dense层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#activation%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-text">activation激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optimizer%E4%BC%98%E5%8C%96%E5%99%A8"><span class="nav-text">optimizer优化器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RMSprop"><span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SGD"><span class="nav-text">SGD</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Adadelta"><span class="nav-text">Adadelta</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Adam"><span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Adamax"><span class="nav-text">Adamax</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Nadam"><span class="nav-text">Nadam</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#TFOptimizer"><span class="nav-text">TFOptimizer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loss%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-text">loss损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MeanSquaredError"><span class="nav-text">MeanSquaredError:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MeanAbsoluteError"><span class="nav-text">MeanAbsoluteError</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MeanAbsolutePercentageError"><span class="nav-text">MeanAbsolutePercentageError</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MeanSquaredLogarithmicError"><span class="nav-text">MeanSquaredLogarithmicError</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#BinaryCrossentropy"><span class="nav-text">BinaryCrossentropy</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CategoricalCrossentropy"><span class="nav-text">CategoricalCrossentropy</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SparseCategoricalCrossentropy"><span class="nav-text">SparseCategoricalCrossentropy</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Hinge"><span class="nav-text">Hinge</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SquaredHinge"><span class="nav-text">SquaredHinge</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CategoricalHinge"><span class="nav-text">CategoricalHinge</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Poisson"><span class="nav-text">Poisson</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LogCosh"><span class="nav-text">LogCosh</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#KLDivergence"><span class="nav-text">KLDivergence</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Huber"><span class="nav-text">Huber</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#metrics%E8%AF%84%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-text">metrics评价函数</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
