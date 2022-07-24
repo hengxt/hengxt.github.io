@@ -2856,37 +2856,6 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
-    <title>单一职责原则SRP</title>
-    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
-    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的总结。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="一、单一职责原则（SRP）">一、单一职责原则（SRP）</h2>
-<h3 id="定义概念">定义概念</h3>
-<p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
-<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
-<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
-<h3 id="举例">举例</h3>
-<p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
-<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
-<p>在上面例子的基础上修改</p>
-<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
-<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
-<h3 id="反面事例：代码合并">反面事例：代码合并</h3>
-<p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
-<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
-<h3 id="解决方案">解决方案</h3>
-<p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Enjoy开发文档</title>
     <url>/2022/04/23/%E5%8D%93%E9%9F%B3%E6%89%93%E5%8D%A1%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<img src="/2022/04/23/%E5%8D%93%E9%9F%B3%E6%89%93%E5%8D%A1%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/clip_image002-16506817747051.png" alt="img"> 
@@ -3584,6 +3553,37 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
+    <title>单一职责原则SRP</title>
+    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
+    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的总结。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="一、单一职责原则（SRP）">一、单一职责原则（SRP）</h2>
+<h3 id="定义概念">定义概念</h3>
+<p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
+<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
+<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
+<h3 id="举例">举例</h3>
+<p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
+<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
+<p>在上面例子的基础上修改</p>
+<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
+<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
+<h3 id="反面事例：代码合并">反面事例：代码合并</h3>
+<p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
+<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
+<h3 id="解决方案">解决方案</h3>
+<p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回溯法解决最小重量机器设计问题</title>
     <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<br>
@@ -4058,30 +4058,6 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
-    <title>里氏替换原则LSP</title>
-    <url>/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/</url>
-    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="三、里氏替换原则LSP">三、里氏替换原则LSP</h2>
-<h3 id="定义概念-3">定义概念</h3>
-<p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
-<h3 id="举例一">举例一</h3>
-<p>假设我们有一个License类，其结构如图9.1所示。该类中有一个 名为calcFee（）的方法，该方法将由Billing应用程序来调用。而 License类有两个“子类型”:PersonalLicense与BusinessLicense， 这两个类会用不同的算法来计算授权费用。</p>
-<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151618648.png" alt="image-20220623151618648">
-<p>上述设计是符合LSP原则的，因为Billing应用程序的行为并不依 赖于其使用的任何一个衍生类。也就是说，这两个衍生类的对象都是 可以用来替换License类对象的。</p>
-<h3 id="举例二">举例二</h3>
-<p>正方形/长方形问题是一个著名（或者说臭名远扬）的违反LSP的 设计案例（该问题的结构如图9.2所示）。</p>
-<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151711133.png" alt="image-20220623151711133">
-<p>在这个案例中，Square类并不是Rectangle类的子类型，因为 Rectangle类的高和宽可以分别修改，而Square类的高和宽则必须一同 修改。由于User类始终认为自己在操作Rectangle类，因此会带来一些 混淆。例如在下面的代码中： Rectangle r = … r.setW（5）； r.setH（2）； assert（r.area（）== 10）； 很显然，如果上述代码在…处返回的是Square类，则最后的这个 assert是不会成立的。 如果想要防范这种违反LSP的行为，唯一的办法就是在User类中增 加用于区分Rectangle和Square的检测逻辑（例如增加if语句）。但这 样一来，User类的行为又将依赖于它所使用的类，这两个类就不能互 相替换了。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件项目管理认识与实践总结</title>
     <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="软件项目管理认识与实践总结">软件项目管理认识与实践总结</h2>
@@ -4110,6 +4086,30 @@ hexo -s</p>
       <tags>
         <tag>项目管理</tag>
         <tag>课程总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>里氏替换原则LSP</title>
+    <url>/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="三、里氏替换原则LSP">三、里氏替换原则LSP</h2>
+<h3 id="定义概念-3">定义概念</h3>
+<p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
+<h3 id="举例一">举例一</h3>
+<p>假设我们有一个License类，其结构如图9.1所示。该类中有一个 名为calcFee（）的方法，该方法将由Billing应用程序来调用。而 License类有两个“子类型”:PersonalLicense与BusinessLicense， 这两个类会用不同的算法来计算授权费用。</p>
+<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151618648.png" alt="image-20220623151618648">
+<p>上述设计是符合LSP原则的，因为Billing应用程序的行为并不依 赖于其使用的任何一个衍生类。也就是说，这两个衍生类的对象都是 可以用来替换License类对象的。</p>
+<h3 id="举例二">举例二</h3>
+<p>正方形/长方形问题是一个著名（或者说臭名远扬）的违反LSP的 设计案例（该问题的结构如图9.2所示）。</p>
+<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151711133.png" alt="image-20220623151711133">
+<p>在这个案例中，Square类并不是Rectangle类的子类型，因为 Rectangle类的高和宽可以分别修改，而Square类的高和宽则必须一同 修改。由于User类始终认为自己在操作Rectangle类，因此会带来一些 混淆。例如在下面的代码中： Rectangle r = … r.setW（5）； r.setH（2）； assert（r.area（）== 10）； 很显然，如果上述代码在…处返回的是Square类，则最后的这个 assert是不会成立的。 如果想要防范这种违反LSP的行为，唯一的办法就是在User类中增 加用于区分Rectangle和Square的检测逻辑（例如增加if语句）。但这 样一来，User类的行为又将依赖于它所使用的类，这两个类就不能互 相替换了。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
       </tags>
   </entry>
 </search>
