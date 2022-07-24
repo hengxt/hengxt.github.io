@@ -1442,6 +1442,146 @@
       </tags>
   </entry>
   <entry>
+    <title>使用hexo,并部署到page</title>
+    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
+    <content><![CDATA[<p>第一步，安装node和npm<br>
+第二步，npm install hexo -g<br>
+第三步，hexo init blog<br>
+第四步, 进入hexo的根目录第五步, npm install<br>
+hexo -s</p>
+<h3 id="TODO">TODO</h3>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>todo</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>描述</td>
+<td>待办</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主键</td>
+<td>id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>todo_id</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字段名</td>
+<td>描述</td>
+<td>类型</td>
+<td>默认值</td>
+<td>是否必录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>主键</td>
+<td>bigint(20)</td>
+<td>自增</td>
+<td>是</td>
+</tr>
+<tr>
+<td>todo_id</td>
+<td>todo的标志符号</td>
+<td>uuid</td>
+<td>uuid</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<table>
+	<tr>
+	    <th>属性</th>
+	    <th>属性值</th>
+	    <th>描述</th>  
+	</tr>
+	<tr>
+	    <td rowspan="9">type</td>
+	    <td>text</td>
+	    <td>单行文本输入框</td>
+	</tr>
+	<tr>
+	    <td>password</td>
+	    <td>密码输入框</td>
+	</tr>
+	<tr>
+	    <td>radio</td>
+	    <td>单选按钮</td>
+	</tr>
+	<tr>
+	    <td>CheckBox</td>
+	    <td>复选按钮</td>
+	</tr>
+	<tr><td>button</td>
+	    <td>普通按钮</td>
+	</tr>
+	<tr>
+	    <td>submit</td>
+	    <td>提交按钮</td>
+	</tr>
+	<tr>
+	    <td>reset</td>
+	    <td>重置按钮</td>
+	</tr>
+	<tr>
+	    <td>image</td>
+	    <td>图像形式的提交按钮</td>
+	</tr>
+	<tr>
+	    <td>file</td>
+	    <td>文件域</td>
+	</tr>
+	<tr>
+	    <td>name</td>
+	    <td>用户自定义</td>
+	    <td>控件名称</td>
+	</tr>
+	<tr>
+	    <td>value</td>
+	    <td>用户自定义</td>
+	    <td>默认文本值</td>
+	</tr>
+	<tr>
+	    <td>size</td>
+	    <td>正整数</td>
+	    <td>控件在页面中的显示宽度</td>
+	</tr>
+	<tr>
+	    <td>checked</td>
+	    <td>checked</td>
+	    <td>定义选择控件默认被选中项</td>
+	</tr>
+	<tr>
+	    <td>maxlength</td>
+	    <td>正整数</td>
+	    <td>控件允许输入的最多字符</td>
+	</tr>
+</table>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大学生~活便签（2）</title>
     <url>/2022/06/02/%E3%80%90%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E3%80%91%E5%A4%A7%E5%AD%A6%E7%94%9F~%E6%B4%BB%E4%BE%BF%E7%AD%BE2/</url>
     <content><![CDATA[<h2 id="大学生-活便签-2">大学生~活便签</h2>
@@ -2523,146 +2663,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用hexo,并部署到page</title>
-    <url>/2022/04/12/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0page/</url>
-    <content><![CDATA[<p>第一步，安装node和npm<br>
-第二步，npm install hexo -g<br>
-第三步，hexo init blog<br>
-第四步, 进入hexo的根目录第五步, npm install<br>
-hexo -s</p>
-<h3 id="TODO">TODO</h3>
-<table>
-<thead>
-<tr>
-<th>表名</th>
-<th>todo</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>描述</td>
-<td>待办</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>主键</td>
-<td>id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>索引</td>
-<td>todo_id</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>字段名</td>
-<td>描述</td>
-<td>类型</td>
-<td>默认值</td>
-<td>是否必录</td>
-</tr>
-<tr>
-<td>id</td>
-<td>主键</td>
-<td>bigint(20)</td>
-<td>自增</td>
-<td>是</td>
-</tr>
-<tr>
-<td>todo_id</td>
-<td>todo的标志符号</td>
-<td>uuid</td>
-<td>uuid</td>
-<td>是</td>
-</tr>
-</tbody>
-</table>
-<table>
-	<tr>
-	    <th>属性</th>
-	    <th>属性值</th>
-	    <th>描述</th>  
-	</tr>
-	<tr>
-	    <td rowspan="9">type</td>
-	    <td>text</td>
-	    <td>单行文本输入框</td>
-	</tr>
-	<tr>
-	    <td>password</td>
-	    <td>密码输入框</td>
-	</tr>
-	<tr>
-	    <td>radio</td>
-	    <td>单选按钮</td>
-	</tr>
-	<tr>
-	    <td>CheckBox</td>
-	    <td>复选按钮</td>
-	</tr>
-	<tr><td>button</td>
-	    <td>普通按钮</td>
-	</tr>
-	<tr>
-	    <td>submit</td>
-	    <td>提交按钮</td>
-	</tr>
-	<tr>
-	    <td>reset</td>
-	    <td>重置按钮</td>
-	</tr>
-	<tr>
-	    <td>image</td>
-	    <td>图像形式的提交按钮</td>
-	</tr>
-	<tr>
-	    <td>file</td>
-	    <td>文件域</td>
-	</tr>
-	<tr>
-	    <td>name</td>
-	    <td>用户自定义</td>
-	    <td>控件名称</td>
-	</tr>
-	<tr>
-	    <td>value</td>
-	    <td>用户自定义</td>
-	    <td>默认文本值</td>
-	</tr>
-	<tr>
-	    <td>size</td>
-	    <td>正整数</td>
-	    <td>控件在页面中的显示宽度</td>
-	</tr>
-	<tr>
-	    <td>checked</td>
-	    <td>checked</td>
-	    <td>定义选择控件默认被选中项</td>
-	</tr>
-	<tr>
-	    <td>maxlength</td>
-	    <td>正整数</td>
-	    <td>控件允许输入的最多字符</td>
-	</tr>
-</table>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分治法解决括号匹配</title>
     <url>/2022/04/12/%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</url>
     <content><![CDATA[<h2 id="实验问题">实验问题</h2>
@@ -2853,37 +2853,6 @@ hexo -s</p>
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单一职责原则SRP</title>
-    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
-    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的总结。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="一、单一职责原则（SRP）">一、单一职责原则（SRP）</h2>
-<h3 id="定义概念">定义概念</h3>
-<p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
-<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
-<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
-<h3 id="举例">举例</h3>
-<p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
-<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
-<p>在上面例子的基础上修改</p>
-<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
-<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
-<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
-<h3 id="反面事例：代码合并">反面事例：代码合并</h3>
-<p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
-<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
-<h3 id="解决方案">解决方案</h3>
-<p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
@@ -3584,6 +3553,37 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
+    <title>单一职责原则SRP</title>
+    <url>/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/</url>
+    <content><![CDATA[<p>本文是阅读 架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的总结。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="一、单一职责原则（SRP）">一、单一职责原则（SRP）</h2>
+<h3 id="定义概念">定义概念</h3>
+<p>在历史上，曾经这样描述SRP： 任何一个软件模块都应该有且仅有一个被修改的原因。</p>
+<p>我们也可以这样描述SRP： 任何一个软件模块都应该只对一个用户（User）或系统利益相关 者（Stakeholder）负责。</p>
+<p>SRP的最终描述就变成了： 任何一个软件模块都应该只对某一类行为者负责。</p>
+<h3 id="举例">举例</h3>
+<p>某个工资管理程序中的Employee类 有三个函数calculatePay（）、reportHours（）和save（）</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101754019.png" alt="image-20220621101754019">
+<p>如你所见，这个类的三个函数分别对应的是三类非常不同的行为 者，违反了SRP设计原则。 calculatePay（）函数是由财务部门制定的，他们负责向CFO汇 报。 reportHours（）函数是由人力资源部门制定并使用的，他们负责 向COO汇报。 save（）函数是由DBA制定的，他们负责向CTO汇报。 这三个函数被放在同一个源代码文件，即同一个Employee类中， 程序员这样做实际上就等于使三类行为者的行为耦合在了一起，这有 可能会导致CFO团队的命令影响到COO团队所依赖的功能。</p>
+<p>在上面例子的基础上修改</p>
+<p>calculatePay（）函数和reportHours（）函数使用同样的 逻辑来计算正常工作时数。程序员为了避免重复编码，通常会将该算 法单独实现为一个名为regularHours（）的函数</p>
+<img src="/2022/06/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP/image-20220621101848160.png" alt="image-20220621101848160">
+<p>接下来，假设CFO团队需要修改正常工作时数的计算方法，而COO 带领的HR团队不需要这个修改，因为他们对数据的用法是不同的。 这时候，负责这项修改的程序员会注意到 calculatePay（）函数 调用了regularHours（）函数，但可能不会注意到该函数会同时被 reportHours（）调用。 于是，该程序员就这样按照要求进行了修改，同时CFO团队的成员 验证了新算法工作正常。这项修改最终被成功部署上线了。 但是，COO 团队显然完全不知道这些事情的发生，HR 仍然在使用 reportHours（）产生的报表，随后就会发现他们的数据出错了！最终 这个问题让COO十分愤怒，因为这些错误的数据给公司造成了几百万美 元的损失。</p>
+<h3 id="反面事例：代码合并">反面事例：代码合并</h3>
+<p>例如，CTO团队的DBA决定要对Employee数据库表结构进行简单修 改。与此同时，COO团队的HR需要修改工作时数报表的格式。 这样一来，就很可能出现两个来自不同团队的程序员分别对 Employee类进行修改的情况。不出意外的话，他们各自的修改一定会 互相冲突，这就必须要进行代码合并。 在这个例子中，这次代码合并不仅有可能让CTO和COO要求的功能 出错，甚至连CFO原本正常的功能也可能受到影响。</p>
+<p>在代码合并中，多人为了不同的目的修改了同一份源代码，这很容易造成问题的产生。而避免这种问题产生的方法就是将服务不同行为者的代码进行切分。</p>
+<h3 id="解决方案">解决方案</h3>
+<p>要想解决上面的问题，需要将相关的函数划分成不同的类。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回溯法解决最小重量机器设计问题</title>
     <url>/2022/05/15/%E5%9B%9E%E6%BA%AF%E6%B3%95%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F%E6%9C%BA%E5%99%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<br>
@@ -3642,6 +3642,22 @@ hexo -s</p>
 <img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180542738.png" alt="image-20220622180542738">
 <p>所以现在的情况是，我们不想让发生在Presenter上的修改影响到 Controller，也不想让发生在View上的修改影响到Presenter。而最关 键的是，我们不想让任何修改影响到Interactor。</p>
 <img src="/2022/06/22/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP/image-20220622180745056.png" alt="image-20220622180745056">
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接口隔离原则ISP</title>
+    <url>/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="四、接口隔离原则ISP">四、接口隔离原则ISP</h2>
+<img src="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/image-20220623152044370.png" alt="image-20220623152044370">
+<p>在图10.1所描绘的应用中，有多个用户需要操作OPS类。现在，我 们假设这里的User1只需要使用op1,User2只需要使用op2,User3只需要 使用op3。 在这种情况下，如果OPS类是用Java编程语言编写的，那么很明 显，User1虽然不需要调用op2、op3，但在源代码层次上也与它们形成 依赖关系。这种依赖意味着我们对OPS代码中op2所做的任何修改，即 使不会影响到User1的功能，也会导致它需要被重新编译和部署。 这个问题可以通过将不同的操作隔离成接口来解决，具体如图 10.2所示。 同样，我们也假设这个例子是用Java这种静态类型语言来实现 的，那么现在User1的源代码会依赖于U1Ops和op1，但不会依赖于 OPS。这样一来，我们之后对OPS做的修改只要不影响到User1的功能， 就不需要重新编译和部署User1了。</p>
 ]]></content>
       <categories>
         <category>软件开发设计原则</category>
@@ -3843,6 +3859,61 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
+    <title>谈谈jsp</title>
+    <url>/2022/06/27/%E8%B0%88%E8%B0%88jsp/</url>
+    <content><![CDATA[<h4 id="什么是jsp">什么是jsp</h4>
+<p>jsp 是 Java Server Pages.   <strong>JSP = HTML + Java片段</strong></p>
+<h4 id="为什么要用jsp？">为什么要用jsp？</h4>
+<p>下面是一段返回简单页面的servlet</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@WebServlet(name = &quot;PageServlet&quot;, urlPatterns = &#123;&quot;/page&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="type">ServletOutputStream</span> <span class="variable">out</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line">        out.write(<span class="string">&quot;&lt;h1&gt;hello jsp&lt;/h1&gt;&quot;</span>.getBytes());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>早期开发网站就是这样做的，把前端代码一行一行的写在out.write（）中。</p>
+<p>我们想要去返回一些复杂的页面，还向上面写就会复杂了，极大的扩大了代码量。如果我们能只写页面，让servlet自动去帮我们生成servlet就好了，所以下面就有了这个东西。</p>
+<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627160912677.png" alt="image-20220627160912677">
+<p>这是jsp代码，也就是把html和java代码集合在一起。</p>
+<p>编译之后会有下面这样的代码：</p>
+<p>HttpJspPage extends JspPage extends Servlet</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Generated by the Jasper component of Apache Tomcat</span></span><br><span class="line"><span class="comment"> * Version: Apache Tomcat/9.0.45</span></span><br><span class="line"><span class="comment"> * Generated at: 2022-06-27 03:47:47 UTC</span></span><br><span class="line"><span class="comment"> * Note: The last modified time of this file was set to</span></span><br><span class="line"><span class="comment"> *       the last modified time of the source file after</span></span><br><span class="line"><span class="comment"> *       generation to assist with modification tracking.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> org.apache.jsp.view;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.*;</span><br><span class="line"><span class="keyword">import</span> com.entity.Joiner;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Stream;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">LeaderBoard_jsp</span> <span class="keyword">extends</span> <span class="title class_">org</span>.apache.jasper.runtime.HttpJspBase</span><br><span class="line">    <span class="keyword">implements</span> <span class="title class_">org</span>.apache.jasper.runtime.JspSourceDependent,</span><br><span class="line">                 org.apache.jasper.runtime.JspSourceImports &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> javax.servlet.jsp.<span class="type">JspFactory</span> <span class="variable">_jspxFactory</span> <span class="operator">=</span></span><br><span class="line">          javax.servlet.jsp.JspFactory.getDefaultFactory();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; _jspx_dependants;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.Set&lt;java.lang.String&gt; _jspx_imports_packages;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.Set&lt;java.lang.String&gt; _jspx_imports_classes;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    _jspx_imports_packages = <span class="keyword">new</span> <span class="title class_">java</span>.util.HashSet&lt;&gt;();</span><br><span class="line">    _jspx_imports_packages.add(<span class="string">&quot;javax.servlet&quot;</span>);</span><br><span class="line">    _jspx_imports_packages.add(<span class="string">&quot;javax.servlet.http&quot;</span>);</span><br><span class="line">    _jspx_imports_packages.add(<span class="string">&quot;javax.servlet.jsp&quot;</span>);</span><br><span class="line">    _jspx_imports_classes = <span class="keyword">new</span> <span class="title class_">java</span>.util.HashSet&lt;&gt;();</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.List&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.stream.Stream&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;com.entity.Joiner&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.concurrent.atomic.AtomicInteger&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.Collection&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.io.IOException&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.Comparator&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.Collections&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> javax.el.ExpressionFactory _el_expressionfactory;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> org.apache.tomcat.InstanceManager _jsp_instancemanager;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; getDependants() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_dependants;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Set&lt;java.lang.String&gt; getPackageImports() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_imports_packages;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Set&lt;java.lang.String&gt; getClassImports() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_imports_classes;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> javax.el.ExpressionFactory <span class="title function_">_jsp_getExpressionFactory</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_el_expressionfactory == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (_el_expressionfactory == <span class="literal">null</span>) &#123;</span><br><span class="line">          _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _el_expressionfactory;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> org.apache.tomcat.InstanceManager <span class="title function_">_jsp_getInstanceManager</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_jsp_instancemanager == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (_jsp_instancemanager == <span class="literal">null</span>) &#123;</span><br><span class="line">          _jsp_instancemanager = org.apache.jasper.runtime.InstanceManagerFactory.getInstanceManager(getServletConfig());</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _jsp_instancemanager;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspInit</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspService</span><span class="params">(<span class="keyword">final</span> javax.servlet.http.HttpServletRequest request, <span class="keyword">final</span> javax.servlet.http.HttpServletResponse response)</span></span><br><span class="line">      <span class="keyword">throws</span> java.io.IOException, javax.servlet.ServletException &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!javax.servlet.DispatcherType.ERROR.equals(request.getDispatcherType())) &#123;</span><br><span class="line">      <span class="keyword">final</span> java.lang.<span class="type">String</span> <span class="variable">_jspx_method</span> <span class="operator">=</span> request.getMethod();</span><br><span class="line">      <span class="keyword">if</span> (<span class="string">&quot;OPTIONS&quot;</span>.equals(_jspx_method)) &#123;</span><br><span class="line">        response.setHeader(<span class="string">&quot;Allow&quot;</span>,<span class="string">&quot;GET, HEAD, POST, OPTIONS&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="string">&quot;GET&quot;</span>.equals(_jspx_method) &amp;&amp; !<span class="string">&quot;POST&quot;</span>.equals(_jspx_method) &amp;&amp; !<span class="string">&quot;HEAD&quot;</span>.equals(_jspx_method)) &#123;</span><br><span class="line">        response.setHeader(<span class="string">&quot;Allow&quot;</span>,<span class="string">&quot;GET, HEAD, POST, OPTIONS&quot;</span>);</span><br><span class="line">        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, <span class="string">&quot;JSP 只允许 GET、POST 或 HEAD。Jasper 还允许 OPTIONS&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> javax.servlet.jsp.PageContext pageContext;</span><br><span class="line">    javax.servlet.http.<span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletContext application;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletConfig config;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> java.lang.<span class="type">Object</span> <span class="variable">page</span> <span class="operator">=</span> <span class="built_in">this</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">_jspx_out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">PageContext</span> <span class="variable">_jspx_page_context</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">      pageContext = _jspxFactory.getPageContext(<span class="built_in">this</span>, request, response,</span><br><span class="line">      			<span class="literal">null</span>, <span class="literal">true</span>, <span class="number">8192</span>, <span class="literal">true</span>);</span><br><span class="line">      _jspx_page_context = pageContext;</span><br><span class="line">      application = pageContext.getServletContext();</span><br><span class="line">      config = pageContext.getServletConfig();</span><br><span class="line">      session = pageContext.getSession();</span><br><span class="line">      out = pageContext.getOut();</span><br><span class="line">      _jspx_out = out;</span><br><span class="line"></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;html&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;title&gt;LeaderBoard&lt;/title&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;style&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        .div &#123;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            background-color: darkcyan;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            width: 500px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            min-height: 1000px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            padding-bottom: 200px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &#125;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        table tr &#123;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            height: 50px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            text-align: center;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &#125;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        .search &#123;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            width: 400px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &#125;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;/style&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;center&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;div class=\&quot;div\&quot;&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;br&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;br&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;br&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;h2&gt;排行榜&lt;/h2&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;form method=\&quot;get\&quot; action=\&quot;/myWeb/search.board\&quot;&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;input type=\&quot;search\&quot; name=\&quot;search\&quot; placeholder=\&quot;输入名字,专业,或者id,进行精准搜索\&quot; class=\&quot;search\&quot;/&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;input type=\&quot;submit\&quot; value=\&quot;GO\&quot;/&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;/form&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;table border=\&quot;2\&quot;&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;tr&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;rank&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;name&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;Profession&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;Id&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;Time&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;/tr&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &quot;</span>);</span><br><span class="line"></span><br><span class="line">                List&lt;Joiner&gt; users = (List&lt;Joiner&gt;) request.getAttribute(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">                <span class="type">AtomicInteger</span> <span class="variable">rank</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">1</span>);</span><br><span class="line">                users.sort(Comparator.comparing(Joiner::getSumTime)</span><br><span class="line">                        .thenComparing(x -&gt; -x.getSumTime())</span><br><span class="line">                        .thenComparing(x -&gt; -x.getName().charAt(<span class="number">0</span>)));</span><br><span class="line">                Collections.reverse(users);</span><br><span class="line">                <span class="keyword">for</span> (Joiner x : users) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + rank + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getName() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getProfession() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getStudentId() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getSumTime() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        rank.getAndIncrement();</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            </span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;/table&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;a href=\&quot;/myWeb/profession.board\&quot;&gt;专业榜&lt;/a&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;a href=\&quot;/myWeb/view/Hall.jsp\&quot;&gt;后退&lt;/a&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;/div&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/center&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/html&gt;\r\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (java.lang.Throwable t) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!(t <span class="keyword">instanceof</span> javax.servlet.jsp.SkipPageException))&#123;</span><br><span class="line">        out = _jspx_out;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="literal">null</span> &amp;&amp; out.getBufferSize() != <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (response.isCommitted()) &#123;</span><br><span class="line">              out.flush();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              out.clearBuffer();</span><br><span class="line">            &#125;</span><br><span class="line">          &#125; <span class="keyword">catch</span> (java.io.IOException e) &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> (_jspx_page_context != <span class="literal">null</span>) _jspx_page_context.handlePageException(t);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(t);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      _jspxFactory.releasePageContext(_jspx_page_context);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>也就是把我们动态的数据展示在页面上。</p>
+<h4 id="jsp常用的写法，语法">jsp常用的写法，语法</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>&lt;% %&gt;中间写java代码</p>
+</li>
+<li class="lvl-2">
+<p>&lt;%= 表达式 %&gt;</p>
+   <figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td&gt;</span><br><span class="line">        &lt;%</span><br><span class="line">            <span class="type">Date</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">            <span class="type">SimpleDateFormat</span> <span class="variable">df</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">now</span> <span class="operator">=</span> df.format(d);</span><br><span class="line">        %&gt;</span><br><span class="line">        当前时间:</span><br><span class="line">        &lt;%=now%&gt;</span><br><span class="line">    &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">                  <span class="type">Date</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">                  <span class="type">SimpleDateFormat</span> <span class="variable">df</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">                  <span class="type">String</span> <span class="variable">now</span> <span class="operator">=</span> df.format(d);</span><br><span class="line">              </span><br><span class="line">out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">out.write(<span class="string">&quot;                    当前时间:\r\n&quot;</span>);</span><br><span class="line">out.write(<span class="string">&quot;                    &quot;</span>);</span><br><span class="line">out.print(now);</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>控制语法</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> request.getServletContext();</span><br><span class="line">    <span class="type">String</span> <span class="variable">studentId</span> <span class="operator">=</span> (String) request.getAttribute(<span class="string">&quot;studentId&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">signTime</span> <span class="operator">=</span> (String) servletContext.getAttribute(studentId + <span class="string">&quot;-now&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (signTime != <span class="literal">null</span>) &#123;</span><br><span class="line">        out.print(<span class="string">&quot;&lt;tr&gt;&lt;td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;签到时间&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%=signTime%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p>循环语法</p>
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    ArrayList&lt;Board&gt; professionBoard = (ArrayList&lt;Board&gt;) request.getAttribute(<span class="string">&quot;ProfessionBoard&quot;</span>);</span><br><span class="line">    professionBoard.sort(Comparator.comparing(Board::getSumTime).thenComparing(Board::getProfession));</span><br><span class="line">    Collections.reverse(professionBoard);</span><br><span class="line">    <span class="type">int</span> <span class="variable">rank</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (Board b : professionBoard) &#123;</span><br><span class="line">        out.print(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;td&gt;&quot;</span> + rank + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;td&gt;&quot;</span> + b.getProfession() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;td&gt;&quot;</span> + b.getSumTime() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line">        rank++;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627164919505.png" alt="image-20220627164919505" style="zoom:33%;">
+<h4 id="jsp缺陷">jsp缺陷</h4>
+<p>1、JSP底层原理就是Servlet直接out.print的方式运行，在第一次访问JSP时，需要将JSP编译成Servlet的class文件，拖慢运行速度。</p>
+<p>2、JSP可以直接嵌入java脚本，实现页面动态化，但是这样就打破了分层的思想，影响整体程序结构，降低JSP页面的可读性。</p>
+<p>3、全局刷新，一处报错全都不能显示。这也很好理解，java代码没跑通，servlet又怎么会显示呢。引入ajax。</p>
+<p>。。。。。。。</p>
+<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627162821738.png" alt="image-20220627162821738">
+<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627162839269.png" alt="image-20220627162839269" style="zoom:80%;">
+<p>后续出现了很多优秀的模板技术（velocity、freemarker、thymeleaf等），这些模板技术效率都高于jsp，对于企业和开发者来说，选择变多了。</p>
+<p><a class="link" href="https://www.cnblogs.com/ywb-articles/p/10627398.html">模板引擎总结(Thymeleaf，FreeMarker，Enjoy，Velocity，JSP等) - 认真的杨先森 - 博客园 (cnblogs.com)<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>servlet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ch02_ 跨交换机实现VLAN间路由</title>
     <url>/2022/05/27/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0%20VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<table>
@@ -3933,132 +4004,6 @@ hexo -s</p>
       </tags>
   </entry>
   <entry>
-    <title>谈谈jsp</title>
-    <url>/2022/06/27/%E8%B0%88%E8%B0%88jsp/</url>
-    <content><![CDATA[<h4 id="什么是jsp">什么是jsp</h4>
-<p>jsp 是 Java Server Pages.   <strong>JSP = HTML + Java片段</strong></p>
-<h4 id="为什么要用jsp？">为什么要用jsp？</h4>
-<p>下面是一段返回简单页面的servlet</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@WebServlet(name = &quot;PageServlet&quot;, urlPatterns = &#123;&quot;/page&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="type">ServletOutputStream</span> <span class="variable">out</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line">        out.write(<span class="string">&quot;&lt;h1&gt;hello jsp&lt;/h1&gt;&quot;</span>.getBytes());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>早期开发网站就是这样做的，把前端代码一行一行的写在out.write（）中。</p>
-<p>我们想要去返回一些复杂的页面，还向上面写就会复杂了，极大的扩大了代码量。如果我们能只写页面，让servlet自动去帮我们生成servlet就好了，所以下面就有了这个东西。</p>
-<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627160912677.png" alt="image-20220627160912677">
-<p>这是jsp代码，也就是把html和java代码集合在一起。</p>
-<p>编译之后会有下面这样的代码：</p>
-<p>HttpJspPage extends JspPage extends Servlet</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Generated by the Jasper component of Apache Tomcat</span></span><br><span class="line"><span class="comment"> * Version: Apache Tomcat/9.0.45</span></span><br><span class="line"><span class="comment"> * Generated at: 2022-06-27 03:47:47 UTC</span></span><br><span class="line"><span class="comment"> * Note: The last modified time of this file was set to</span></span><br><span class="line"><span class="comment"> *       the last modified time of the source file after</span></span><br><span class="line"><span class="comment"> *       generation to assist with modification tracking.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> org.apache.jsp.view;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.*;</span><br><span class="line"><span class="keyword">import</span> com.entity.Joiner;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Stream;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">LeaderBoard_jsp</span> <span class="keyword">extends</span> <span class="title class_">org</span>.apache.jasper.runtime.HttpJspBase</span><br><span class="line">    <span class="keyword">implements</span> <span class="title class_">org</span>.apache.jasper.runtime.JspSourceDependent,</span><br><span class="line">                 org.apache.jasper.runtime.JspSourceImports &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> javax.servlet.jsp.<span class="type">JspFactory</span> <span class="variable">_jspxFactory</span> <span class="operator">=</span></span><br><span class="line">          javax.servlet.jsp.JspFactory.getDefaultFactory();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; _jspx_dependants;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.Set&lt;java.lang.String&gt; _jspx_imports_packages;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.Set&lt;java.lang.String&gt; _jspx_imports_classes;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    _jspx_imports_packages = <span class="keyword">new</span> <span class="title class_">java</span>.util.HashSet&lt;&gt;();</span><br><span class="line">    _jspx_imports_packages.add(<span class="string">&quot;javax.servlet&quot;</span>);</span><br><span class="line">    _jspx_imports_packages.add(<span class="string">&quot;javax.servlet.http&quot;</span>);</span><br><span class="line">    _jspx_imports_packages.add(<span class="string">&quot;javax.servlet.jsp&quot;</span>);</span><br><span class="line">    _jspx_imports_classes = <span class="keyword">new</span> <span class="title class_">java</span>.util.HashSet&lt;&gt;();</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.List&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.stream.Stream&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;com.entity.Joiner&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.concurrent.atomic.AtomicInteger&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.Collection&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.io.IOException&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.Comparator&quot;</span>);</span><br><span class="line">    _jspx_imports_classes.add(<span class="string">&quot;java.util.Collections&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> javax.el.ExpressionFactory _el_expressionfactory;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> org.apache.tomcat.InstanceManager _jsp_instancemanager;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; getDependants() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_dependants;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Set&lt;java.lang.String&gt; getPackageImports() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_imports_packages;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Set&lt;java.lang.String&gt; getClassImports() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_imports_classes;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> javax.el.ExpressionFactory <span class="title function_">_jsp_getExpressionFactory</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_el_expressionfactory == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (_el_expressionfactory == <span class="literal">null</span>) &#123;</span><br><span class="line">          _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _el_expressionfactory;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> org.apache.tomcat.InstanceManager <span class="title function_">_jsp_getInstanceManager</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_jsp_instancemanager == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (_jsp_instancemanager == <span class="literal">null</span>) &#123;</span><br><span class="line">          _jsp_instancemanager = org.apache.jasper.runtime.InstanceManagerFactory.getInstanceManager(getServletConfig());</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _jsp_instancemanager;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspInit</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspService</span><span class="params">(<span class="keyword">final</span> javax.servlet.http.HttpServletRequest request, <span class="keyword">final</span> javax.servlet.http.HttpServletResponse response)</span></span><br><span class="line">      <span class="keyword">throws</span> java.io.IOException, javax.servlet.ServletException &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!javax.servlet.DispatcherType.ERROR.equals(request.getDispatcherType())) &#123;</span><br><span class="line">      <span class="keyword">final</span> java.lang.<span class="type">String</span> <span class="variable">_jspx_method</span> <span class="operator">=</span> request.getMethod();</span><br><span class="line">      <span class="keyword">if</span> (<span class="string">&quot;OPTIONS&quot;</span>.equals(_jspx_method)) &#123;</span><br><span class="line">        response.setHeader(<span class="string">&quot;Allow&quot;</span>,<span class="string">&quot;GET, HEAD, POST, OPTIONS&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="string">&quot;GET&quot;</span>.equals(_jspx_method) &amp;&amp; !<span class="string">&quot;POST&quot;</span>.equals(_jspx_method) &amp;&amp; !<span class="string">&quot;HEAD&quot;</span>.equals(_jspx_method)) &#123;</span><br><span class="line">        response.setHeader(<span class="string">&quot;Allow&quot;</span>,<span class="string">&quot;GET, HEAD, POST, OPTIONS&quot;</span>);</span><br><span class="line">        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, <span class="string">&quot;JSP 只允许 GET、POST 或 HEAD。Jasper 还允许 OPTIONS&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> javax.servlet.jsp.PageContext pageContext;</span><br><span class="line">    javax.servlet.http.<span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletContext application;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletConfig config;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> java.lang.<span class="type">Object</span> <span class="variable">page</span> <span class="operator">=</span> <span class="built_in">this</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">_jspx_out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">PageContext</span> <span class="variable">_jspx_page_context</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">      pageContext = _jspxFactory.getPageContext(<span class="built_in">this</span>, request, response,</span><br><span class="line">      			<span class="literal">null</span>, <span class="literal">true</span>, <span class="number">8192</span>, <span class="literal">true</span>);</span><br><span class="line">      _jspx_page_context = pageContext;</span><br><span class="line">      application = pageContext.getServletContext();</span><br><span class="line">      config = pageContext.getServletConfig();</span><br><span class="line">      session = pageContext.getSession();</span><br><span class="line">      out = pageContext.getOut();</span><br><span class="line">      _jspx_out = out;</span><br><span class="line"></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;html&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;title&gt;LeaderBoard&lt;/title&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;style&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        .div &#123;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            background-color: darkcyan;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            width: 500px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            min-height: 1000px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            padding-bottom: 200px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &#125;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        table tr &#123;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            height: 50px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            text-align: center;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &#125;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        .search &#123;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            width: 400px;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &#125;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;/style&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;center&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;div class=\&quot;div\&quot;&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;br&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;br&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;br&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;h2&gt;排行榜&lt;/h2&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;form method=\&quot;get\&quot; action=\&quot;/myWeb/search.board\&quot;&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;input type=\&quot;search\&quot; name=\&quot;search\&quot; placeholder=\&quot;输入名字,专业,或者id,进行精准搜索\&quot; class=\&quot;search\&quot;/&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;input type=\&quot;submit\&quot; value=\&quot;GO\&quot;/&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;/form&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;table border=\&quot;2\&quot;&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;tr&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;rank&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;name&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;Profession&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;Id&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;                &lt;th&gt;Time&lt;/th&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &lt;/tr&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;            &quot;</span>);</span><br><span class="line"></span><br><span class="line">                List&lt;Joiner&gt; users = (List&lt;Joiner&gt;) request.getAttribute(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">                <span class="type">AtomicInteger</span> <span class="variable">rank</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">1</span>);</span><br><span class="line">                users.sort(Comparator.comparing(Joiner::getSumTime)</span><br><span class="line">                        .thenComparing(x -&gt; -x.getSumTime())</span><br><span class="line">                        .thenComparing(x -&gt; -x.getName().charAt(<span class="number">0</span>)));</span><br><span class="line">                Collections.reverse(users);</span><br><span class="line">                <span class="keyword">for</span> (Joiner x : users) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + rank + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getName() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getProfession() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getStudentId() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;td&gt;&quot;</span> + x.getSumTime() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">                        rank.getAndIncrement();</span><br><span class="line">                        out.println(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            </span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;/table&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;a href=\&quot;/myWeb/profession.board\&quot;&gt;专业榜&lt;/a&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;        &lt;a href=\&quot;/myWeb/view/Hall.jsp\&quot;&gt;后退&lt;/a&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;/div&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/center&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/html&gt;\r\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (java.lang.Throwable t) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!(t <span class="keyword">instanceof</span> javax.servlet.jsp.SkipPageException))&#123;</span><br><span class="line">        out = _jspx_out;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="literal">null</span> &amp;&amp; out.getBufferSize() != <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (response.isCommitted()) &#123;</span><br><span class="line">              out.flush();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              out.clearBuffer();</span><br><span class="line">            &#125;</span><br><span class="line">          &#125; <span class="keyword">catch</span> (java.io.IOException e) &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> (_jspx_page_context != <span class="literal">null</span>) _jspx_page_context.handlePageException(t);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(t);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      _jspxFactory.releasePageContext(_jspx_page_context);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>也就是把我们动态的数据展示在页面上。</p>
-<h4 id="jsp常用的写法，语法">jsp常用的写法，语法</h4>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>&lt;% %&gt;中间写java代码</p>
-</li>
-<li class="lvl-2">
-<p>&lt;%= 表达式 %&gt;</p>
-   <figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td&gt;</span><br><span class="line">        &lt;%</span><br><span class="line">            <span class="type">Date</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">            <span class="type">SimpleDateFormat</span> <span class="variable">df</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">now</span> <span class="operator">=</span> df.format(d);</span><br><span class="line">        %&gt;</span><br><span class="line">        当前时间:</span><br><span class="line">        &lt;%=now%&gt;</span><br><span class="line">    &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">                  <span class="type">Date</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">                  <span class="type">SimpleDateFormat</span> <span class="variable">df</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">                  <span class="type">String</span> <span class="variable">now</span> <span class="operator">=</span> df.format(d);</span><br><span class="line">              </span><br><span class="line">out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">out.write(<span class="string">&quot;                    当前时间:\r\n&quot;</span>);</span><br><span class="line">out.write(<span class="string">&quot;                    &quot;</span>);</span><br><span class="line">out.print(now);</span><br></pre></td></tr></table></figure>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>控制语法</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> request.getServletContext();</span><br><span class="line">    <span class="type">String</span> <span class="variable">studentId</span> <span class="operator">=</span> (String) request.getAttribute(<span class="string">&quot;studentId&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">signTime</span> <span class="operator">=</span> (String) servletContext.getAttribute(studentId + <span class="string">&quot;-now&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (signTime != <span class="literal">null</span>) &#123;</span><br><span class="line">        out.print(<span class="string">&quot;&lt;tr&gt;&lt;td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;签到时间&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%=signTime%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li class="lvl-2">
-<p>循环语法</p>
-</li>
-</ul>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    ArrayList&lt;Board&gt; professionBoard = (ArrayList&lt;Board&gt;) request.getAttribute(<span class="string">&quot;ProfessionBoard&quot;</span>);</span><br><span class="line">    professionBoard.sort(Comparator.comparing(Board::getSumTime).thenComparing(Board::getProfession));</span><br><span class="line">    Collections.reverse(professionBoard);</span><br><span class="line">    <span class="type">int</span> <span class="variable">rank</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (Board b : professionBoard) &#123;</span><br><span class="line">        out.print(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;td&gt;&quot;</span> + rank + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;td&gt;&quot;</span> + b.getProfession() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;td&gt;&quot;</span> + b.getSumTime() + <span class="string">&quot;&lt;/td&gt;&quot;</span>);</span><br><span class="line">        out.print(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line">        rank++;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627164919505.png" alt="image-20220627164919505" style="zoom:33%;">
-<h4 id="jsp缺陷">jsp缺陷</h4>
-<p>1、JSP底层原理就是Servlet直接out.print的方式运行，在第一次访问JSP时，需要将JSP编译成Servlet的class文件，拖慢运行速度。</p>
-<p>2、JSP可以直接嵌入java脚本，实现页面动态化，但是这样就打破了分层的思想，影响整体程序结构，降低JSP页面的可读性。</p>
-<p>3、全局刷新，一处报错全都不能显示。这也很好理解，java代码没跑通，servlet又怎么会显示呢。引入ajax。</p>
-<p>。。。。。。。</p>
-<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627162821738.png" alt="image-20220627162821738">
-<img src="/2022/06/27/%E8%B0%88%E8%B0%88jsp/image-20220627162839269.png" alt="image-20220627162839269" style="zoom:80%;">
-<p>后续出现了很多优秀的模板技术（velocity、freemarker、thymeleaf等），这些模板技术效率都高于jsp，对于企业和开发者来说，选择变多了。</p>
-<p><a class="link" href="https://www.cnblogs.com/ywb-articles/p/10627398.html">模板引擎总结(Thymeleaf，FreeMarker，Enjoy，Velocity，JSP等) - 认真的杨先森 - 博客园 (cnblogs.com)<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>后端</category>
-      </categories>
-      <tags>
-        <tag>servlet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件项目管理认识与实践总结</title>
-    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="软件项目管理认识与实践总结">软件项目管理认识与实践总结</h2>
-<p>衡先焘2020010661</p>
-<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
-<ol>
-<li class="lvl-3">
-<p>何为项目管理？</p>
-<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
-</li>
-<li class="lvl-3">
-<p>如何使用先进的项目管理工具</p>
-<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
-</li>
-<li class="lvl-3">
-<p>团队协作的收获与感想</p>
-<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
-</li>
-</ol>
-<p>​</p>
-<p>最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
-]]></content>
-      <categories>
-        <category>课程论文</category>
-      </categories>
-      <tags>
-        <tag>项目管理</tag>
-        <tag>课程总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>接口隔离原则ISP</title>
-    <url>/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/</url>
-    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="四、接口隔离原则ISP">四、接口隔离原则ISP</h2>
-<img src="/2022/06/23/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP/image-20220623152044370.png" alt="image-20220623152044370">
-<p>在图10.1所描绘的应用中，有多个用户需要操作OPS类。现在，我 们假设这里的User1只需要使用op1,User2只需要使用op2,User3只需要 使用op3。 在这种情况下，如果OPS类是用Java编程语言编写的，那么很明 显，User1虽然不需要调用op2、op3，但在源代码层次上也与它们形成 依赖关系。这种依赖意味着我们对OPS代码中op2所做的任何修改，即 使不会影响到User1的功能，也会导致它需要被重新编译和部署。 这个问题可以通过将不同的操作隔离成接口来解决，具体如图 10.2所示。 同样，我们也假设这个例子是用Java这种静态类型语言来实现 的，那么现在User1的源代码会依赖于U1Ops和op1，但不会依赖于 OPS。这样一来，我们之后对OPS做的修改只要不影响到User1的功能， 就不需要重新编译和部署User1了。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>里氏替换原则LSP</title>
-    <url>/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/</url>
-    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
-<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="三、里氏替换原则LSP">三、里氏替换原则LSP</h2>
-<h3 id="定义概念-3">定义概念</h3>
-<p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
-<h3 id="举例一">举例一</h3>
-<p>假设我们有一个License类，其结构如图9.1所示。该类中有一个 名为calcFee（）的方法，该方法将由Billing应用程序来调用。而 License类有两个“子类型”:PersonalLicense与BusinessLicense， 这两个类会用不同的算法来计算授权费用。</p>
-<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151618648.png" alt="image-20220623151618648">
-<p>上述设计是符合LSP原则的，因为Billing应用程序的行为并不依 赖于其使用的任何一个衍生类。也就是说，这两个衍生类的对象都是 可以用来替换License类对象的。</p>
-<h3 id="举例二">举例二</h3>
-<p>正方形/长方形问题是一个著名（或者说臭名远扬）的违反LSP的 设计案例（该问题的结构如图9.2所示）。</p>
-<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151711133.png" alt="image-20220623151711133">
-<p>在这个案例中，Square类并不是Rectangle类的子类型，因为 Rectangle类的高和宽可以分别修改，而Square类的高和宽则必须一同 修改。由于User类始终认为自己在操作Rectangle类，因此会带来一些 混淆。例如在下面的代码中： Rectangle r = … r.setW（5）； r.setH（2）； assert（r.area（）== 10）； 很显然，如果上述代码在…处返回的是Square类，则最后的这个 assert是不会成立的。 如果想要防范这种违反LSP的行为，唯一的办法就是在User类中增 加用于区分Rectangle和Square的检测逻辑（例如增加if语句）。但这 样一来，User类的行为又将依赖于它所使用的类，这两个类就不能互 相替换了。</p>
-]]></content>
-      <categories>
-        <category>软件开发设计原则</category>
-      </categories>
-      <tags>
-        <tag>设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ch01_ 跨交换机实现VLAN</title>
     <url>/2022/04/17/%E8%B7%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E7%8E%B0VLAN/</url>
     <content><![CDATA[<table>
@@ -4110,6 +4055,61 @@ hexo -s</p>
         <tag>交换机</tag>
         <tag>VLAN</tag>
         <tag>实验报告</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件项目管理认识与实践总结</title>
+    <url>/2022/05/27/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="软件项目管理认识与实践总结">软件项目管理认识与实践总结</h2>
+<p>衡先焘2020010661</p>
+<p>​		通过本学期胡丽红老师的《CMM软件项目管理》课程的学习和自身经历的总结，我深深的体会到了项目管理在软件工程等领域的重要性。以前和小伙伴试着做过国创科研等等，好多次都是因为没有一个好的idea，不能对idea做出项目计划而以失败告终。未来，我就可以通过这学期的项目管理知识做出一个未来的好的规划。</p>
+<ol>
+<li class="lvl-3">
+<p>何为项目管理？</p>
+<p>软件项目管理是为了使软件项目能够按照预定的成本，进度、质量顺利完成，而对人员，产品，过程和项目进行分析和管理的活动。根本目的是为了让软件项目尤其是大型项目的整个软件生命周期（从分析，设计，编码到测试，维护全过程）都能在管理者的控制之下，以预定成本按期，按质完成软件交付用户使用。主要有以下四个阶段，项目初始，项目计划，项目执行阶段，项目收尾。</p>
+</li>
+<li class="lvl-3">
+<p>如何使用先进的项目管理工具</p>
+<p>一款先进的工具能带来巨大的便利。一个月的时间里，通过组内监督、经常实践、自我反省，我们顺利的完成了project的学习、teambition学习的实践任务。我认为想要快速学会一个项目管理工具，最快的措施就是在学的过程中跟着做一次项目管理。当你做完一遍完整的项目管理之后，是会很有成就感的，然后再上手别的项目时候，会有自信，带着这种自信去做项目，遇到问题再逐个解决，这无疑是最迅速的学习方法。我们对于project就是通过跟着一个网课的老师做一次项目，做完这些之后，有了使用的经验之后，我们再去使用teambition做进一步的学习。</p>
+</li>
+<li class="lvl-3">
+<p>团队协作的收获与感想</p>
+<p>通过和小组成员一起的协助，我理解到了很多，也学习了很多。1️⃣小组讨论要保持尊重的态度，对于意见不和的时候不要立刻站队，要去多思考分歧的点在哪儿。2️⃣团队监督对于学习很有帮助，当所有人都在为了一个目标努力时候，是不会有人再去想着摆烂，会去想着如何维护好我们的团队。3️⃣汇报工作全方面锻炼一个团队，一个人。一个良好的汇报需要整个组的努力，每个人都要去收集每次汇报的任务点，汇报人要做好ppt，写好稿子，再在组内进行演练，其他成员对此提出修正的意见，再修改。</p>
+</li>
+</ol>
+<p>​</p>
+<p>最后，我想说，对于软件管理要有一定的重视，因为它贯穿于项目生命周期的始终，并代表软件产品接受各项评审，对于软件开发有很重要的作用。对于本课程的学习，让我真真切切地了解到许多关于软件项目管理的知识，还可以对本学期android课程所开发的APP作进一步的完善，以后的学习生活中，也会努力地让软件项目管理有关理论得以应用。</p>
+]]></content>
+      <categories>
+        <category>课程论文</category>
+      </categories>
+      <tags>
+        <tag>项目管理</tag>
+        <tag>课程总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>里氏替换原则LSP</title>
+    <url>/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/</url>
+    <content><![CDATA[<p>本文是阅读架构整洁之道2018 (（美）Robert C. Martin（罗伯特 C. 马丁）) (<a class="link" href="http://z-lib.org">z-lib.org<i class="fas fa-external-link-alt"></i></a>) 之后的整理。（侵删）</p>
+<p><a class="link" href="https://en.wikipedia.org/wiki/SOLID">SOLID - Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="三、里氏替换原则LSP">三、里氏替换原则LSP</h2>
+<h3 id="定义概念-3">定义概念</h3>
+<p>1988年，Barbara Liskov在描述如何定义子类型时写下了这样一 段话： 这里需要的是一种可替换性：如果对于每个类型是S的对象o1都存 在一个类型为T的对象o2，能使操作T类型的程序P在用o2替换o1时行为 保持不变，我们就可以将S称为T的子类型。</p>
+<h3 id="举例一">举例一</h3>
+<p>假设我们有一个License类，其结构如图9.1所示。该类中有一个 名为calcFee（）的方法，该方法将由Billing应用程序来调用。而 License类有两个“子类型”:PersonalLicense与BusinessLicense， 这两个类会用不同的算法来计算授权费用。</p>
+<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151618648.png" alt="image-20220623151618648">
+<p>上述设计是符合LSP原则的，因为Billing应用程序的行为并不依 赖于其使用的任何一个衍生类。也就是说，这两个衍生类的对象都是 可以用来替换License类对象的。</p>
+<h3 id="举例二">举例二</h3>
+<p>正方形/长方形问题是一个著名（或者说臭名远扬）的违反LSP的 设计案例（该问题的结构如图9.2所示）。</p>
+<img src="/2022/06/22/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP/image-20220623151711133.png" alt="image-20220623151711133">
+<p>在这个案例中，Square类并不是Rectangle类的子类型，因为 Rectangle类的高和宽可以分别修改，而Square类的高和宽则必须一同 修改。由于User类始终认为自己在操作Rectangle类，因此会带来一些 混淆。例如在下面的代码中： Rectangle r = … r.setW（5）； r.setH（2）； assert（r.area（）== 10）； 很显然，如果上述代码在…处返回的是Square类，则最后的这个 assert是不会成立的。 如果想要防范这种违反LSP的行为，唯一的办法就是在User类中增 加用于区分Rectangle和Square的检测逻辑（例如增加if语句）。但这 样一来，User类的行为又将依赖于它所使用的类，这两个类就不能互 相替换了。</p>
+]]></content>
+      <categories>
+        <category>软件开发设计原则</category>
+      </categories>
+      <tags>
+        <tag>设计</tag>
       </tags>
   </entry>
 </search>
